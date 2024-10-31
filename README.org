@@ -1,0 +1,3 @@
+* MRMathCPP
+
+MRMathCPP is a collection of very simple math routines.
