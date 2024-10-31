@@ -1,3 +1,7 @@
 * MRMathCPP
 
-MRMathCPP is a collection of very simple math routines.
+MRMathCPP is a collection of very simple math routines very carefully implemented.
+
+Really this is a place to house all of those little math things that I
+use all the time.  Things like =sgn= or =max4=.
+
