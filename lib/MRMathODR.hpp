@@ -3,7 +3,7 @@
 /**
  @file      MRMathODR.hpp
  @author    Mitch Richling http://www.mitchr.me/
- @brief     Very simple math stuff very carefully implimented: Order.@EOL
+ @brief     Very simple math stuff very carefully implemented: Order.@EOL
  @keywords
  @std       C++20
  @see

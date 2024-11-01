@@ -4,7 +4,7 @@
  @file      MRMathSTR.hpp
  @author    Mitch Richling http://www.mitchr.me/
  @date      2024-09-12
- @brief     Very simple math stuff very carefully implimented: Formatting & Strings.@EOL
+ @brief     Very simple math stuff very carefully implemented: Formatting & Strings.@EOL
  @keywords
  @std       C++20
  @see

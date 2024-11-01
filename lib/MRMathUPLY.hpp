@@ -3,7 +3,7 @@
 /**
  @file      MRMathUPLY.hpp
  @author    Mitch Richling http://www.mitchr.me/
- @brief     Very simple math stuff very carefully implimented: Polynomials.@EOL
+ @brief     Very simple math stuff very carefully implemented: Polynomials.@EOL
  @copyright
   @parblock
   Copyright (c) 1993-2024, Mitchell Jay Richling <https://www.mitchr.me> All rights reserved.

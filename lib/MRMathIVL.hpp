@@ -3,7 +3,7 @@
 /**
  @file      MRMathIVL.hpp
  @author    Mitch Richling http://www.mitchr.me/
- @brief     Very simple math stuff very carefully implimented: Numeric Intervals.@EOL
+ @brief     Very simple math stuff very carefully implemented: Numeric Intervals.@EOL
  @copyright
   @parblock
   Copyright (c) 1995-2024, Mitchell Jay Richling <https://www.mitchr.me> All rights reserved.

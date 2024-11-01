@@ -4,7 +4,7 @@
  @file      MRMathSFUN.hpp
  @author    Mitch Richling http://www.mitchr.me/
  @date      2024-09-12
- @brief     Very simple math stuff very carefully implimented: Special Functions.@EOL
+ @brief     Very simple math stuff very carefully implemented: Special Functions.@EOL
  @keywords
  @std       C++20
  @see

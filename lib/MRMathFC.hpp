@@ -3,7 +3,7 @@
 /**
  @file      MRMathFC.hpp
  @author    Mitch Richling http://www.mitchr.me/
- @brief     Very simple math stuff very carefully implimented: Floating Point Comparisons.@EOL
+ @brief     Very simple math stuff very carefully implemented: Floating Point Comparisons.@EOL
  @keywords
  @std       C++20
  @see
