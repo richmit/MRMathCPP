@@ -51,6 +51,8 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
     - Added MRMathRVEC.hpp -- real vectors as std::array
   - Documentation
     - Added changelog.org & changelog.html
+    - Fixed several doxygen bugs
+    - Spell checked headers
   - Examples
     - New
       - N/A

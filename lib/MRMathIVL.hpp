@@ -72,7 +72,7 @@ namespace mjr {
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       /** Clamp a number (integer/float) to the range [0,max_out] via a true clamping function.
           Values below the range map to 0 while values above the range map to max_out).
-          @param inInt The value to be clamped
+          @param in_num The value to be clamped
           @param max_out The maximum output value
           @return The clamped value. */
       template <typename inType, typename maxType>

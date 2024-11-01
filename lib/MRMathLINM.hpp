@@ -1,7 +1,7 @@
 // -*- Mode:C++; Coding:us-ascii-unix; fill-column:158 -*-
 /*******************************************************************************************************************************************************.H.S.**/
 /**
- @file      MRLathLINM.hpp
+ @file      MRMathLINM.hpp
  @author    Mitch Richling http://www.mitchr.me/
  @brief     Very simple math stuff very carefully implemented: One Dimensional Linear Transforms.@EOL
  @copyright

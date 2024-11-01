@@ -76,8 +76,8 @@ namespace mjr {
       }
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       /** Detect if two floating point values are near each other.
-          @param x1           Value to test.  Must be a floating point type.
-          @param x2           Value to test.  Must be an integer or floating point type.
+          @param z1           Value to test.  Must be a floating point type.
+          @param z2           Value to test.  Must be an integer or floating point type.
           @param zero_epsilon Epsilon to detect zero sign.  Must be the saem type as x.
           @return Returns true if @f$\vert x_1-x_2\vert\le\epsilon@f$, otherwise returns false. */
       template <typename realType>
