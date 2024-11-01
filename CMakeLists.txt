@@ -6,7 +6,7 @@ cmake_minimum_required(VERSION 3.20.0 FATAL_ERROR)
 # Proejct meta data
 
 project(MRMathCPP 
-  VERSION 1.0.0.0
+  VERSION 2.0.0.0
   DESCRIPTION "Simple Mathematical Utilities"
   HOMEPAGE_URL "https://github.com/richmit/MRMathCPP/"
   LANGUAGES CXX)
@@ -65,6 +65,7 @@ if(Boost_FOUND)
               "mjr_math_ivl"
               "mjr_math_linm"
               "mjr_math_odr"
+              "mjr_math_vec"
               "mjr_math_sfun"
               "mjr_math_str"
               "mjr_math_uply"
@@ -148,13 +149,14 @@ endif()
 
 set(PROJNAME_INCLUDES "build/MRMathCPP_config.hpp"
                       "lib/MRMathFC.hpp"
-                      "lib/MRMathCPP.hpp"
-                      "lib/MRMathLINM.hpp"
-                      "lib/MRMathIVL.hpp"
-                      "lib/MRMathODR.hpp"
                       "lib/MRMathBPLY.hpp"
-                      "lib/MRMathUPLY.hpp"
+                      "lib/MRMathCPP.hpp"
+                      "lib/MRMathIVL.hpp"
+                      "lib/MRMathLINM.hpp"
+                      "lib/MRMathODR.hpp"
+                      "lib/MRMathVEC.hpp"
                       "lib/MRMathSFUN.hpp"
+                      "lib/MRMathUPLY.hpp"
                       "lib/MRMathSTR.hpp")
 add_library(MRMathCPP INTERFACE ${PROJNAME_INCLUDES})
 target_include_directories(MRMathCPP INTERFACE 

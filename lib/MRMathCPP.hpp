@@ -1,9 +1,9 @@
 // -*- Mode:C++; Coding:us-ascii-unix; fill-column:158 -*-
 /*******************************************************************************************************************************************************.H.S.**/
 /**
- @file      MRMath.hpp
+ @file      MRMathCPP.hpp
  @author    Mitch Richling http://www.mitchr.me/
- @brief     Very simple math stuff very carefully implimented: Everything.@EOL
+ @brief     Very simple math stuff very carefully implemented: Everything.@EOL
  @keywords
  @std       C++20
  @see
@@ -42,10 +42,10 @@
 #include "MRMathODR.hpp"   // Order
 #include "MRMathSFUN.hpp"  // Special functions
 #include "MRMathIVL.hpp"   // Intervals
+#include "MRMathRVEC.hpp"  // Vectors in R^N (as std::array)
 
 // #include "MRMathCPLX.hpp"  // Complex Numbers
-// #include "MRMath3VEC.hpp"  // Vectors in R^3 (as Array or Vector)
-// #include "MRMathNVEC.hpp"  // Vectors in R^N (as Array or Vector)
+// #include "MRMathCVEC.hpp"  // Vectors in C^N (as Array or Vector)
 
 #define MJR_INCLUDE_MRMATH
 #endif
