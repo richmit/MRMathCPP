@@ -43,7 +43,7 @@
 namespace mjr {
   namespace math {
     namespace fc {
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Detect if a floating point value is near zero.
           @param x            Value to test.  Must be a floating point type.
           @param zero_epsilon Epsilon to detect zero sign.  Must be the saem type as x.
@@ -53,7 +53,7 @@ namespace mjr {
       inline bool near_zero(realType x, realType zero_epsilon) {
         return ((x <= zero_epsilon) && (x >= -zero_epsilon));
       }
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Detect if a complex point value is near zero (taxi cab metric)
           @param z            Value to test.  Must be a floating point type.
           @param zero_epsilon Epsilon to detect zero sign.  Must be the saem type as z.
@@ -63,7 +63,7 @@ namespace mjr {
       inline bool near_zero(std::complex<realType> z, realType zero_epsilon) {
         return (near_zero(std::real(z), zero_epsilon) && near_zero(std::imag(z), zero_epsilon));
       }
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Detect if two floating point values are near each other.
           @param x1           Value to test.  Must be a floating point type.
           @param x2           Value to test.  Must be an integer or floating point type.
@@ -74,7 +74,7 @@ namespace mjr {
       inline bool near(realType x1, realType x2, realType zero_epsilon) {
         return near_zero(x1-x2, zero_epsilon);
       }
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Detect if two floating point values are near each other.
           @param z1           Value to test.  Must be a floating point type.
           @param z2           Value to test.  Must be an integer or floating point type.

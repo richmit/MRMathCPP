@@ -37,7 +37,7 @@
 namespace mjr {
   namespace math {
     namespace ivl {
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Wrap a numbers outside [0, max_out] onto [0, max_out].
           @param in_num       The value to be wrapped
           @param max_out The maximum output value
@@ -48,7 +48,7 @@ namespace mjr {
         inType tmp = static_cast<inType>(static_cast<inType>(max_out) + static_cast<inType>(1));
         return (in_num % tmp + tmp) % tmp;
       }
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Teplate specialization. */
       template <typename inType, typename maxType>
       requires (std::convertible_to<maxType, inType> && std::floating_point<inType> && std::floating_point<maxType>)
@@ -59,7 +59,7 @@ namespace mjr {
           return std::fmod(static_cast<inType>(std::fmod(in_num, static_cast<inType>(max_out)) + max_out), static_cast<inType>(max_out));
         }
       }
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Wrap a floating point value to the range [0, maxValue) via a modulus like function that wraps the value onto the range (i.e. max_out will map to 0).
           Handy way to wrap angles in degrees to [0, 360).
           @param in_num The value to be wrapped
@@ -69,7 +69,7 @@ namespace mjr {
       inline realType wrapCO(realType in_num, realType max_out) {
         return std::fmod(std::fmod(in_num, max_out) + max_out, max_out);
       }
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Clamp a number (integer/float) to the range [0,max_out] via a true clamping function.
           Values below the range map to 0 while values above the range map to max_out).
           @param in_num The value to be clamped
@@ -84,7 +84,7 @@ namespace mjr {
           return static_cast<inType>(max_out);
         return in_num;
       }
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Clamp a floating point number to the range [0,1].
           Values below the range map to 0 while values above the range map to 1.
           @param in_num The value to be clamped
@@ -94,7 +94,7 @@ namespace mjr {
       inline realType unit_clamp(realType in_num) {
         return clamp(in_num, static_cast<realType>(1));
       }
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Map a non-negative floating value into the unit interval.
           0 maps to 1 and @f$\infty@f$ maps to 0.  Negative numbers are mapped to themselves -- instead of throwing an error.
           @param x The value to be mapped
@@ -107,7 +107,7 @@ namespace mjr {
         else
           return static_cast<realType>(1)/(x + static_cast<realType>(1));
       }
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Teplate specialization. */
       template <typename intType>
       requires (std::convertible_to<intType, double> && std::integral<intType>)

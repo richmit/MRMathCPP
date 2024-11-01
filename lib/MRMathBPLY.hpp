@@ -38,7 +38,7 @@
 namespace mjr {
   namespace math {
     namespace bply {
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Return the maximum exponent possible for a bi-variate polynomial stored in a vector of n terms, or a negative value on error.
           @param n Number of terms.
           @return Maximum exponent, or a negative value on error.
@@ -56,9 +56,8 @@ namespace mjr {
           return -3;
         return static_cast<int>(nsqrtr)-1;
       } 
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      /** Evaluate a bi-variate polynomial with double coefficients.
- 
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Evaluate a bi-variate polynomial with double coefficients. 
           A polynomial is defined by it's coefficients.  In this function those coefficients are provided in a vector, and are in lexicographic order:
           - 2nd: 00 01 02 10 11 12 20 21 22 -> a00*x^2*y^2 + a01*x^2*y^1 + ... + a21*x^0*y^1 + a22*x^0*y^0
           - 3rd: 00 01 02 03 10 11 12 13 20 21 22 23 30 31 32 33

@@ -41,7 +41,7 @@
 namespace mjr {
   namespace math {
     namespace sfun {
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Signum (sgn, sign) function -- -1 if input is negative, +1 if it is positive, and 0 if it is zero.
           @param x        Value to test.  Must be an integer or floating point type.
           @return The sign */
@@ -54,7 +54,7 @@ namespace mjr {
         return 0;
       }
  
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Signum with zero epsilon check.
           This function is used if we want to make sure a non-zero sign is only returned if the input value is larger than some epsilon.  i.e. we don't want tiny
           values near zero to show up as positive or negative.

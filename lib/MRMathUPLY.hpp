@@ -40,7 +40,7 @@
 namespace mjr {
   namespace math {
     namespace uply {
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Evaluate a uni-variate polynomial with double coefficients.
           A polynomial is defined by it's coefficients.  In this function those coefficients are provided in a vector, and are in lexicographic order:
           $$a_0+a_1x+a_2x^2+...+a_nx^n$$
