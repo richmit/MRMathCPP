@@ -111,9 +111,9 @@ namespace mjr {
         else // opts: X1, X2, X4
           return max3(x1, x2, x4);
       }
-    }
-  }
-}
+    } // end namespace odr
+  } // end namespace math
+} // end namespace mjr
 
 #define MJR_INCLUDE_MRMATHODR
 #endif

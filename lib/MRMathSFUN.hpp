@@ -38,6 +38,7 @@
 #include <concepts>                                                      /* Concepts library        C++20    */
 
 #include "MRMathFC.hpp"
+
 namespace mjr {
   namespace math {
     namespace sfun {
@@ -74,9 +75,9 @@ namespace mjr {
             return -1;
         }
       }
-    }
-  }
-}
+    } // end namespace sfun
+  } // end namespace math
+} // end namespace mjr
 
 #define MJR_INCLUDE_MRMATHSFUN
 #endif

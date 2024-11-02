@@ -85,9 +85,9 @@ namespace mjr {
       inline bool near(std::complex<realType> z1, std::complex<realType> z2, realType zero_epsilon) {
         return near_zero(z1 - z2, zero_epsilon);
       }
-    }
-  }
-}
+    } // end namespace fc
+  } // end namespace math
+} // end namespace mjr
 
 #define MJR_INCLUDE_MRMATHFC
 #endif

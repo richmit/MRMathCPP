@@ -138,8 +138,8 @@ namespace mjr {
       inline intType scl_real_to_int(realType x, intType maxOutValue) {
         return static_cast<intType>(x*static_cast<realType>(maxOutValue));
       }
-    }
-  }
+    } // end namespace linm
+  } // end namespace math
 } // end namespace mjr
 
 #define MJR_INCLUDE_MRLATHLINM

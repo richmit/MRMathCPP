@@ -114,8 +114,8 @@ namespace mjr {
       inline double right_ray_to_unit(intType x) {
         return right_ray_to_unit(static_cast<double>(x));
       }
-    }
-  }
+    } // end namespace ivl
+  } // end namespace math
 } // end namespace mjr
 
 #define MJR_INCLUDE_MRMATHIVL

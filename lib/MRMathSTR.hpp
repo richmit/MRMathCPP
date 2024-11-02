@@ -79,9 +79,9 @@ namespace mjr {
           return stringStream.str();
         }
       }
-    }
-  }
-}
+    } // end namespace str
+  } // end namespace math
+} // end namespace mjr
 
 #define MJR_INCLUDE_MRMATHSTR
 #endif

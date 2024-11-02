@@ -45,7 +45,6 @@
 #include "MRMathRVEC.hpp"  // Vectors in R^N (as std::array)
 
 // #include "MRMathCPLX.hpp"  // Complex Numbers
-// #include "MRMathCVEC.hpp"  // Vectors in C^N (as Array or Vector)
 
 #define MJR_INCLUDE_MRMATH
 #endif
