@@ -156,9 +156,10 @@ BOOST_AUTO_TEST_CASE(vec2, * boost::unit_test::tolerance(0.00001)) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 BOOST_AUTO_TEST_CASE(vec3, * boost::unit_test::tolerance(0.00001)) {
-  r3_t v1 = {1.1,2.2,3.3};
-  r3_t v2 = {4.4,5.5,6.6};
-  r3_t v3 = {7.7,8.8,9.9};
+  r3_t v1 = {1.1, 2.2, 3.3};
+  r3_t v2 = {4.4, 5.5, 6.6};
+  r3_t v3 = {7.7, 8.8, 9.9};
+  r3_t v4 = {0.1, 1.2, 3.4};
 
   BOOST_TEST_CHECK(mjr::math::vec::norm2sqr(v1)                                                     == 16.94);
   BOOST_TEST_CHECK(mjr::math::vec::norm2(v1)                                                        == 4.11582312545);
@@ -184,12 +185,14 @@ BOOST_AUTO_TEST_CASE(vec3, * boost::unit_test::tolerance(0.00001)) {
   BOOST_TEST_CHECK(mjr::math::vec::dot_product(v1, v2)                                              == 38.72);
   BOOST_TEST_CHECK(mjr::math::vec::scalar_triple_product(v1, v2, v3)                                == 0.0);
   BOOST_TEST_CHECK(mjr::math::vec::scalar_triple_product(v1, v2, v3)                                == mjr::math::vec::dot_product(v1, mjr::math::vec::cross_product(v2, v3)));
-  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::sum(v1, v2),                                 r3_t{  5.50,  7.70,  9.90 }, 1.0e-5) == true); 
-  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::diff(v1, v2),                                r3_t{ -3.30, -3.30, -3.30 }, 1.0e-5) == true); 
-  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::diff(v2, v1),                                r3_t{  3.30,  3.30,  3.30 }, 1.0e-5) == true); 
-  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::cross_product(v1, v2),                       r3_t{ -3.63,  7.26, -3.63 }, 1.0e-5) == true); 
-  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::cross_product(v2, v1),                       r3_t{  3.63, -7.26,  3.63 }, 1.0e-5) == true); 
-  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::linear_combination(2.0, v1, 3.0, v2),        r3_t{ 15.40, 20.90, 26.40 }, 1.0e-5) == true); 
+  BOOST_TEST_CHECK(mjr::math::vec::scalar_quadruple_product(v1, v2, v3, v4)                         == -278.711);
+  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::sum(v1, v2),                                 r3_t{   5.5000,   7.7000,   9.9000 }, 1.0e-5) == true); 
+  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::diff(v1, v2),                                r3_t{  -3.3000,  -3.3000,  -3.3000 }, 1.0e-5) == true); 
+  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::diff(v2, v1),                                r3_t{   3.3000,   3.3000,   3.3000 }, 1.0e-5) == true); 
+  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::cross_product(v1, v2),                       r3_t{  -3.6300,   7.2600,  -3.6300 }, 1.0e-5) == true); 
+  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::cross_product(v2, v1),                       r3_t{   3.6300,  -7.2600,   3.6300 }, 1.0e-5) == true); 
+  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::vector_quadruple_product(v1, v2, v3, v4),    r3_t{ -30.7461, -35.1384, -39.5307 }, 1.0e-5) == true); 
+  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::linear_combination(2.0, v1, 3.0, v2),        r3_t{  15.4000,  20.9000,  26.4000 }, 1.0e-5) == true); 
 
   BOOST_TEST_CHECK(mjr::math::vec::nearI(v1, v2, 1.0e-5)                                            == false);
   BOOST_TEST_CHECK(mjr::math::vec::nearI(v1, v3, 1.0e-5)                                            == false);
@@ -213,6 +216,7 @@ BOOST_AUTO_TEST_CASE(vec3n, * boost::unit_test::tolerance(0.00001)) {
   r3_t v1 = {-1.1,  2.2,  3.3};
   r3_t v2 = { 4.4, -5.5,  6.6};
   r3_t v3 = { 7.7,  8.8, -9.9};
+  r3_t v4 = { 0.1, -1.2,  3.4};
 
   BOOST_TEST_CHECK(mjr::math::vec::norm2sqr(v1)                                                     == 16.94);
   BOOST_TEST_CHECK(mjr::math::vec::norm2(v1)                                                        == 4.11582312545);
@@ -238,12 +242,14 @@ BOOST_AUTO_TEST_CASE(vec3n, * boost::unit_test::tolerance(0.00001)) {
   BOOST_TEST_CHECK(mjr::math::vec::dot_product(v1, v2)                                              == 4.84);
   BOOST_TEST_CHECK(mjr::math::vec::scalar_triple_product(v1, v2, v3)                                == 479.16);
   BOOST_TEST_CHECK(mjr::math::vec::scalar_triple_product(v1, v2, v3)                                == mjr::math::vec::dot_product(v1, mjr::math::vec::cross_product(v2, v3)));
-  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::sum(v1, v2),                                 r3_t{   3.30,  -3.30,  9.90 }, 1.0e-5) == true); 
-  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::diff(v1, v2),                                r3_t{  -5.50,   7.70, -3.30 }, 1.0e-5) == true); 
-  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::diff(v2, v1),                                r3_t{   5.50,  -7.70,  3.30 }, 1.0e-5) == true); 
-  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::cross_product(v1, v2),                       r3_t{  32.67,  21.78, -3.63 }, 1.0e-5) == true); 
-  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::cross_product(v2, v1),                       r3_t{ -32.67, -21.78,  3.63 }, 1.0e-5) == true); 
-  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::linear_combination(2.0, v1, 3.0, v2),        r3_t{  11.00, -12.10, 26.40 }, 1.0e-5) == true); 
+  BOOST_TEST_CHECK(mjr::math::vec::scalar_quadruple_product(v1, v2, v3, v4)                         == 34.3398);
+  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::sum(v1, v2),                                 r3_t{    3.3000,  -3.3000,     9.9000 }, 1.0e-5) == true); 
+  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::diff(v1, v2),                                r3_t{   -5.5000,   7.7000,    -3.3000 }, 1.0e-5) == true); 
+  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::diff(v2, v1),                                r3_t{    5.5000,  -7.7000,     3.3000 }, 1.0e-5) == true); 
+  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::cross_product(v1, v2),                       r3_t{   32.6700,  21.7800,    -3.6300 }, 1.0e-5) == true); 
+  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::cross_product(v2, v1),                       r3_t{  -32.6700, -21.7800,     3.6300 }, 1.0e-5) == true); 
+  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::vector_quadruple_product(v1, v2, v3, v4),    r3_t{ -319.0407, 265.1352, -1280.5551 }, 1.0e-5) == true); 
+  BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::linear_combination(2.0, v1, 3.0, v2),        r3_t{   11.0000, -12.1000,    26.4000 }, 1.0e-5) == true); 
 
   BOOST_TEST_CHECK(mjr::math::vec::nearI(v1, v2, 1.0e-5)                                            == false);
   BOOST_TEST_CHECK(mjr::math::vec::nearI(v1, v3, 1.0e-5)                                            == false);
@@ -291,10 +297,7 @@ BOOST_AUTO_TEST_CASE(vec3c, * boost::unit_test::tolerance(0.00001)) {
   BOOST_TEST_CHECK(mjr::math::vec::all_near_zero(v3, 1.0e-5)                                        == false);
   BOOST_TEST_CHECK(mjr::math::vec::any_near_zero(v3, 1.0e-5)                                        == false);
 
-  BOOST_TEST_CHECK(mjr::math::fc::near(mjr::math::vec::dot_product(v1, v2),                           cc_t(   0.330,  80.740), 1.0e-5) == true);
-  BOOST_TEST_CHECK(mjr::math::fc::near(mjr::math::vec::scalar_triple_product(v1, v2, v3),             cc_t(-896.126, 417.934), 1.0e-5) == true);
-  BOOST_TEST_CHECK(mjr::math::fc::near(mjr::math::vec::scalar_triple_product(v1, v2, v3),
-                                       mjr::math::vec::dot_product(v1, mjr::math::vec::cross_product(v2, v3)),                 1.0e-5));
+  BOOST_TEST_CHECK(mjr::math::fc::near(mjr::math::vec::dot_product(v1, v2),                           cc_t(   73.37, 70.62), 1.0e-5) == true);
   BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::sum(v1, v2),                                 c3_t{ cc_t(  6.60,  11.0), cc_t(13.20,   3.2), cc_t(  7.80,  10.00) }, 1.0e-5) == true); 
   BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::diff(v1, v2),                                c3_t{ cc_t( -8.80,  -6.6), cc_t(-6.60,   5.6), cc_t(  3.20,   3.20) }, 1.0e-5) == true); 
   BOOST_TEST_CHECK(mjr::math::vec::nearI(mjr::math::vec::diff(v2, v1),                                c3_t{ cc_t(  8.80,   6.6), cc_t( 6.60,  -5.6), cc_t( -3.20,  -3.20) }, 1.0e-5) == true); 

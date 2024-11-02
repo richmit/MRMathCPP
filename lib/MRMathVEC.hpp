@@ -135,17 +135,29 @@ namespace mjr {
         return ret_val;
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** The dot product -- real and complex vectors.
+      /** The dot product -- real vectors.
           @param v1  A vector
           @param v2  A vector */
       /** Compute the  */
       template <typename numType, std::size_t size>
-      //requires ((size > 0) && std::is_arithmetic_v<numType>)
-      requires (size > 0)
+      requires ((size > 0) && std::is_arithmetic_v<numType>)
       inline numType dot_product(const std::array<numType, size>& v1, const std::array<numType, size>& v2) {
         numType ret_val = 0.0;
         for(std::size_t i=0; i<size; ++i)
           ret_val += v1[i]*v2[i];
+        return ret_val;
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** The dot product -- complex vectors.
+          @param v1  A vector
+          @param v2  A vector */
+      /** Compute the  */
+      template <typename numType, std::size_t size>
+      requires ((size > 0) && std::is_arithmetic_v<numType>)
+      inline std::complex<numType> dot_product(const std::array<std::complex<numType>, size>& v1, const std::array<std::complex<numType>, size>& v2) {
+        std::complex<numType> ret_val = 0.0;
+        for(std::size_t i=0; i<size; ++i)
+          ret_val += v1[i]*std::conj(v2[i]);
         return ret_val;
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -202,12 +214,12 @@ namespace mjr {
         return ret_val;
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** The tripple product -- real and complex vectors.
+      /** The triple product -- real vectors.
           @param v1  A vector (must be of length 3)
           @param v2  A vector (must be of length 3) 
           @param v3  A vector (must be of length 3) */
       template <typename numType, std::size_t size>
-      requires (size == 3)
+      requires ((size == 3) && std::is_arithmetic_v<numType>)
       inline numType scalar_triple_product(const std::array<numType, size>& v1, const std::array<numType, size>& v2, const std::array<numType, size>& v3) {
         return (v1[0] * v2[1] * v3[2] -
                 v1[0] * v2[2] * v3[1] -
@@ -215,6 +227,31 @@ namespace mjr {
                 v1[1] * v2[2] * v3[0] +
                 v1[2] * v2[0] * v3[1] -
                 v1[2] * v2[1] * v3[0]);
+      }
+
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** The scalar quadruple product -- real vectors.
+          @param v1  A vector (must be of length 3)
+          @param v2  A vector (must be of length 3) 
+          @param v3  A vector (must be of length 3) 
+          @param v4  A vector (must be of length 3) */
+      template <typename numType, std::size_t size>
+      requires ((size == 3) && std::is_arithmetic_v<numType>)
+      inline numType scalar_quadruple_product(const std::array<numType, size>& v1, const std::array<numType, size>& v2, 
+                                              const std::array<numType, size>& v3, const std::array<numType, size>& v4) {
+        return dot_product(cross_product(v1, v2), cross_product(v3, v4));
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** The vector quadruple product -- real vectors.
+          @param v1  A vector (must be of length 3)
+          @param v2  A vector (must be of length 3) 
+          @param v3  A vector (must be of length 3) 
+          @param v4  A vector (must be of length 3) */
+      template <typename numType, std::size_t size>
+      requires ((size == 3) && std::is_arithmetic_v<numType>)
+      inline std::array<numType, size> vector_quadruple_product(const std::array<numType, size>& v1, const std::array<numType, size>& v2, 
+                                                                const std::array<numType, size>& v3, const std::array<numType, size>& v4) {
+        return cross_product(cross_product(v1, v2), cross_product(v3, v4));
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Unitize the given vector in place with the two norm returning true if the result is valid -- real vectors.
@@ -329,6 +366,8 @@ namespace mjr {
       requires ((size > 0) && std::is_arithmetic_v<numType>)
       std::string to_string(const std::array<numType, size>& v) {
         std::ostringstream stringStream;
+        stringStream << std::setprecision(6);
+        stringStream << std::fixed;
         stringStream << "[ ";
         for(std::size_t i=0; i<size-1; ++i)
           stringStream << v[i] << ", ";
@@ -342,15 +381,17 @@ namespace mjr {
       requires ((size > 0) && std::is_arithmetic_v<numType>)
       std::string to_string(const std::array<std::complex<numType>, size>& v) {
         std::ostringstream stringStream;
+        stringStream << std::setprecision(6);
+        stringStream << std::fixed;
         stringStream << "[ ";
         for(std::size_t i=0; i<size-1; ++i)
           stringStream << "(" << std::real(v[i]) << ", " << std::imag(v[i]) << "), ";
         stringStream << "(" << std::real(v[size-1]) << ", " << std::imag(v[size-1]) << ") ]";;
         return stringStream.str();
       }
-    }
-  }  
-}
+    } // end namespace vec
+  } // end namespace math
+} // end namespace mjr
 
 #define MJR_INCLUDE_MRMATHVEC
 #endif
