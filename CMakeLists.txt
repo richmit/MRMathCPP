@@ -57,7 +57,7 @@ endif()
 ######################################################################################################################################################
 # Create Unit Test Targets
 
-if(Boost_FOUND)
+#if(Boost_FOUND)
 
   # Master list of targets
   set(TARGETS "mjr_math_bply"
@@ -94,10 +94,11 @@ if(Boost_FOUND)
       target_compile_options(${CURTGT} PUBLIC -Wall)
       target_compile_options(${CURTGT} PUBLIC -O3)
     elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-      #message("Warning: MSVC support is currently experimental")
+      message("Warning: MSVC support is currently experimental")
     endif()
 
-    target_link_libraries(${CURTGT} PRIVATE ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
+    target_link_libraries(${CURTGT} PRIVATE Boost::unit_test_framework)
+    #target_link_libraries(${CURTGT} PRIVATE ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
     add_test(NAME "${CURTGT}" COMMAND "${CURTGT}")
 
   endforeach(CURTGT)
@@ -111,7 +112,7 @@ if(Boost_FOUND)
     COMMENT "Running Unit Tests"
     COMMAND cmake --build . -t test
   )
-endif()
+#endif()
 
 ######################################################################################################################################################
 # Generate an include file with various methdata about the build.

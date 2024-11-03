@@ -37,7 +37,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
 
 * Changes On HEAD Since Last Release
 :PROPERTIES:
-:CUSTOM_ID: latest
+:CUSTOM_ID: latest_TEMPLATE
 :END:
   - Fixed Bugs
     - N/A
@@ -48,11 +48,9 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
   - Deprecated functionality
     - N/A
   - New functionality
-    - Added MRMathRVEC.hpp -- real vectors as std::array
+    - N/A
   - Documentation
-    - Added changelog.org & changelog.html
-    - Fixed several doxygen bugs
-    - Spell checked headers
+    - N/A
   - Examples
     - New
       - N/A
@@ -60,6 +58,16 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
       - N/A
   - Miscellaneous
     - N/A
+* v2.0.0.0
+:PROPERTIES:
+:CUSTOM_ID: v2.0.0.0
+:END:
+  - New functionality
+    - Added MRMathRVEC.hpp -- real vectors as std::array
+  - Documentation
+    - Added changelog.org & changelog.html
+    - Fixed several doxygen bugs
+    - Spell checked headers
 * v0.0.0.0: Initial Release
 :PROPERTIES:
 :CUSTOM_ID: v0.0.0.0
