@@ -138,7 +138,6 @@ namespace mjr {
       /** The dot product -- real vectors.
           @param v1  A vector
           @param v2  A vector */
-      /** Compute the  */
       template <typename numType, std::size_t size>
       requires ((size > 0) && std::is_arithmetic_v<numType>)
       inline numType dot_product(const std::array<numType, size>& v1, const std::array<numType, size>& v2) {
@@ -151,7 +150,6 @@ namespace mjr {
       /** The dot product -- complex vectors.
           @param v1  A vector
           @param v2  A vector */
-      /** Compute the  */
       template <typename numType, std::size_t size>
       requires ((size > 0) && std::is_arithmetic_v<numType>)
       inline std::complex<numType> dot_product(const std::array<std::complex<numType>, size>& v1, const std::array<std::complex<numType>, size>& v2) {
