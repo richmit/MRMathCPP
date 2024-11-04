@@ -48,7 +48,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
   - Deprecated functionality
     - N/A
   - New functionality
-    - N/A
+    - Added MRMathCPLX.hpp -- Complex number stuff.
   - Documentation
     - N/A
   - Examples

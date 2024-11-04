@@ -54,21 +54,34 @@ else()
   set(PROJNAME_OPT_BTEST "0")
 endif()
 
+# include(FetchContent)
+# FetchContent_Declare(
+#   googletest
+#   #URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+#   URL https://github.com/google/googletest/archive/refs/heads/main.zip
+#   DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+# )
+# # For Windows: Prevent overriding the parent project's compiler/linker settings
+# set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+# FetchContent_MakeAvailable(googletest)
+
 ######################################################################################################################################################
 # Create Unit Test Targets
 
-#if(Boost_FOUND)
-
+if(Boost_FOUND)
   # Master list of targets
-  set(TARGETS "mjr_math_bply"
-              "mjr_math_fc"
-              "mjr_math_ivl"
-              "mjr_math_linm"
-              "mjr_math_odr"
-              "mjr_math_vec"
-              "mjr_math_sfun"
-              "mjr_math_str"
-              "mjr_math_uply"
+  set(TARGETS  
+              # "mjr_math_bply"
+              # "mjr_math_cplx"
+              # "mjr_math_fc"
+              # "mjr_math_ivl"
+              # "mjr_math_linm"
+              # "mjr_math_odr"
+              # "mjr_math_sfun"
+              # "mjr_math_str"
+              # "mjr_math_uply"
+              # "mjr_math_vec"
+              "gtest_mjr_math_cplx"
             )
 
   # Add a target for each one we can build
@@ -98,8 +111,9 @@ endif()
     endif()
 
     target_link_libraries(${CURTGT} PRIVATE Boost::unit_test_framework)
-    #target_link_libraries(${CURTGT} PRIVATE ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
     add_test(NAME "${CURTGT}" COMMAND "${CURTGT}")
+
+    # target_link_libraries(${CURTGT} PRIVATE GTest::gtest_main)
 
   endforeach(CURTGT)
 
@@ -112,7 +126,7 @@ endif()
     COMMENT "Running Unit Tests"
     COMMAND cmake --build . -t test
   )
-#endif()
+endif()
 
 ######################################################################################################################################################
 # Generate an include file with various methdata about the build.
@@ -149,16 +163,18 @@ endif()
 # Create interface target for the entire project
 
 set(PROJNAME_INCLUDES "build/MRMathCPP_config.hpp"
-                      "lib/MRMathFC.hpp"
                       "lib/MRMathBPLY.hpp"
+                      "lib/MRMathCPLX.hpp"
                       "lib/MRMathCPP.hpp"
+                      "lib/MRMathFC.hpp"
                       "lib/MRMathIVL.hpp"
                       "lib/MRMathLINM.hpp"
                       "lib/MRMathODR.hpp"
-                      "lib/MRMathVEC.hpp"
                       "lib/MRMathSFUN.hpp"
+                      "lib/MRMathSTR.hpp"
                       "lib/MRMathUPLY.hpp"
-                      "lib/MRMathSTR.hpp")
+                      "lib/MRMathVEC.hpp"
+                    )
 add_library(MRMathCPP INTERFACE ${PROJNAME_INCLUDES})
 target_include_directories(MRMathCPP INTERFACE 
                            "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/lib>"
@@ -203,3 +219,8 @@ install(FILES
         "${CMAKE_CURRENT_BINARY_DIR}/MRMathCPPConfig.cmake"
         "${CMAKE_CURRENT_BINARY_DIR}/MRMathCPPConfigVersion.cmake"
         DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/MRMathCPP")
+
+
+
+# include(GoogleTest)
+# gtest_discover_tests(hello_test)
