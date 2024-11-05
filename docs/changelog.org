@@ -43,7 +43,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
   Most likely next version number: v3.0.0.0
 
   - Fixed Bugs
-    - N/A
+    - Several issues with MRMathCPP_config.hpp
   - Known Issues
     - N/A
   - API breaking Changes
