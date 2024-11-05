@@ -34,17 +34,18 @@
 /*############################################################################################################################################################*/
 #ifndef MJR_INCLUDE_MRMATH
 
-#include "MRMathLINM.hpp"  // Linear Mappings
-#include "MRMathUPLY.hpp"  // Univariate polynomials
-#include "MRMathSTR.hpp"   // String functions (formatting)
 #include "MRMathBPLY.hpp"  // Bivariate polynomiales
+#include "MRMathCPLX.hpp"  // Complex Numbers
 #include "MRMathFC.hpp"    // FLoating point comparison
+#include "MRMathIVL.hpp"   // Intervals
+#include "MRMathLINM.hpp"  // Linear Mappings
 #include "MRMathODR.hpp"   // Order
 #include "MRMathSFUN.hpp"  // Special functions
-#include "MRMathIVL.hpp"   // Intervals
+#include "MRMathSTR.hpp"   // String functions (formatting)
+#include "MRMathUPLY.hpp"  // Univariate polynomials
 #include "MRMathVEC.hpp"   // Vectors in R^N (as std::array)
 
-// #include "MRMathCPLX.hpp"  // Complex Numbers
+//#include "MRMathGOM3.hpp"  // 3D Geometry
 
 #define MJR_INCLUDE_MRMATH
 #endif

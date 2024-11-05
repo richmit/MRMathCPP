@@ -39,6 +39,8 @@
 // Put everything in the mjr namespace
 namespace mjr {
   namespace math {
+    /** Univariate polynomials.
+    */
     namespace uply {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Evaluate a uni-variate polynomial with double coefficients.

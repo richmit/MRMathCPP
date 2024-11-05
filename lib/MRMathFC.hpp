@@ -42,6 +42,8 @@
 
 namespace mjr {
   namespace math {
+    /** Real & Complex Floating Point Comparisons.
+    */
     namespace fc {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Detect if a floating point value is near zero.

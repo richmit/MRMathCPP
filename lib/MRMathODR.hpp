@@ -38,6 +38,8 @@
 
 namespace mjr {
   namespace math {
+    /** Real Number Order Functions (max/min).
+    */
     namespace odr {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Minimum of three numbers.
@@ -82,7 +84,7 @@ namespace mjr {
             return x3;
           }
         }
-      } 
+      }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Minimum of four numbers.
           @param x1 First number.Must be an integer or floating point type.

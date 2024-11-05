@@ -42,6 +42,11 @@
 
 namespace mjr {
   namespace math {
+    /** Complex Numbers.
+        This namespace contains simple functions specific to complex numbers.  
+        Additional complex number support is distributed throughout the library.  For example mjr::math::vec supports
+        complex vectors, and mjr::math::fc supports floating point complex number comparison.
+    */
     namespace cplx {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Change the sign of the real part of a complex number.
@@ -85,7 +90,7 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Square of 2-norm (Euclidean) distance between two complex numbers.
-          @param z1 Complex number. 
+          @param z1 Complex number.
           @param z2 Complex number. */
       template <typename numType>
       requires (std::is_arithmetic_v<numType>)
@@ -94,7 +99,7 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** 2-norm (Euclidean) distance between two complex numbers.
-          @param z1 Complex number. 
+          @param z1 Complex number.
           @param z2 Complex number. */
       template <typename numType>
       requires (std::is_arithmetic_v<numType>)
@@ -103,7 +108,7 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** @f$\infty@f$-norm distance between two complex numbers.
-          @param z1 Complex number. 
+          @param z1 Complex number.
           @param z2 Complex number. */
       template <typename numType>
       requires (std::is_arithmetic_v<numType>)
@@ -112,7 +117,7 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** 1-norm distance between two complex numbers.
-          @param z1 Complex number. 
+          @param z1 Complex number.
           @param z2 Complex number. */
       template <typename numType>
       requires (std::is_arithmetic_v<numType>)
@@ -125,4 +130,3 @@ namespace mjr {
 
 #define MJR_INCLUDE_MRMATHCPLX
 #endif
-

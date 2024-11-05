@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.20.0 FATAL_ERROR)
 ######################################################################################################################################################
 # Proejct meta data
 
-project(MRMathCPP 
+project(MRMathCPP
   VERSION 2.5.0.0
   DESCRIPTION "Simple Mathematical Utilities"
   HOMEPAGE_URL "https://github.com/richmit/MRMathCPP/"
@@ -19,7 +19,7 @@ mark_as_advanced(MRMATHCPP_CONFIG_DATE)
 
 ######################################################################################################################################################
 # Include ctest -- we might not use it if boost is not found...
-include(CTest) 
+include(CTest)
 
 ######################################################################################################################################################
 # Here are the options we use to modify the build -- these options are passed to cmake like so: cmake -DO_BTEST=YES or -DO_BTEST=NO
@@ -79,7 +79,7 @@ endif()
 
 if(GTest_FOUND)
   # Master list of targets
-  set(TARGETS  
+  set(TARGETS
               "mjr_math_bply"
               "mjr_math_cplx"
               "mjr_math_fc"
@@ -169,20 +169,20 @@ endif()
 # Create interface target for the entire project
 
 set(MRMATHCPP_INCLUDES "build/MRMathCPP_config.hpp"
-                      "lib/MRMathBPLY.hpp"
-                      "lib/MRMathCPLX.hpp"
-                      "lib/MRMathCPP.hpp"
-                      "lib/MRMathFC.hpp"
-                      "lib/MRMathIVL.hpp"
-                      "lib/MRMathLINM.hpp"
-                      "lib/MRMathODR.hpp"
-                      "lib/MRMathSFUN.hpp"
-                      "lib/MRMathSTR.hpp"
-                      "lib/MRMathUPLY.hpp"
-                      "lib/MRMathVEC.hpp"
+                       "lib/MRMathBPLY.hpp"
+                       "lib/MRMathCPLX.hpp"
+                       "lib/MRMathCPP.hpp"
+                       "lib/MRMathFC.hpp"
+                       "lib/MRMathIVL.hpp"
+                       "lib/MRMathLINM.hpp"
+                       "lib/MRMathODR.hpp"
+                       "lib/MRMathSFUN.hpp"
+                       "lib/MRMathSTR.hpp"
+                       "lib/MRMathUPLY.hpp"
+                       "lib/MRMathVEC.hpp"
                     )
 add_library(MRMathCPP INTERFACE ${MRMATHCPP_INCLUDES})
-target_include_directories(MRMathCPP INTERFACE 
+target_include_directories(MRMathCPP INTERFACE
                            "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/lib>"
                            "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/build>"
                            "$<INSTALL_INTERFACE:include>")

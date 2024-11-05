@@ -36,6 +36,8 @@
 // Put everything in the mjr namespace
 namespace mjr {
   namespace math {
+    /** Numeric Interval Maps.
+    */
     namespace ivl {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Wrap a numbers outside [0, max_out] onto [0, max_out].

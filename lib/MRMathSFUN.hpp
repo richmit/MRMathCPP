@@ -41,6 +41,8 @@
 
 namespace mjr {
   namespace math {
+    /** Simple Functions.
+    */
     namespace sfun {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Signum (sgn, sign) function -- -1 if input is negative, +1 if it is positive, and 0 if it is zero.
@@ -54,7 +56,6 @@ namespace mjr {
         if (x < numType(0)) return -1;
         return 0;
       }
- 
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Signum with zero epsilon check.
           This function is used if we want to make sure a non-zero sign is only returned if the input value is larger than some epsilon.  i.e. we don't want tiny

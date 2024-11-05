@@ -5,21 +5,21 @@
  @author    Mitch Richling http://www.mitchr.me/
  @brief     Very simple math stuff very carefully implemented: Real & complex vectors using std::array.@EOL
  @std       C++20
- @see       
- @copyright 
+ @see
+ @copyright
   @parblock
   Copyright (c) 2024, Mitchell Jay Richling <http://www.mitchr.me/> All rights reserved.
-  
+
   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-  
+
   1. Redistributions of source code must retain the above copyright notice, this list of conditions, and the following disclaimer.
-  
+
   2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions, and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-  
+
   3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software
      without specific prior written permission.
-  
+
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
@@ -42,7 +42,7 @@
 #include <sstream>                                                       /* C++ string stream       C++      */
 #include <string>                                                        /* C++ strings             C++11    */
 #include <type_traits>                                                   /* C++ metaprogramming     C++11    */
-#include <vector>                                                        /* STL vector              C++11    */ 
+#include <vector>                                                        /* STL vector              C++11    */
 #include <complex>
 
 #include "MRMathFC.hpp"
@@ -63,7 +63,7 @@ namespace mjr {
       requires ((size > 0) && std::is_arithmetic_v<numType>)
       inline numType norm2sqr(const std::array<numType, size>& v) {
         numType ret_val = 0;
-        for(auto e : v) 
+        for(auto e : v)
           ret_val += e * e;
         return ret_val;
       }
@@ -74,7 +74,7 @@ namespace mjr {
       requires ((size > 0) && std::is_arithmetic_v<numType>)
       inline numType norm2sqr(std::array<std::complex<numType>, size> v) {
         numType ret_val = 0;
-        for(auto e : v) 
+        for(auto e : v)
           ret_val += std::pow(std::abs(e), 2);
         return ret_val;
       }
@@ -109,7 +109,7 @@ namespace mjr {
       requires ((size > 0) && std::is_arithmetic_v<numType>)
       inline numType normI(const std::array<numType, size>& v) {
         numType ret_val = 0;
-        for(auto e : v) 
+        for(auto e : v)
           if (std::abs(e) > ret_val)
             ret_val = std::abs(e);
         return ret_val;
@@ -121,7 +121,7 @@ namespace mjr {
       requires ((size > 0) && std::is_arithmetic_v<numType>)
       inline numType normI(const std::array<std::complex<numType>, size>& v) {
         numType ret_val = 0;
-        for(auto e : v) 
+        for(auto e : v)
           if (std::abs(e) > ret_val)
             ret_val = std::abs(e);
         return ret_val;
@@ -133,7 +133,7 @@ namespace mjr {
       requires ((size > 0) && std::is_arithmetic_v<numType>)
       inline numType norm1(const std::array<numType, size>& v) {
         numType ret_val = 0;
-        for(auto e : v) 
+        for(auto e : v)
           ret_val += std::abs(e);
         return ret_val;
       }
@@ -144,7 +144,7 @@ namespace mjr {
       requires ((size > 0) && std::is_arithmetic_v<numType>)
       inline numType norm1(const std::array<std::complex<numType>, size>& v) {
         numType ret_val = 0;
-        for(auto e : v) 
+        for(auto e : v)
           ret_val += std::abs(e);
         return ret_val;
       }
@@ -228,7 +228,7 @@ namespace mjr {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** The triple product -- real vectors of length 3.
           @param v1  A vector (must be of length 3)
-          @param v2  A vector (must be of length 3) 
+          @param v2  A vector (must be of length 3)
           @param v3  A vector (must be of length 3) */
       template <typename numType, std::size_t size>
       requires ((size == 3) && std::is_arithmetic_v<numType>)
@@ -243,24 +243,24 @@ namespace mjr {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** The scalar quadruple product -- real vectors of length 3.
           @param v1  A vector (must be of length 3)
-          @param v2  A vector (must be of length 3) 
-          @param v3  A vector (must be of length 3) 
+          @param v2  A vector (must be of length 3)
+          @param v3  A vector (must be of length 3)
           @param v4  A vector (must be of length 3) */
       template <typename numType, std::size_t size>
       requires ((size == 3) && std::is_arithmetic_v<numType>)
-      inline numType scalar_quadruple_product(const std::array<numType, size>& v1, const std::array<numType, size>& v2, 
+      inline numType scalar_quadruple_product(const std::array<numType, size>& v1, const std::array<numType, size>& v2,
                                               const std::array<numType, size>& v3, const std::array<numType, size>& v4) {
         return dot_product(cross_product(v1, v2), cross_product(v3, v4));
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** The vector quadruple product -- real vectors of length 3.
           @param v1  A vector (must be of length 3)
-          @param v2  A vector (must be of length 3) 
-          @param v3  A vector (must be of length 3) 
+          @param v2  A vector (must be of length 3)
+          @param v3  A vector (must be of length 3)
           @param v4  A vector (must be of length 3) */
       template <typename numType, std::size_t size>
       requires ((size == 3) && std::is_arithmetic_v<numType>)
-      inline std::array<numType, size> vector_quadruple_product(const std::array<numType, size>& v1, const std::array<numType, size>& v2, 
+      inline std::array<numType, size> vector_quadruple_product(const std::array<numType, size>& v1, const std::array<numType, size>& v2,
                                                                 const std::array<numType, size>& v3, const std::array<numType, size>& v4) {
         return cross_product(cross_product(v1, v2), cross_product(v3, v4));
       }
@@ -282,7 +282,7 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Unitize the given vector in place with the two norm returning true if the result is valid -- complex vectors.
-          @param v            A vector 
+          @param v            A vector
           @param zero_epsilon Epsilon to detect zero sign.  See: mjr::math::fc::near_zero() */
       template <typename realType, std::size_t size>
       requires ((size > 0) && std::floating_point<realType>)
@@ -304,7 +304,7 @@ namespace mjr {
       template <typename realType, std::size_t size>
       requires ((size > 0) && std::floating_point<realType>)
       bool near_zeroI(const std::array<realType, size>& v, realType zero_epsilon) {
-        for(auto e : v) 
+        for(auto e : v)
           if ( !(mjr::math::fc::near_zero(e, zero_epsilon)))
             return false;
         return true;
@@ -317,7 +317,7 @@ namespace mjr {
       template <typename realType, std::size_t size>
       requires ((size > 0) && std::floating_point<realType>)
       inline bool near_zeroI(const std::array<std::complex<realType>, size>& v, realType zero_epsilon) {
-        for(auto e : v) 
+        for(auto e : v)
           if ( !(mjr::math::fc::near_zero(e, zero_epsilon)))
             return false;
         return true;
@@ -378,16 +378,6 @@ namespace mjr {
         stringStream << "(" << std::real(v[size-1]) << ", " << std::imag(v[size-1]) << ") ]";;
         return stringStream.str();
       }
-
-
-      //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      //--------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Square of the 2-norm (Euclidean) distance between two vectors -- real vectors.
           @param v1  A vector
@@ -445,8 +435,9 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Lexicographic Less Than Predicate -- floating point real vectors.
-          @param v1  A vector
-          @param v2  A vector */
+          @param v1           A vector
+          @param v2           A vector 
+          @param zero_epsilon Epsilon to detect zero sign.  See: mjr::math::fc::near_zero() */
       template <typename realType, std::size_t size>
       requires ((size > 0) && std::floating_point<realType>)
       inline bool lex_less(const std::array<realType, size>& v1, const std::array<realType, size>& v2, realType zero_epsilon) {
@@ -460,7 +451,7 @@ namespace mjr {
               return true;
             } else {
               return false;
-            } 
+            }
           }
         }
         return true; // Can't get here...

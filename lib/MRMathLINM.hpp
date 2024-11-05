@@ -38,10 +38,12 @@
 
 namespace mjr {
   namespace math {
+    /** One Dimensional Linear Transformations.
+    */
     namespace linm {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Linear interpolation between two real values.
-          The return is @f$(v2-v1)\cdot w+v1@f$ -- in particular the return is v1 when w is 0.0 and v2 when w is 1.0.  
+          The return is @f$(v2-v1)\cdot w+v1@f$ -- in particular the return is v1 when w is 0.0 and v2 when w is 1.0.
           For interpolation @f$w\in[0,1]@f$.  If w is outside this range, then the result is extrapolation.
           @param v1 First value
           @param v2 Second value
@@ -51,26 +53,26 @@ namespace mjr {
       requires (std::floating_point<realType>)
       inline realType interpolate(realType v1, realType v2, realType w) {
         return (v2 - v1) * w + v1;
-      } 
+      }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Linear interpolation between two real valus on a wrapped interval [0, maxv) -- See: interpolate(), interpolate_degrees(), & interpolate_radians().
           @param v1   First angle (in degrees)
           @param v2   Second angle (in degrees)
-          @param w    Weight 
+          @param w    Weight
           @param maxv Interval endpoint */
       template <typename realType>
       requires (std::floating_point<realType>)
       inline realType interpolate_wrapCO(realType v1, realType v2, realType w, realType maxv) {
         v1 = mjr::math::ivl::wrapCO(v1, maxv);
-        v2 = mjr::math::ivl::wrapCO(v2, maxv); 
+        v2 = mjr::math::ivl::wrapCO(v2, maxv);
         if ((2 * std::abs(v2 - v1)) > maxv) {
           if (v1 < v2)
             v1 += maxv;
           else
             v2 += maxv;
-        } 
+        }
         return mjr::math::ivl::wrapCO(interpolate(v1, v2, w), maxv);
-      } 
+      }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Linear interpolation between two real valus interperted as angles in degrees -- See: interpolate() & interpolate_wrapCO().
           @param v1 First angle (in degrees)
@@ -80,7 +82,7 @@ namespace mjr {
       requires (std::floating_point<realType>)
       inline realType interpolate_degrees(realType v1, realType v2, realType w) {
         return interpolate_wrapCO(v1, v2, w, static_cast<realType>(360.0));
-      } 
+      }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Linear interpolation between two real valus interperted as angles in radians -- See: interpolate() & interpolate_wrapCO().
           @param v1 First angle (in radians)
@@ -90,7 +92,7 @@ namespace mjr {
       requires (std::floating_point<realType>)
       inline realType interpolate_radians(realType v1, realType v2, realType w) {
         return interpolate_wrapCO(v1, v2, w, static_cast<realType>(std::numbers::pi * 2.0));
-      } 
+      }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Map an integer in the range [0,max_in] onto the range [0,max_out] via a linear mapping function.  That is to say, 0 maps to zero, and max_in
           maps to max_out. Input values outside the allowed input range will be linearly mapped outside of the given output range.  To guarantee an output
@@ -103,7 +105,7 @@ namespace mjr {
       requires (std::integral<xType> && std::floating_point<moType> && std::integral<miType> && std::convertible_to<miType, moType>)
       inline moType scl_int_to_real(xType x, moType max_out, miType max_in) {
         return (static_cast<moType>(x) * static_cast<moType>(max_out) / static_cast<moType>(max_in));
-      } 
+      }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Compute equation of a line containing the points @f$(x1, y1)@f$ and @f$(x2, y2)@f$ and return the value of this equation evaluated at @f$x@f$.
           All arithmatic is performed using the type of y1.  If y1 is an integral type, then division is saved till last operation.
@@ -125,11 +127,11 @@ namespace mjr {
           yType b = static_cast<yType>(y1) - m * static_cast<yType>(x1);
           return static_cast<yType>(m * x + b);
         }
-      } 
+      }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Map an floating point type in the unit interval, the range [0,1], onto the integers in the range [0,maxOutValue] via a linear mapping function.
           That is to say, 0.0 maps to 0, and 1.0 maps to maxOutValue. Input values outside the unit interval will be linearly mapped outside of the given
-          output range -- i.e. the output is not clamped.  
+          output range -- i.e. the output is not clamped.
           @param x           The value to be mapped (must be a floating point type)
           @param maxOutValue The maximum output value (must be convertable to the type use for x)
           @return The mapped value. */
