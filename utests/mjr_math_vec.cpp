@@ -56,22 +56,19 @@ TEST(PKG_vec, VecLen1_double) {
   EXPECT_NEAR(mjr::math::vec::norm2(v1),                                                      1.1,   1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v1),                                                      1.1,   1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v1),                                                      1.1,   1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v1, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v1, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v1, 1.0e-5));
 
   EXPECT_NEAR(mjr::math::vec::norm2sqr(v2),                                                   4.84,  1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm2(v2),                                                      2.2,   1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v2),                                                      2.2,   1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v2),                                                      2.2,   1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v2, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v2, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v2, 1.0e-5));
 
   EXPECT_NEAR(mjr::math::vec::norm2sqr(v3),                                                   10.89, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm2(v3),                                                      3.3,   1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v3),                                                      3.3,   1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v3),                                                      3.3,   1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v3, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v3, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v3, 1.0e-5));
 
   EXPECT_NEAR(mjr::math::vec::dot_product(v1, v2),                                            2.42,  1.0e-5);
   EXPECT_TRUE(mjr::math::vec::nearI(mjr::math::vec::sum(v1, v2),                              r1_t{  3.3 }, 1.0e-5)); 
@@ -93,8 +90,7 @@ TEST(PKG_vec, VecLen1_double) {
   EXPECT_NEAR(mjr::math::vec::norm2(v1),                                                      1.0,   1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v1),                                                      1.0,   1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v1),                                                      1.0,   1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v1, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v1, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v1, 1.0e-5));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -107,22 +103,19 @@ TEST(PKG_vec, VecLen2_double) {
   EXPECT_NEAR(mjr::math::vec::norm2(v1),                                                       2.45967477525, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v1),                                                       3.3, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v1),                                                       2.2, 1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v1, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v1, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v1, 1.0e-5));
 
   EXPECT_NEAR(mjr::math::vec::norm2sqr(v2),                                                    30.25, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm2(v2),                                                       5.5, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v2),                                                       7.7, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v2),                                                       4.4, 1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v2, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v2, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v2, 1.0e-5));
 
   EXPECT_NEAR(mjr::math::vec::norm2sqr(v3),                                                    73.81, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm2(v3),                                                       8.5912746435, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v3),                                                       12.1, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v3),                                                       6.6, 1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v3, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v3, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v3, 1.0e-5));
 
   EXPECT_NEAR(mjr::math::vec::dot_product(v1, v2),                                            13.31, 1.0e-5);
   EXPECT_TRUE(mjr::math::vec::nearI(mjr::math::vec::sum(v1, v2),                              r2_t{  4.4,  6.6 }, 1.0e-5)); 
@@ -143,8 +136,7 @@ TEST(PKG_vec, VecLen2_double) {
   EXPECT_NEAR(mjr::math::vec::norm2(v1),                                                       1, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v1),                                                       1.34164, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v1),                                                       0.894427, 1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v1, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v1, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v1, 1.0e-5));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -158,22 +150,19 @@ TEST(PKG_vec, VecLen3_Double_Positive) {
   EXPECT_NEAR(mjr::math::vec::norm2(v1),                                                       4.11582312545, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v1),                                                       6.6, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v1),                                                       3.3, 1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v1, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v1, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v1, 1.0e-5));
 
   EXPECT_NEAR(mjr::math::vec::norm2sqr(v2),                                                    93.17, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm2(v2),                                                       9.65246082613, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v2),                                                       16.5, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v2),                                                       6.6, 1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v2, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v2, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v2, 1.0e-5));
 
   EXPECT_NEAR(mjr::math::vec::norm2sqr(v3),                                                    234.74, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm2(v3),                                                       15.3212271049, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v3),                                                       26.4, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v3),                                                       9.9, 1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v3, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v3, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v3, 1.0e-5));
 
   EXPECT_NEAR(mjr::math::vec::dot_product(v1, v2),                                             38.72, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::scalar_triple_product(v1, v2, v3),                               0.0, 1.0e-5);
@@ -200,8 +189,7 @@ TEST(PKG_vec, VecLen3_Double_Positive) {
   EXPECT_NEAR(mjr::math::vec::norm2(v1),                                                       1, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v1),                                                       1.60357, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v1),                                                       0.801784, 1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v1, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v1, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v1, 1.0e-5));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -215,22 +203,19 @@ TEST(PKG_vec, VecLen3__Double_Negative) {
   EXPECT_NEAR(mjr::math::vec::norm2(v1),                                                       4.11582312545, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v1),                                                       6.6, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v1),                                                       3.3, 1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v1, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v1, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v1, 1.0e-5));
 
   EXPECT_NEAR(mjr::math::vec::norm2sqr(v2),                                                    93.17, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm2(v2),                                                       9.65246082613, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v2),                                                       16.5, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v2),                                                       6.6, 1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v2, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v2, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v2, 1.0e-5));
 
   EXPECT_NEAR(mjr::math::vec::norm2sqr(v3),                                                    234.74, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm2(v3),                                                       15.3212271049, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v3),                                                       26.4, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v3),                                                       9.9, 1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v3, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v3, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v3, 1.0e-5));
 
   EXPECT_NEAR(mjr::math::vec::dot_product(v1, v2),                                             4.84, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::scalar_triple_product(v1, v2, v3),                               479.16, 1.0e-5);
@@ -257,8 +242,7 @@ TEST(PKG_vec, VecLen3__Double_Negative) {
   EXPECT_NEAR(mjr::math::vec::norm2(v1),                                                       1, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v1),                                                       1.60357, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v1),                                                       0.801784, 1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v1, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v1, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v1, 1.0e-5));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -273,22 +257,19 @@ TEST(PKG_vec, VecLen3_Double_Complex) {
   EXPECT_NEAR(mjr::math::vec::norm2(v1),                                                       10.4933312156, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v1),                                                       16.550949418747088, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v1),                                                       8.59127, 1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v1, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v1, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v1, 1.0e-5));
 
   EXPECT_NEAR(mjr::math::vec::norm2sqr(v2),                                                    253.03, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm2(v2),                                                       15.9069167346, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v2),                                                       25.7705, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v2),                                                       11.693160394008116, 1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v2, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v2, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v2, 1.0e-5));
 
   EXPECT_NEAR(mjr::math::vec::norm2sqr(v3),                                                    240.3, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm2(v3),                                                       15.5016128193, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v3),                                                       26.574757472995916, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v3),                                                       10.2825, 1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v3, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v3, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v3, 1.0e-5));
 
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::vec::dot_product(v1, v2),                        cc_t(   73.37, 70.62), 1.0e-5));
   EXPECT_TRUE(mjr::math::vec::nearI(mjr::math::vec::sum(v1, v2),                              c3_t{ cc_t(  6.60,  11.0), cc_t(13.20,   3.2), cc_t(  7.80,  10.00) }, 1.0e-5)); 
@@ -311,8 +292,7 @@ TEST(PKG_vec, VecLen3_Double_Complex) {
   EXPECT_NEAR(mjr::math::vec::norm2(v1),                                                       1, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v1),                                                       1.57728, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v1),                                                       0.818737, 1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v1, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v1, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v1, 1.0e-5));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -325,22 +305,19 @@ TEST(PKG_vec, VecLen4_double) {
   EXPECT_NEAR(mjr::math::vec::norm2(v1),                                                       6.02495, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v1),                                                       11.0, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v1),                                                       4.4, 1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v1, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v1, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v1, 1.0e-5));
 
   EXPECT_NEAR(mjr::math::vec::norm2sqr(v2),                                                    210.54, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm2(v2),                                                       14.51, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v2),                                                       28.6, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v2),                                                       8.8, 1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v2, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v2, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v2, 1.0e-5));
 
   EXPECT_NEAR(mjr::math::vec::norm2sqr(v3),                                                    116.3, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm2(v3),                                                       10.78424777163433, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v3),                                                       16.8, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v3),                                                       9.9, 1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v3, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v3, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v3, 1.0e-5));
 
   EXPECT_NEAR(mjr::math::vec::dot_product(v1, v2),                                             84.7, 1.0e-5);
   EXPECT_TRUE(mjr::math::vec::nearI(mjr::math::vec::sum(v1, v2),                              r4_t{  6.6,  8.8,  11.0, 13.2 }, 1.0e-5)); 
@@ -361,8 +338,7 @@ TEST(PKG_vec, VecLen4_double) {
   EXPECT_NEAR(mjr::math::vec::norm2(v1),                                                       1, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::norm1(v1),                                                       1.82574, 1.0e-5);
   EXPECT_NEAR(mjr::math::vec::normI(v1),                                                       0.730297, 1.0e-5);
-  EXPECT_FALSE(mjr::math::vec::all_near_zero(v1, 1.0e-5));
-  EXPECT_FALSE(mjr::math::vec::any_near_zero(v1, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::near_zeroI(v1, 1.0e-5));
 }
 
 /** @endcond */

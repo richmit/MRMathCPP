@@ -35,7 +35,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
 
 #+TOC: headlines 5
 
-* Changes On HEAD Since Last Release TEMPLATE          
+* Changes On HEAD Since Last Release
 :PROPERTIES:
 :CUSTOM_ID: latest
 :END:
@@ -44,7 +44,9 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
   - Known Issues
     - N/A
   - API breaking Changes
-    - N/A
+    - Removed: mjr::math::vec::any_near_zero()
+    - Renamed: mjr::math::vec::all_near_zero() to mjr::math::vec::near_zeroI()
+    - Renamed defines in MRMathCPP_config.hpp
   - Deprecated functionality
     - N/A
   - New functionality
@@ -62,23 +64,8 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
 :PROPERTIES:
 :CUSTOM_ID: v2.5.0.0
 :END:
-  - Fixed Bugs
-    - N/A
-  - Known Issues
-    - N/A
-  - API breaking Changes
-    - N/A
-  - Deprecated functionality
-    - N/A
   - New functionality
     - Added MRMathCPLX.hpp -- Complex number stuff.
-  - Documentation
-    - N/A
-  - Examples
-    - New
-      - N/A
-    - Updated
-      - N/A
   - Miscellaneous
     - Moved from Boost Test to GTest
 * v2.0.0.0

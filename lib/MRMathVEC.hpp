@@ -285,11 +285,12 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Test if all elements are near zero using mjr::math::fc::near_zero() -- real vectors.
+          The "I" in the name indicates the @f$\infty@f$-norm. Also see mjr::math::vec::nearI().
           @param v            A vector
           @param zero_epsilon Epsilon to detect zero sign.  See: mjr::math::fc::near_zero() */
       template <typename realType, std::size_t size>
       requires (size > 0)
-      bool all_near_zero(const std::array<realType, size>& v, realType zero_epsilon) {
+      bool near_zeroI(const std::array<realType, size>& v, realType zero_epsilon) {
         for(auto e : v) 
           if ( !(mjr::math::fc::near_zero(e, zero_epsilon)))
             return false;
@@ -297,39 +298,16 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Test if all elements are near zero using mjr::math::fc::near_zero() -- complex vectors.
+          The "I" in the name indicates the @f$\infty@f$-norm. Also see mjr::math::vec::nearI().
           @param v            A vector
           @param zero_epsilon Epsilon to detect zero sign.  See: mjr::math::fc::near_zero() */
       template <typename realType, std::size_t size>
       requires (size > 0)
-      inline bool all_near_zero(const std::array<std::complex<realType>, size>& v, realType zero_epsilon) {
+      inline bool near_zeroI(const std::array<std::complex<realType>, size>& v, realType zero_epsilon) {
         for(auto e : v) 
           if ( !(mjr::math::fc::near_zero(e, zero_epsilon)))
             return false;
         return true;
-      }
-      //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** Test if any elements are near zero using mjr::math::fc::near_zero() -- real vectors.
-          @param v            A vector
-          @param zero_epsilon Epsilon to detect zero sign.  See: mjr::math::fc::near_zero() */
-      template <typename realType, std::size_t size>
-      requires (size > 0)
-      inline bool any_near_zero(const std::array<realType, size>& v, realType zero_epsilon) {
-        for(auto e : v) 
-          if (mjr::math::fc::near_zero(e, zero_epsilon))
-            return true;
-        return false;
-      }
-      //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** Test if any elements are near zero using mjr::math::fc::near_zero() -- complex vectors.
-          @param v            A vector
-          @param zero_epsilon Epsilon to detect zero sign.  See: mjr::math::fc::near_zero() */
-      template <typename realType, std::size_t size>
-      requires (size > 0)
-      inline bool any_near_zero(const std::array<std::complex<realType>, size>& v, realType zero_epsilon) {
-        for(auto e : v) 
-          if (mjr::math::fc::near_zero(e, zero_epsilon))
-            return true;
-        return false;
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Test if two vectors are close via the @f$\infty@f$-norm using mjr::math::fc::near_zero() -- real vectors.
