@@ -6,7 +6,7 @@ cmake_minimum_required(VERSION 3.20.0 FATAL_ERROR)
 # Proejct meta data
 
 project(MRMathCPP 
-  VERSION 2.0.0.0
+  VERSION 2.5.0.0
   DESCRIPTION "Simple Mathematical Utilities"
   HOMEPAGE_URL "https://github.com/richmit/MRMathCPP/"
   LANGUAGES CXX)
