@@ -30,101 +30,93 @@
 /*******************************************************************************************************************************************************.H.E.**/
 /** @cond exj */
 
-#define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MODULE Main
-#include <boost/test/unit_test.hpp>
-
-#define BOOST_TEST_DYN_LINK
-#ifdef STAND_ALONE
-#   define BOOST_TEST_MODULE Main
-#endif
-#include <boost/test/unit_test.hpp>
+#include <gtest/gtest.h>
 
 #include "MRMathSTR.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-BOOST_AUTO_TEST_CASE(fmt_int) {
+TEST(FN_fmt_int, Comprehensive) {
 
   // Check default args
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10                  )  ==    "10");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 4               )  ==  "  10");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 4, ' '          )  ==  "  10");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 4, ' ', 10      )  ==  "  10");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 4, ' ', 10, true)  ==  "  10");
+  EXPECT_EQ(mjr::math::str::fmt_int(10                  ),    "10");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 4               ),  "  10");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 4, ' '          ),  "  10");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 4, ' ', 10      ),  "  10");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 4, ' ', 10, true),  "  10");
 
   // dec
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 0, ' ', 10, true)  ==    "10");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 1, ' ', 10, true)  ==    "10");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 2, ' ', 10, true)  ==    "10");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 3, ' ', 10, true)  ==   " 10");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 4, ' ', 10, true)  ==  "  10");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 0, ' ', 10, true),  "10");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 1, ' ', 10, true),  "10");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 2, ' ', 10, true),  "10");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 3, ' ', 10, true),  " 10");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 4, ' ', 10, true),  "  10");
 
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 0, 'X', 10, true)  ==    "10");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 1, 'X', 10, true)  ==    "10");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 2, 'X', 10, true)  ==    "10");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 3, 'X', 10, true)  ==   "X10");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 4, 'X', 10, true)  ==  "XX10");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 0, 'X', 10, true),  "10");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 1, 'X', 10, true),  "10");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 2, 'X', 10, true),  "10");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 3, 'X', 10, true),  "X10");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 4, 'X', 10, true),  "XX10");
 
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 0, ' ', 10, false) ==    "10");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 1, ' ', 10, false) ==    "10");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 2, ' ', 10, false) ==    "10");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 3, ' ', 10, false) ==   "10 ");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 4, ' ', 10, false) ==  "10  ");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 0, ' ', 10, false), "10");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 1, ' ', 10, false), "10");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 2, ' ', 10, false), "10");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 3, ' ', 10, false), "10 ");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 4, ' ', 10, false), "10  ");
 
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 0, 'X', 10, false) ==    "10");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 1, 'X', 10, false) ==    "10");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 2, 'X', 10, false) ==    "10");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 3, 'X', 10, false) ==   "10X");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 4, 'X', 10, false) ==  "10XX");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 0, 'X', 10, false), "10");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 1, 'X', 10, false), "10");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 2, 'X', 10, false), "10");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 3, 'X', 10, false), "10X");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 4, 'X', 10, false), "10XX");
 
   // hex
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 0, ' ', 16, true)  ==     "a");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 1, ' ', 16, true)  ==     "a");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 2, ' ', 16, true)  ==    " a");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 3, ' ', 16, true)  ==   "  a");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 4, ' ', 16, true)  ==  "   a");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 0, ' ', 16, true),  "a");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 1, ' ', 16, true),  "a");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 2, ' ', 16, true),  " a");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 3, ' ', 16, true),  "  a");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 4, ' ', 16, true),  "   a");
                                                   
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 0, 'X', 16, true)  ==     "a");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 1, 'X', 16, true)  ==     "a");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 2, 'X', 16, true)  ==    "Xa");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 3, 'X', 16, true)  ==   "XXa");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 4, 'X', 16, true)  ==  "XXXa");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 0, 'X', 16, true),  "a");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 1, 'X', 16, true),  "a");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 2, 'X', 16, true),  "Xa");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 3, 'X', 16, true),  "XXa");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 4, 'X', 16, true),  "XXXa");
 
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 0, ' ', 16, false) ==     "a");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 1, ' ', 16, false) ==     "a");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 2, ' ', 16, false) ==    "a ");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 3, ' ', 16, false) ==   "a  ");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 4, ' ', 16, false) ==  "a   ");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 0, ' ', 16, false), "a");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 1, ' ', 16, false), "a");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 2, ' ', 16, false), "a ");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 3, ' ', 16, false), "a  ");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 4, ' ', 16, false), "a   ");
                                                   
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 0, 'X', 16, false) ==     "a");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 1, 'X', 16, false) ==     "a");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 2, 'X', 16, false) ==    "aX");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 3, 'X', 16, false) ==   "aXX");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 4, 'X', 16, false) ==  "aXXX");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 0, 'X', 16, false), "a");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 1, 'X', 16, false), "a");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 2, 'X', 16, false), "aX");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 3, 'X', 16, false), "aXX");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 4, 'X', 16, false), "aXXX");
 
   // oct
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 0, ' ', 8, true)   ==    "12");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 1, ' ', 8, true)   ==    "12");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 2, ' ', 8, true)   ==    "12");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 3, ' ', 8, true)   ==   " 12");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 4, ' ', 8, true)   ==  "  12");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 0, ' ', 8, true),   "12");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 1, ' ', 8, true),   "12");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 2, ' ', 8, true),   "12");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 3, ' ', 8, true),   " 12");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 4, ' ', 8, true),   "  12");
 
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 0, 'X', 8, true)   ==    "12");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 1, 'X', 8, true)   ==    "12");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 2, 'X', 8, true)   ==    "12");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 3, 'X', 8, true)   ==   "X12");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 4, 'X', 8, true)   ==  "XX12");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 0, 'X', 8, true),   "12");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 1, 'X', 8, true),   "12");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 2, 'X', 8, true),   "12");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 3, 'X', 8, true),   "X12");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 4, 'X', 8, true),   "XX12");
 
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 0, ' ', 8, false)  ==    "12");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 1, ' ', 8, false)  ==    "12");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 2, ' ', 8, false)  ==    "12");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 3, ' ', 8, false)  ==   "12 ");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 4, ' ', 8, false)  ==  "12  ");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 0, ' ', 8, false),  "12");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 1, ' ', 8, false),  "12");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 2, ' ', 8, false),  "12");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 3, ' ', 8, false),  "12 ");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 4, ' ', 8, false),  "12  ");
 
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 0, 'X', 8, false)  ==    "12");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 1, 'X', 8, false)  ==    "12");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 2, 'X', 8, false)  ==    "12");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 3, 'X', 8, false)  ==   "12X");
-  BOOST_TEST_CHECK(mjr::math::str::fmt_int(10, 4, 'X', 8, false)  ==  "12XX");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 0, 'X', 8, false),  "12");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 1, 'X', 8, false),  "12");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 2, 'X', 8, false),  "12");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 3, 'X', 8, false),  "12X");
+  EXPECT_EQ(mjr::math::str::fmt_int(10, 4, 'X', 8, false),  "12XX");
 }
 /** @endcond */

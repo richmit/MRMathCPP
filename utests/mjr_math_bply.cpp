@@ -31,38 +31,30 @@
 /*******************************************************************************************************************************************************.H.E.**/
 /** @cond exj */
 
-#define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MODULE Main
-#include <boost/test/unit_test.hpp>
-
-#define BOOST_TEST_DYN_LINK
-#ifdef STAND_ALONE
-#   define BOOST_TEST_MODULE Main
-#endif
-#include <boost/test/unit_test.hpp>
+#include <gtest/gtest.h>
 
 #include "MRMathBPLY.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-BOOST_AUTO_TEST_CASE(max_pow) {
+TEST(FN_max_pow, Comprehensive) {
   // normal cases
   for(int i=2; i<=100; i++) 
-    BOOST_TEST_CHECK(mjr::math::bply::max_pow((i+1)*(i+1)) == i);
+    EXPECT_EQ(mjr::math::bply::max_pow((i+1)*(i+1)), i);
   // one too small to be a poly
   for(int i=2; i<=100; i++) 
-    BOOST_TEST_CHECK(mjr::math::bply::max_pow((i+1)*(i+1)-1) == -3);
+    EXPECT_EQ(mjr::math::bply::max_pow((i+1)*(i+1)-1), -3);
   // one too big to be a poly
   for(int i=2; i<100; i++) 
-    BOOST_TEST_CHECK(mjr::math::bply::max_pow((i+1)*(i+1)+1) == -3);
+    EXPECT_EQ(mjr::math::bply::max_pow((i+1)*(i+1)+1), -3);
   // too big to support
-  BOOST_TEST_CHECK(mjr::math::bply::max_pow((100+1)*(100+1)+1) == -1);
-  BOOST_TEST_CHECK(mjr::math::bply::max_pow((101+1)*(101+1))   == -1);
+  EXPECT_EQ(mjr::math::bply::max_pow((100+1)*(100+1)+1), -1);
+  EXPECT_EQ(mjr::math::bply::max_pow((101+1)*(101+1)),   -1);
   // too small to support
-  BOOST_TEST_CHECK(mjr::math::bply::max_pow(0) == -2);
+  EXPECT_EQ(mjr::math::bply::max_pow(0), -2);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-BOOST_AUTO_TEST_CASE(eval, * boost::unit_test::tolerance(0.00001)) {
+TEST(FN_eval, Comprehensive) {
 
   std::vector<double> BiPoly01 {1, 2, 3, 4, 5, 6, 7, 8, 9};
   std::vector<double> BiPoly02 {9, 8, 7, 6, 5, 4, 3, 2, 1};
@@ -72,28 +64,28 @@ BOOST_AUTO_TEST_CASE(eval, * boost::unit_test::tolerance(0.00001)) {
 
   //------------------------------------------------------------------------------------------------------------------------------------------------------------
                                                        
-  BOOST_TEST_CHECK(mjr::math::bply::eval(BiPoly01, 0, 0) ==    9);
-  BOOST_TEST_CHECK(mjr::math::bply::eval(BiPoly01, 0, 1) ==   24);
-  BOOST_TEST_CHECK(mjr::math::bply::eval(BiPoly01, 1, 0) ==   18);
-  BOOST_TEST_CHECK(mjr::math::bply::eval(BiPoly01, 1, 1) ==   45);
-  BOOST_TEST_CHECK(mjr::math::bply::eval(BiPoly01, 2, 3) ==  282);
+  EXPECT_NEAR(mjr::math::bply::eval(BiPoly01, 0, 0), 9,     1.0e-5);
+  EXPECT_NEAR(mjr::math::bply::eval(BiPoly01, 0, 1), 24,    1.0e-5);
+  EXPECT_NEAR(mjr::math::bply::eval(BiPoly01, 1, 0), 18,    1.0e-5);
+  EXPECT_NEAR(mjr::math::bply::eval(BiPoly01, 1, 1), 45,    1.0e-5);
+  EXPECT_NEAR(mjr::math::bply::eval(BiPoly01, 2, 3), 282,   1.0e-5);
 
-  BOOST_TEST_CHECK(mjr::math::bply::eval(BiPoly02, 0, 0) ==    1);
-  BOOST_TEST_CHECK(mjr::math::bply::eval(BiPoly02, 0, 1) ==    6);
-  BOOST_TEST_CHECK(mjr::math::bply::eval(BiPoly02, 1, 0) ==   12);
-  BOOST_TEST_CHECK(mjr::math::bply::eval(BiPoly02, 1, 1) ==   45);
-  BOOST_TEST_CHECK(mjr::math::bply::eval(BiPoly02, 2, 3) ==  628);
+  EXPECT_NEAR(mjr::math::bply::eval(BiPoly02, 0, 0), 1,     1.0e-5);
+  EXPECT_NEAR(mjr::math::bply::eval(BiPoly02, 0, 1), 6,     1.0e-5);
+  EXPECT_NEAR(mjr::math::bply::eval(BiPoly02, 1, 0), 12,    1.0e-5);
+  EXPECT_NEAR(mjr::math::bply::eval(BiPoly02, 1, 1), 45,    1.0e-5);
+  EXPECT_NEAR(mjr::math::bply::eval(BiPoly02, 2, 3), 628,   1.0e-5);
                                                           
-  BOOST_TEST_CHECK(mjr::math::bply::eval(BiPoly03, 0, 0) ==   16);
-  BOOST_TEST_CHECK(mjr::math::bply::eval(BiPoly03, 0, 1) ==   58);
-  BOOST_TEST_CHECK(mjr::math::bply::eval(BiPoly03, 1, 0) ==   40);
-  BOOST_TEST_CHECK(mjr::math::bply::eval(BiPoly03, 1, 1) ==  136);
-  BOOST_TEST_CHECK(mjr::math::bply::eval(BiPoly03, 2, 3) == 2630);
+  EXPECT_NEAR(mjr::math::bply::eval(BiPoly03, 0, 0), 16,    1.0e-5);
+  EXPECT_NEAR(mjr::math::bply::eval(BiPoly03, 0, 1), 58,    1.0e-5);
+  EXPECT_NEAR(mjr::math::bply::eval(BiPoly03, 1, 0), 40,    1.0e-5);
+  EXPECT_NEAR(mjr::math::bply::eval(BiPoly03, 1, 1), 136,   1.0e-5);
+  EXPECT_NEAR(mjr::math::bply::eval(BiPoly03, 2, 3), 2630,  1.0e-5);
 
-  BOOST_TEST_CHECK(mjr::math::bply::eval(BiPoly04, 0, 0) ==    1);
-  BOOST_TEST_CHECK(mjr::math::bply::eval(BiPoly04, 0, 1) ==   10);
-  BOOST_TEST_CHECK(mjr::math::bply::eval(BiPoly04, 1, 0) ==   28);
-  BOOST_TEST_CHECK(mjr::math::bply::eval(BiPoly04, 1, 1) ==  136);
-  BOOST_TEST_CHECK(mjr::math::bply::eval(BiPoly04, 2, 3) == 7570);
+  EXPECT_NEAR(mjr::math::bply::eval(BiPoly04, 0, 0), 1,     1.0e-5);
+  EXPECT_NEAR(mjr::math::bply::eval(BiPoly04, 0, 1), 10,    1.0e-5);
+  EXPECT_NEAR(mjr::math::bply::eval(BiPoly04, 1, 0), 28,    1.0e-5);
+  EXPECT_NEAR(mjr::math::bply::eval(BiPoly04, 1, 1), 136,   1.0e-5);
+  EXPECT_NEAR(mjr::math::bply::eval(BiPoly04, 2, 3), 7570,  1.0e-5);
 }
 /** @endcond */

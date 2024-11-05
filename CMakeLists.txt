@@ -11,11 +11,11 @@ project(MRMathCPP
   HOMEPAGE_URL "https://github.com/richmit/MRMathCPP/"
   LANGUAGES CXX)
 
-set(PROJNAME_VERSION_DATE  2024-08-20)
-mark_as_advanced(PROJNAME_VERSION_DATE)
+set(MRMATHCPP_VERSION_DATE  2024-08-20)
+mark_as_advanced(MRMATHCPP_VERSION_DATE)
 
-string(TIMESTAMP PROJNAME_CONFIG_DATE "%Y-%m-%d")
-mark_as_advanced(PROJNAME_CONFIG_DATE)
+string(TIMESTAMP MRMATHCPP_CONFIG_DATE "%Y-%m-%d")
+mark_as_advanced(MRMATHCPP_CONFIG_DATE)
 
 ######################################################################################################################################################
 # Include ctest -- we might not use it if boost is not found...
@@ -24,64 +24,72 @@ include(CTest)
 ######################################################################################################################################################
 # Here are the options we use to modify the build -- these options are passed to cmake like so: cmake -DO_BTEST=YES or -DO_BTEST=NO
 
-OPTION(O_DOXYGEN "Include support for doxygen"         ON )
-OPTION(O_BTEST   "Include support for boost.test"      ON )
+OPTION(O_DOXYGEN     "Include support for doxygen"              ON  )
+OPTION(O_GTEST       "Include support for Google Test"          ON  )
+OPTION(OWNLOAD_GTEST "Download latest Google Test from Github"  OFF )
 
 ######################################################################################################################################################
 # Find tools & libraries used to build targets
 
 if(O_DOXYGEN)
-  set(PROJNAME_OPT_DOXYGEN "1")
+  set(MRMATHCPP_OPT_DOXYGEN "1")
   find_package(Doxygen)
   if(Doxygen_FOUND)
-    set(PROJNAME_FOUND_DOXYGEN "1")
+    set(MRMATHCPP_FOUND_DOXYGEN "1")
   else()
-    set(PROJNAME_FOUND_DOXYGEN "0")
+    set(MRMATHCPP_FOUND_DOXYGEN "0")
   endif()
 else()
-  set(PROJNAME_OPT_DOXYGEN "0")
+  set(MRMATHCPP_OPT_DOXYGEN "0")
 endif()
 
-if(O_BTEST)
-  set(PROJNAME_OPT_BTEST "1")
-  find_package(Boost COMPONENTS unit_test_framework)
-  if(Boost_FOUND)
-    set(PROJNAME_FOUND_BTEST "1")
+if(O_GTEST)
+  set(MRMATHCPP_OPT_GTEST "1")
+  if(OWNLOAD_GTEST)
+    message(STATUS "Downloading GTest")
+    include(FetchContent)
+    FetchContent_Declare(
+      googletest
+      URL https://github.com/google/googletest/archive/refs/heads/main.zip
+      DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+    )
+    # For Windows: Prevent overriding the parent project's compiler/linker settings
+    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+    FetchContent_MakeAvailable(googletest)
+    set(MRMATHCPP_FOUND_GTEST "1")  # If FetchContent_MakeAvailable didn't work, then cmake will error out.
+    set(GTest_FOUND "YES")         # If FetchContent_MakeAvailable didn't work, then cmake will error out.
   else()
-    set(PROJNAME_FOUND_BTEST "0")
+    message(STATUS "Not downloading GTest")
+    find_package(GTest)
+    if(GTest_FOUND)
+      set(MRMATHCPP_FOUND_GTEST "1")
+    else()
+      set(MRMATHCPP_FOUND_GTEST "0")
+    endif()
   endif()
 else()
-  set(PROJNAME_OPT_BTEST "0")
+  set(MRMATHCPP_OPT_GTEST "0")
+  if(OWNLOAD_GTEST)
+    message(FATAL_ERROR "-DO_GTEST must be YES if -DOWNLOAD_GTEST is YES!")
+  endif()
 endif()
-
-# include(FetchContent)
-# FetchContent_Declare(
-#   googletest
-#   #URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
-#   URL https://github.com/google/googletest/archive/refs/heads/main.zip
-#   DOWNLOAD_EXTRACT_TIMESTAMP TRUE
-# )
-# # For Windows: Prevent overriding the parent project's compiler/linker settings
-# set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-# FetchContent_MakeAvailable(googletest)
 
 ######################################################################################################################################################
 # Create Unit Test Targets
 
-if(Boost_FOUND)
+if(GTest_FOUND)
   # Master list of targets
   set(TARGETS  
-              # "mjr_math_bply"
-              # "mjr_math_cplx"
-              # "mjr_math_fc"
-              # "mjr_math_ivl"
-              # "mjr_math_linm"
-              # "mjr_math_odr"
-              # "mjr_math_sfun"
-              # "mjr_math_str"
-              # "mjr_math_uply"
-              # "mjr_math_vec"
-              "gtest_mjr_math_cplx"
+              "mjr_math_bply"
+              "mjr_math_cplx"
+              "mjr_math_fc"
+              "mjr_math_ivl"
+              "mjr_math_linm"
+              "mjr_math_odr"
+              "mjr_math_sfun"
+              "mjr_math_str"
+              "mjr_math_uply"
+              "mjr_math_vec"
             )
 
   # Add a target for each one we can build
@@ -110,10 +118,8 @@ if(Boost_FOUND)
       message("Warning: MSVC support is currently experimental")
     endif()
 
-    target_link_libraries(${CURTGT} PRIVATE Boost::unit_test_framework)
+    target_link_libraries(${CURTGT} PRIVATE GTest::gtest_main)
     add_test(NAME "${CURTGT}" COMMAND "${CURTGT}")
-
-    # target_link_libraries(${CURTGT} PRIVATE GTest::gtest_main)
 
   endforeach(CURTGT)
 
@@ -162,7 +168,7 @@ endif()
 ######################################################################################################################################################
 # Create interface target for the entire project
 
-set(PROJNAME_INCLUDES "build/MRMathCPP_config.hpp"
+set(MRMATHCPP_INCLUDES "build/MRMathCPP_config.hpp"
                       "lib/MRMathBPLY.hpp"
                       "lib/MRMathCPLX.hpp"
                       "lib/MRMathCPP.hpp"
@@ -175,7 +181,7 @@ set(PROJNAME_INCLUDES "build/MRMathCPP_config.hpp"
                       "lib/MRMathUPLY.hpp"
                       "lib/MRMathVEC.hpp"
                     )
-add_library(MRMathCPP INTERFACE ${PROJNAME_INCLUDES})
+add_library(MRMathCPP INTERFACE ${MRMATHCPP_INCLUDES})
 target_include_directories(MRMathCPP INTERFACE 
                            "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/lib>"
                            "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/build>"
@@ -208,7 +214,7 @@ write_basic_package_version_file("${CMAKE_CURRENT_BINARY_DIR}/MRMathCPPConfigVer
 
 set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/build/install")
 include(GNUInstallDirs)
-install(FILES ${PROJNAME_INCLUDES} TYPE INCLUDE)
+install(FILES ${MRMATHCPP_INCLUDES} TYPE INCLUDE)
 install(TARGETS MRMathCPP EXPORT MRMathCPPLib)
 
 install(EXPORT MRMathCPPLib

@@ -39,16 +39,10 @@
 #include <algorithm>                                                     /* STL algorithm           C++11    */
 #include <numbers>                                                       /* C++ math constants      C++20    */
 #include <complex>
-#include <functional>
 
 namespace mjr {
   namespace math {
     namespace cplx {
-      //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** complex norm function, */
-      template <typename numType>
-      requires (std::is_arithmetic_v<numType>)
-      using norm_t = std::function<numType(std::complex<numType>)>; 
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Change the sign of the real part of a complex number.
           @param z Complex number. */
@@ -121,19 +115,6 @@ namespace mjr {
       inline numType dist1(std::complex<numType> z1, std::complex<numType> z2) {
         return norm1(z1-z2);
       }
-
-
-
-      //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** Distance between two complex numbers with the given norm.
-          @param z Complex number. */
-      template <typename numType>
-      requires (std::is_arithmetic_v<numType>)
-      inline numType distance(std::complex<numType> z1, std::complex<numType> z2, norm_t<numType> norm) {
-        return norm(z1-z2);
-      }
-
-
     } // end namespace cplx
   } // end namespace math
 } // end namespace mjr

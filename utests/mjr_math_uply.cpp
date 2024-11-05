@@ -30,39 +30,35 @@
 /*******************************************************************************************************************************************************.H.E.**/
 /** @cond exj */
 
-#define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MODULE Main
-#include <boost/test/unit_test.hpp>
-
-#define BOOST_TEST_DYN_LINK
-#ifdef STAND_ALONE
-#   define BOOST_TEST_MODULE Main
-#endif
-#include <boost/test/unit_test.hpp>
+#include <gtest/gtest.h>
 
 #include "MRMathUPLY.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-BOOST_AUTO_TEST_CASE(eval, * boost::unit_test::tolerance(0.00001)) {
+TEST(FN_eval, TYP_Double) {
 
   std::vector<double> UnPoly01 {1, 2, 3, 4, 5, 6};
   std::vector<double> UnPoly02 {6, 5, 4, 3, 2, 1};
 
-  BOOST_TEST_CHECK(mjr::math::uply::eval(UnPoly01, 0) ==    6);
-  BOOST_TEST_CHECK(mjr::math::uply::eval(UnPoly01, 1) ==   21);
-  BOOST_TEST_CHECK(mjr::math::uply::eval(UnPoly01, 2) ==  120);
-  BOOST_TEST_CHECK(mjr::math::uply::eval(UnPoly01, 3) ==  543);
-  BOOST_TEST_CHECK(mjr::math::uply::eval(UnPoly01, 4) == 1818);
+  EXPECT_NEAR(mjr::math::uply::eval(UnPoly01, 0),     6, 1.0e-5);
+  EXPECT_NEAR(mjr::math::uply::eval(UnPoly01, 1),    21, 1.0e-5);
+  EXPECT_NEAR(mjr::math::uply::eval(UnPoly01, 2),   120, 1.0e-5);
+  EXPECT_NEAR(mjr::math::uply::eval(UnPoly01, 3),   543, 1.0e-5);
+  EXPECT_NEAR(mjr::math::uply::eval(UnPoly01, 4),  1818, 1.0e-5);
 
-  BOOST_TEST_CHECK(mjr::math::uply::eval(UnPoly02, 0) ==    1);
-  BOOST_TEST_CHECK(mjr::math::uply::eval(UnPoly02, 1) ==   21);
-  BOOST_TEST_CHECK(mjr::math::uply::eval(UnPoly02, 2) ==  321);
-  BOOST_TEST_CHECK(mjr::math::uply::eval(UnPoly02, 3) == 2005);
-  BOOST_TEST_CHECK(mjr::math::uply::eval(UnPoly02, 4) == 7737);
+  EXPECT_NEAR(mjr::math::uply::eval(UnPoly02, 0),     1, 1.0e-5);
+  EXPECT_NEAR(mjr::math::uply::eval(UnPoly02, 1),    21, 1.0e-5);
+  EXPECT_NEAR(mjr::math::uply::eval(UnPoly02, 2),   321, 1.0e-5);
+  EXPECT_NEAR(mjr::math::uply::eval(UnPoly02, 3),  2005, 1.0e-5);
+  EXPECT_NEAR(mjr::math::uply::eval(UnPoly02, 4),  7737, 1.0e-5);
 
+//  MJR COVERAGE NOTE <2024-11-04T15:54:05-0600> mjr_math_uply: Add float & int cases
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_eval, EmptyPoly) {
   std::vector<double> UnPoly03;
 
-  BOOST_TEST_CHECK(mjr::math::uply::eval(UnPoly03, 0) ==    0);
-
+  EXPECT_NEAR(mjr::math::uply::eval(UnPoly03, 0),     0, 1.0e-5);
 }
 /** @endcond */

@@ -96,6 +96,11 @@ EOF
     fi
   done
 
+  if grep -q '^OPTION(OWNLOAD_' ../CMakeLists.txt; then
+     echo '     - Optional downloads'
+     sed -En 's/^OPTION\(OWNLOAD_([A-Z0-9_]+)( +)"([^"]+)".*(ON|OFF).*$/       - -DOWNLOAD_\1=[ON|OFF] \2 \3 (Default: \4)/p' < ../CMakeLists.txt
+  fi
+
 exit
 fi
 

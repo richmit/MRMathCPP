@@ -30,140 +30,135 @@
 /*******************************************************************************************************************************************************.H.E.**/
 /** @cond exj */
 
-#define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MODULE Main
-#include <boost/test/unit_test.hpp>
-
-#define BOOST_TEST_DYN_LINK
-#ifdef STAND_ALONE
-#   define BOOST_TEST_MODULE Main
-#endif
-#include <boost/test/unit_test.hpp>
+#include <gtest/gtest.h>
 
 #include "MRMathODR.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-BOOST_AUTO_TEST_CASE(min3) {
-  BOOST_TEST_CHECK(mjr::math::odr::min3( 1.0,  2.0,  3.0) ==  1.0);
-  BOOST_TEST_CHECK(mjr::math::odr::min3( 3.0,  2.0,  1.0) ==  1.0);
+TEST(FN_min3, Comprehensive) {
+  EXPECT_EQ(mjr::math::odr::min3( 1.0,  2.0,  3.0), 1.0);
+  EXPECT_EQ(mjr::math::odr::min3( 3.0,  2.0,  1.0), 1.0);
 
-  BOOST_TEST_CHECK(mjr::math::odr::min3( 1.0f, 2.0f, 3.0f) == 1.0f);
-  BOOST_TEST_CHECK(mjr::math::odr::min3( 3.0f, 2.0f, 1.0f) == 1.0f);
+  EXPECT_EQ(mjr::math::odr::min3( 1.0f, 2.0f, 3.0f), 1.0f);
+  EXPECT_EQ(mjr::math::odr::min3( 3.0f, 2.0f, 1.0f), 1.0f);
 
-  BOOST_TEST_CHECK(mjr::math::odr::min3( 1,   2,   3)   == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min3( 1L,  2L,  3L)  == 1L);
-  BOOST_TEST_CHECK(mjr::math::odr::min3( 1UL, 2UL, 3UL) == 1UL);
+  EXPECT_EQ(mjr::math::odr::min3( 1,   2,   3),   1);
+  EXPECT_EQ(mjr::math::odr::min3( 1L,  2L,  3L),  1L);
+  EXPECT_EQ(mjr::math::odr::min3( 1UL, 2UL, 3UL), 1UL);
 
-  BOOST_TEST_CHECK(mjr::math::odr::min3( 1, 2, 3) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min3( 1, 3, 2) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min3( 2, 1, 3) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min3( 2, 3, 1) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min3( 3, 1, 2) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min3( 3, 2, 1) == 1);
+  EXPECT_EQ(mjr::math::odr::min3( 1, 2, 3), 1);
+  EXPECT_EQ(mjr::math::odr::min3( 1, 3, 2), 1);
+  EXPECT_EQ(mjr::math::odr::min3( 2, 1, 3), 1);
+  EXPECT_EQ(mjr::math::odr::min3( 2, 3, 1), 1);
+  EXPECT_EQ(mjr::math::odr::min3( 3, 1, 2), 1);
+  EXPECT_EQ(mjr::math::odr::min3( 3, 2, 1), 1);
 
-  BOOST_TEST_CHECK(mjr::math::odr::min3( 1, 1, 1) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min3( 3, 3, 3) == 3);
+  EXPECT_EQ(mjr::math::odr::min3( 1, 1, 1), 1);
+  EXPECT_EQ(mjr::math::odr::min3( 3, 3, 3), 3);
 }
 
-BOOST_AUTO_TEST_CASE(max3) {
-  BOOST_TEST_CHECK(mjr::math::odr::max3( 1.0,  2.0,  3.0) ==  3.0);
-  BOOST_TEST_CHECK(mjr::math::odr::max3( 3.0,  2.0,  1.0) ==  3.0);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_max3, Comprehensive) {
+  EXPECT_EQ(mjr::math::odr::max3( 1.0,  2.0,  3.0), 3.0);
+  EXPECT_EQ(mjr::math::odr::max3( 3.0,  2.0,  1.0), 3.0);
 
-  BOOST_TEST_CHECK(mjr::math::odr::max3( 1.0f, 2.0f, 3.0f) == 3.0f);
-  BOOST_TEST_CHECK(mjr::math::odr::max3( 3.0f, 2.0f, 1.0f) == 3.0f);
+  EXPECT_EQ(mjr::math::odr::max3( 1.0f, 2.0f, 3.0f), 3.0f);
+  EXPECT_EQ(mjr::math::odr::max3( 3.0f, 2.0f, 1.0f), 3.0f);
 
-  BOOST_TEST_CHECK(mjr::math::odr::max3( 1,   2,   3)   == 3);
-  BOOST_TEST_CHECK(mjr::math::odr::max3( 1L,  2L,  3L)  == 3L);
-  BOOST_TEST_CHECK(mjr::math::odr::max3( 1UL, 2UL, 3UL) == 3UL);
+  EXPECT_EQ(mjr::math::odr::max3( 1,   2,   3),   3);
+  EXPECT_EQ(mjr::math::odr::max3( 1L,  2L,  3L),  3L);
+  EXPECT_EQ(mjr::math::odr::max3( 1UL, 2UL, 3UL), 3UL);
 
-  BOOST_TEST_CHECK(mjr::math::odr::max3( 1, 2, 3) == 3);
-  BOOST_TEST_CHECK(mjr::math::odr::max3( 1, 3, 2) == 3);
-  BOOST_TEST_CHECK(mjr::math::odr::max3( 2, 1, 3) == 3);
-  BOOST_TEST_CHECK(mjr::math::odr::max3( 2, 3, 1) == 3);
-  BOOST_TEST_CHECK(mjr::math::odr::max3( 3, 1, 2) == 3);
-  BOOST_TEST_CHECK(mjr::math::odr::max3( 3, 2, 1) == 3);
+  EXPECT_EQ(mjr::math::odr::max3( 1, 2, 3), 3);
+  EXPECT_EQ(mjr::math::odr::max3( 1, 3, 2), 3);
+  EXPECT_EQ(mjr::math::odr::max3( 2, 1, 3), 3);
+  EXPECT_EQ(mjr::math::odr::max3( 2, 3, 1), 3);
+  EXPECT_EQ(mjr::math::odr::max3( 3, 1, 2), 3);
+  EXPECT_EQ(mjr::math::odr::max3( 3, 2, 1), 3);
 
-  BOOST_TEST_CHECK(mjr::math::odr::max3( 1, 1, 1) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::max3( 3, 3, 3) == 3);
+  EXPECT_EQ(mjr::math::odr::max3( 1, 1, 1), 1);
+  EXPECT_EQ(mjr::math::odr::max3( 3, 3, 3), 3);
 }
 
-BOOST_AUTO_TEST_CASE(min4) {
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 1.0,  2.0,  3.0,  4.0) ==  1.0);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 4.0,  3.0,  2.0,  1.0) ==  1.0);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_min4, Comprehensive) {
+  EXPECT_EQ(mjr::math::odr::min4( 1.0,  2.0,  3.0,  4.0), 1.0);
+  EXPECT_EQ(mjr::math::odr::min4( 4.0,  3.0,  2.0,  1.0), 1.0);
 
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 1.0f, 2.0f, 3.0f, 4.0f) == 1.0f);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 4.0f, 3.0f, 2.0f, 1.0f) == 1.0f);
+  EXPECT_EQ(mjr::math::odr::min4( 1.0f, 2.0f, 3.0f, 4.0f), 1.0f);
+  EXPECT_EQ(mjr::math::odr::min4( 4.0f, 3.0f, 2.0f, 1.0f), 1.0f);
 
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 1,   2,   3,   4)   == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 1L,  2L,  3L,  4L)  == 1L);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 1UL, 2UL, 3UL, 4UL) == 1UL);
+  EXPECT_EQ(mjr::math::odr::min4( 1,   2,   3,   4),   1);
+  EXPECT_EQ(mjr::math::odr::min4( 1L,  2L,  3L,  4L),  1L);
+  EXPECT_EQ(mjr::math::odr::min4( 1UL, 2UL, 3UL, 4UL), 1UL);
 
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 1, 2, 3, 4) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 1, 3, 2, 4) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 2, 1, 3, 4) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 2, 3, 1, 4) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 3, 1, 2, 4) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 3, 2, 1, 4) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 1, 2, 4, 3) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 1, 3, 4, 2) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 2, 1, 4, 3) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 2, 3, 4, 1) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 3, 1, 4, 2) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 3, 2, 4, 1) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 1, 4, 2, 3) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 1, 4, 3, 2) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 2, 4, 1, 3) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 2, 4, 3, 1) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 3, 4, 1, 2) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 3, 4, 2, 1) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 4, 1, 2, 3) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 4, 1, 3, 2) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 4, 2, 1, 3) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 4, 2, 3, 1) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 4, 3, 1, 2) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 4, 3, 2, 1) == 1);
+  EXPECT_EQ(mjr::math::odr::min4( 1, 2, 3, 4), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 1, 3, 2, 4), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 2, 1, 3, 4), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 2, 3, 1, 4), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 3, 1, 2, 4), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 3, 2, 1, 4), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 1, 2, 4, 3), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 1, 3, 4, 2), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 2, 1, 4, 3), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 2, 3, 4, 1), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 3, 1, 4, 2), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 3, 2, 4, 1), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 1, 4, 2, 3), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 1, 4, 3, 2), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 2, 4, 1, 3), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 2, 4, 3, 1), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 3, 4, 1, 2), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 3, 4, 2, 1), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 4, 1, 2, 3), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 4, 1, 3, 2), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 4, 2, 1, 3), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 4, 2, 3, 1), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 4, 3, 1, 2), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 4, 3, 2, 1), 1);
 
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 1, 1, 1, 1) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::min4( 4, 4, 4, 4) == 4);
+  EXPECT_EQ(mjr::math::odr::min4( 1, 1, 1, 1), 1);
+  EXPECT_EQ(mjr::math::odr::min4( 4, 4, 4, 4), 4);
 }
 
-BOOST_AUTO_TEST_CASE(max4) {
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 1.0,  2.0,  3.0,  4.0) ==  4.0);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 4.0,  3.0,  2.0,  1.0) ==  4.0);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_max4, Comprehensive) {
+  EXPECT_EQ(mjr::math::odr::max4( 1.0,  2.0,  3.0,  4.0), 4.0);
+  EXPECT_EQ(mjr::math::odr::max4( 4.0,  3.0,  2.0,  1.0), 4.0);
 
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 1.0f, 2.0f, 3.0f, 4.0f) == 4.0f);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 4.0f, 3.0f, 2.0f, 1.0f) == 4.0f);
+  EXPECT_EQ(mjr::math::odr::max4( 1.0f, 2.0f, 3.0f, 4.0f), 4.0f);
+  EXPECT_EQ(mjr::math::odr::max4( 4.0f, 3.0f, 2.0f, 1.0f), 4.0f);
 
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 1,   2,   3,   4)   == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 1L,  2L,  3L,  4L)  == 4L);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 1UL, 2UL, 3UL, 4UL) == 4UL);
+  EXPECT_EQ(mjr::math::odr::max4( 1,   2,   3,   4),   4);
+  EXPECT_EQ(mjr::math::odr::max4( 1L,  2L,  3L,  4L),  4L);
+  EXPECT_EQ(mjr::math::odr::max4( 1UL, 2UL, 3UL, 4UL), 4UL);
 
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 1, 2, 3, 4) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 1, 3, 2, 4) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 2, 1, 3, 4) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 2, 3, 1, 4) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 3, 1, 2, 4) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 3, 2, 1, 4) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 1, 2, 4, 3) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 1, 3, 4, 2) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 2, 1, 4, 3) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 2, 3, 4, 1) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 3, 1, 4, 2) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 3, 2, 4, 1) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 1, 4, 2, 3) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 1, 4, 3, 2) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 2, 4, 1, 3) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 2, 4, 3, 1) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 3, 4, 1, 2) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 3, 4, 2, 1) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 4, 1, 2, 3) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 4, 1, 3, 2) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 4, 2, 1, 3) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 4, 2, 3, 1) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 4, 3, 1, 2) == 4);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 4, 3, 2, 1) == 4);
+  EXPECT_EQ(mjr::math::odr::max4( 1, 2, 3, 4), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 1, 3, 2, 4), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 2, 1, 3, 4), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 2, 3, 1, 4), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 3, 1, 2, 4), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 3, 2, 1, 4), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 1, 2, 4, 3), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 1, 3, 4, 2), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 2, 1, 4, 3), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 2, 3, 4, 1), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 3, 1, 4, 2), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 3, 2, 4, 1), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 1, 4, 2, 3), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 1, 4, 3, 2), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 2, 4, 1, 3), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 2, 4, 3, 1), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 3, 4, 1, 2), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 3, 4, 2, 1), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 4, 1, 2, 3), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 4, 1, 3, 2), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 4, 2, 1, 3), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 4, 2, 3, 1), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 4, 3, 1, 2), 4);
+  EXPECT_EQ(mjr::math::odr::max4( 4, 3, 2, 1), 4);
 
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 1, 1, 1, 1) == 1);
-  BOOST_TEST_CHECK(mjr::math::odr::max4( 4, 4, 4, 4) == 4);
+  EXPECT_EQ(mjr::math::odr::max4( 1, 1, 1, 1), 1);
+  EXPECT_EQ(mjr::math::odr::max4( 4, 4, 4, 4), 4);
 }
 /** @endcond */

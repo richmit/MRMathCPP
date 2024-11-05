@@ -30,44 +30,36 @@
 /*******************************************************************************************************************************************************.H.E.**/
 /** @cond exj */
 
-#define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MODULE Main
-#include <boost/test/unit_test.hpp>
-
-#define BOOST_TEST_DYN_LINK
-#ifdef STAND_ALONE
-#   define BOOST_TEST_MODULE Main
-#endif
-#include <boost/test/unit_test.hpp>
+#include <gtest/gtest.h>
 
 #include "MRMathLINM.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-BOOST_AUTO_TEST_CASE(interpolate) {
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate(1.0,  2.0,  -1.0) ==  0.0, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate(1.0,  2.0,   0.0) ==  1.0, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate(1.0,  2.0,   0.5) ==  1.5, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate(1.0,  2.0,   1.0) ==  2.0, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate(1.0,  2.0,   2.0) ==  3.0, boost::test_tools::tolerance(0.00001)); 
+TEST(FN_interpolate, Comprehensive) {
+  EXPECT_NEAR(mjr::math::linm::interpolate(1.0,  2.0,  -1.0), 0.0, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate(1.0,  2.0,   0.0), 1.0, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate(1.0,  2.0,   0.5), 1.5, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate(1.0,  2.0,   1.0), 2.0, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate(1.0,  2.0,   2.0), 3.0, 1.0e-5); 
 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate(2.0,  1.0,  -1.0) ==  3.0, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate(2.0,  1.0,   0.0) ==  2.0, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate(2.0,  1.0,   0.5) ==  1.5, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate(2.0,  1.0,   1.0) ==  1.0, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate(2.0,  1.0,   2.0) ==  0.0, boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::interpolate(2.0,  1.0,  -1.0), 3.0, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate(2.0,  1.0,   0.0), 2.0, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate(2.0,  1.0,   0.5), 1.5, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate(2.0,  1.0,   1.0), 1.0, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate(2.0,  1.0,   2.0), 0.0, 1.0e-5); 
 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate(1.0f, 2.0f, -1.0f) == 0.0f, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate(1.0f, 2.0f,  0.0f) == 1.0f, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate(1.0f, 2.0f,  0.5f) == 1.5f, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate(1.0f, 2.0f,  1.0f) == 2.0f, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate(1.0f, 2.0f,  2.0f) == 3.0f, boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::interpolate(1.0f, 2.0f, -1.0f), 0.0f, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate(1.0f, 2.0f,  0.0f), 1.0f, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate(1.0f, 2.0f,  0.5f), 1.5f, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate(1.0f, 2.0f,  1.0f), 2.0f, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate(1.0f, 2.0f,  2.0f), 3.0f, 1.0e-5); 
 }
 
-BOOST_AUTO_TEST_CASE(interpolate_wrapCO) {
+TEST(FN_interpolate_wrapCO, Comprehensive) {
   // This is tested by interpolate_degrees & interpolate_radians
 }
 
-BOOST_AUTO_TEST_CASE(interpolate_degrees__double) {
+TEST(FN_interpolate_degrees, TYP_Double) {
 
   double vs =   0;
   double ve = 360;
@@ -76,31 +68,31 @@ BOOST_AUTO_TEST_CASE(interpolate_degrees__double) {
   double vl = 180;
   double ep = 1.0f;
 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(  1.0,   2.0, -1.0) ==   0.0, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(  1.0,   2.0,  0.0) ==   1.0, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(  1.0,   2.0,  0.5) ==   1.5, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(  1.0,   2.0,  1.0) ==   2.0, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(  1.0,   2.0,  2.0) ==   3.0, boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(  1.0,   2.0, -1.0), 0.0, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(  1.0,   2.0,  0.0), 1.0, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(  1.0,   2.0,  0.5), 1.5, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(  1.0,   2.0,  1.0), 2.0, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(  1.0,   2.0,  2.0), 3.0, 1.0e-5); 
  
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(vs+ep, ve-ep,  0.0) == vs+ep, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(vs+ep, ve-ep,  0.5) ==    vs, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(vs+ep, ve-ep,  1.0) == ve-ep, boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(vs+ep, ve-ep,  0.0), vs+ep, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(vs+ep, ve-ep,  0.5), vs, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(vs+ep, ve-ep,  1.0), ve-ep, 1.0e-5); 
 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(vt-ep, vb+ep,  0.0) == vt-ep, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(vt-ep, vb+ep,  0.5) ==    vs, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(vt-ep, vb+ep,  1.0) == vb+ep, boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(vt-ep, vb+ep,  0.0), vt-ep, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(vt-ep, vb+ep,  0.5), vs, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(vt-ep, vb+ep,  1.0), vb+ep, 1.0e-5); 
 
   // This one is the ambigious case -- right on the center. I'm choosing the larger value.
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(   vt,    vb,  0.0) ==    vt, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(   vt,    vb,  0.5) ==    vl, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(   vt,    vb,  1.0) ==    vb, boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(   vt,    vb,  0.0), vt, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(   vt,    vb,  0.5), vl, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(   vt,    vb,  1.0), vb, 1.0e-5); 
 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(vt+ep, vb-ep,  0.0) == vt+ep, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(vt+ep, vb-ep,  0.5) ==    vl, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(vt+ep, vb-ep,  1.0) == vb-ep, boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(vt+ep, vb-ep,  0.0), vt+ep, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(vt+ep, vb-ep,  0.5), vl, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(vt+ep, vb-ep,  1.0), vb-ep, 1.0e-5); 
 }
 
-BOOST_AUTO_TEST_CASE(interpolate_degrees__float) {
+TEST(FN_interpolate_degrees, TYP_Float) {
   float vs =   0;
   float ve = 360;
   float vt =  90;
@@ -108,25 +100,25 @@ BOOST_AUTO_TEST_CASE(interpolate_degrees__float) {
   float vl = 180;
   float ep = 1.0f;
 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(vs+ep, ve-ep,  0.0f) == vs+ep, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(vs+ep, ve-ep,  0.5f) ==    vs, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(vs+ep, ve-ep,  1.0f) == ve-ep, boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(vs+ep, ve-ep,  0.0f), vs+ep, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(vs+ep, ve-ep,  0.5f), vs, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(vs+ep, ve-ep,  1.0f), ve-ep, 1.0e-5); 
 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(vt-ep, vb+ep,  0.0f) == vt-ep, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(vt-ep, vb+ep,  0.5f) ==    vs, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(vt-ep, vb+ep,  1.0f) == vb+ep, boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(vt-ep, vb+ep,  0.0f), vt-ep, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(vt-ep, vb+ep,  0.5f), vs, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(vt-ep, vb+ep,  1.0f), vb+ep, 1.0e-5); 
 
   // This one is the ambigious case -- right on the center. I'm choosing the larger value.
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(   vt,    vb,  0.0f) ==    vt, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(   vt,    vb,  0.5f) ==    vl, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(   vt,    vb,  1.0f) ==    vb, boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(   vt,    vb,  0.0f), vt, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(   vt,    vb,  0.5f), vl, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(   vt,    vb,  1.0f), vb, 1.0e-5); 
 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(vt+ep, vb-ep,  0.0f) == vt+ep, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(vt+ep, vb-ep,  0.5f) ==    vl, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_degrees(vt+ep, vb-ep,  1.0f) == vb-ep, boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(vt+ep, vb-ep,  0.0f), vt+ep, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(vt+ep, vb-ep,  0.5f), vl, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_degrees(vt+ep, vb-ep,  1.0f), vb-ep, 1.0e-5); 
 }
 
-BOOST_AUTO_TEST_CASE(interpolate_radians__double) {
+TEST(FN_interpolate_radians, TYP_Double) {
   double vs = 0.0;
   double ve = std::numbers::pi * 2.0;
   double vt = std::numbers::pi * 0.5;
@@ -134,96 +126,95 @@ BOOST_AUTO_TEST_CASE(interpolate_radians__double) {
   double vl = std::numbers::pi * 1.0;
   double ep = 0.01;
 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_radians(  1.0,   2.0, -1.0) ==   0.0, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_radians(  1.0,   2.0,  0.0) ==   1.0, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_radians(  1.0,   2.0,  0.5) ==   1.5, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_radians(  1.0,   2.0,  1.0) ==   2.0, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_radians(  1.0,   2.0,  2.0) ==   3.0, boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_radians(  1.0,   2.0, -1.0), 0.0, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_radians(  1.0,   2.0,  0.0), 1.0, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_radians(  1.0,   2.0,  0.5), 1.5, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_radians(  1.0,   2.0,  1.0), 2.0, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_radians(  1.0,   2.0,  2.0), 3.0, 1.0e-5); 
  
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_radians(vs+ep, ve-ep,  0.0) == vs+ep, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_radians(vs+ep, ve-ep,  0.5) ==    vs, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_radians(vs+ep, ve-ep,  1.0) == ve-ep, boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_radians(vs+ep, ve-ep,  0.0), vs+ep, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_radians(vs+ep, ve-ep,  0.5), vs, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_radians(vs+ep, ve-ep,  1.0), ve-ep, 1.0e-5); 
 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_radians(vt-ep, vb+ep,  0.0) == vt-ep, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_radians(vt-ep, vb+ep,  0.5) ==    vs, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_radians(vt-ep, vb+ep,  1.0) == vb+ep, boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_radians(vt-ep, vb+ep,  0.0), vt-ep, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_radians(vt-ep, vb+ep,  0.5), vs, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_radians(vt-ep, vb+ep,  1.0), vb+ep, 1.0e-5); 
 
   // This one is the ambigious case -- right on the center. I'm choosing the larger value.
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_radians(   vt,    vb,  0.0) ==    vt, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_radians(   vt,    vb,  0.5) ==    vl, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_radians(   vt,    vb,  1.0) ==    vb, boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_radians(   vt,    vb,  0.0), vt, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_radians(   vt,    vb,  0.5), vl, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_radians(   vt,    vb,  1.0), vb, 1.0e-5); 
 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_radians(vt+ep, vb-ep,  0.0) == vt+ep, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_radians(vt+ep, vb-ep,  0.5) ==    vl, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::interpolate_radians(vt+ep, vb-ep,  1.0) == vb-ep, boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_radians(vt+ep, vb-ep,  0.0), vt+ep, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_radians(vt+ep, vb-ep,  0.5), vl, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::interpolate_radians(vt+ep, vb-ep,  1.0), vb-ep, 1.0e-5); 
 }
 
-BOOST_AUTO_TEST_CASE(scl_int_to_real) {
-  BOOST_TEST_CHECK(mjr::math::linm::scl_int_to_real(  0,  1.0, 255) == 0.0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::scl_int_to_real(255,  1.0, 255) == 1.0,  boost::test_tools::tolerance(0.00001)); 
+TEST(FN_scl_int_to_real, Comprehensive) {
+  EXPECT_NEAR(mjr::math::linm::scl_int_to_real(  0,  1.0, 255), 0.0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::scl_int_to_real(255,  1.0, 255), 1.0,  1.0e-5); 
 
-  BOOST_TEST_CHECK(mjr::math::linm::scl_int_to_real(  0,  1.0, 254) == 0.0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::scl_int_to_real(127,  1.0, 254) == 0.5,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::scl_int_to_real(254,  1.0, 254) == 1.0,  boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::scl_int_to_real(  0,  1.0, 254), 0.0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::scl_int_to_real(127,  1.0, 254), 0.5,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::scl_int_to_real(254,  1.0, 254), 1.0,  1.0e-5); 
 
-  BOOST_TEST_CHECK(mjr::math::linm::scl_int_to_real(  0,  1.5, 255) == 0.0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::scl_int_to_real(255,  1.5, 255) == 1.5,  boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::scl_int_to_real(  0,  1.5, 255), 0.0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::scl_int_to_real(255,  1.5, 255), 1.5,  1.0e-5); 
 
-  BOOST_TEST_CHECK(mjr::math::linm::scl_int_to_real(  0, 1.0f, 255) == 0.0f, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::scl_int_to_real(255, 1.0f, 255) == 1.0f, boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::scl_int_to_real(  0, 1.0f, 255), 0.0f, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::scl_int_to_real(255, 1.0f, 255), 1.0f, 1.0e-5); 
 
-  BOOST_TEST_CHECK(mjr::math::linm::scl_int_to_real(  0L, 1.0, 255) == 0.0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::scl_int_to_real(255L, 1.0, 255) == 1.0,  boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::scl_int_to_real(  0L, 1.0, 255), 0.0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::scl_int_to_real(255L, 1.0, 255), 1.0,  1.0e-5); 
 }
 
-BOOST_AUTO_TEST_CASE(gen_map) {
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(0.0, 1.0, 2.0, 1.0, 2.0) == 0.0,  boost::test_tools::tolerance(0.00001));
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(1.0, 1.0, 2.0, 1.0, 2.0) == 1.0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(2.0, 1.0, 2.0, 1.0, 2.0) == 2.0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(3.0, 1.0, 2.0, 1.0, 2.0) == 3.0,  boost::test_tools::tolerance(0.00001)); 
+TEST(FN_gen_map, Comprehensive) {
+  EXPECT_NEAR(mjr::math::linm::gen_map(0.0, 1.0, 2.0, 1.0, 2.0), 0.0,  1.0e-5);
+  EXPECT_NEAR(mjr::math::linm::gen_map(1.0, 1.0, 2.0, 1.0, 2.0), 1.0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::gen_map(2.0, 1.0, 2.0, 1.0, 2.0), 2.0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::gen_map(3.0, 1.0, 2.0, 1.0, 2.0), 3.0,  1.0e-5); 
 
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(0.0, 2.0, 3.0, 2.0, 3.0) == 0.0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(1.0, 2.0, 3.0, 2.0, 3.0) == 1.0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(2.0, 2.0, 3.0, 2.0, 3.0) == 2.0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(3.0, 2.0, 3.0, 2.0, 3.0) == 3.0,  boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::gen_map(0.0, 2.0, 3.0, 2.0, 3.0), 0.0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::gen_map(1.0, 2.0, 3.0, 2.0, 3.0), 1.0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::gen_map(2.0, 2.0, 3.0, 2.0, 3.0), 2.0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::gen_map(3.0, 2.0, 3.0, 2.0, 3.0), 3.0,  1.0e-5); 
 
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(0.0, 3.0, 2.0, 3.0, 2.0) == 0.0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(1.0, 3.0, 2.0, 3.0, 2.0) == 1.0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(2.0, 3.0, 2.0, 3.0, 2.0) == 2.0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(3.0, 3.0, 2.0, 3.0, 2.0) == 3.0,  boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::gen_map(0.0, 3.0, 2.0, 3.0, 2.0), 0.0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::gen_map(1.0, 3.0, 2.0, 3.0, 2.0), 1.0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::gen_map(2.0, 3.0, 2.0, 3.0, 2.0), 2.0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::gen_map(3.0, 3.0, 2.0, 3.0, 2.0), 3.0,  1.0e-5); 
 
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(0.0, 2.0, 3.0, 4.0, 5.0) == 2.0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(1.0, 2.0, 3.0, 4.0, 5.0) == 3.0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(2.0, 2.0, 3.0, 4.0, 5.0) == 4.0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(3.0, 2.0, 3.0, 4.0, 5.0) == 5.0,  boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::gen_map(0.0, 2.0, 3.0, 4.0, 5.0), 2.0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::gen_map(1.0, 2.0, 3.0, 4.0, 5.0), 3.0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::gen_map(2.0, 2.0, 3.0, 4.0, 5.0), 4.0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::gen_map(3.0, 2.0, 3.0, 4.0, 5.0), 5.0,  1.0e-5); 
 
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(0.0, 2.0, 3.0, 5.0, 4.0) == 7.0,  boost::test_tools::tolerance(0.00001));
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(1.0, 2.0, 3.0, 5.0, 4.0) == 6.0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(2.0, 2.0, 3.0, 5.0, 4.0) == 5.0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(3.0, 2.0, 3.0, 5.0, 4.0) == 4.0,  boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::gen_map(0.0, 2.0, 3.0, 5.0, 4.0), 7.0,  1.0e-5);
+  EXPECT_NEAR(mjr::math::linm::gen_map(1.0, 2.0, 3.0, 5.0, 4.0), 6.0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::gen_map(2.0, 2.0, 3.0, 5.0, 4.0), 5.0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::gen_map(3.0, 2.0, 3.0, 5.0, 4.0), 4.0,  1.0e-5); 
 
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(0.0, 1.0, 2.0, 3.0, 6.0) == 0.0,  boost::test_tools::tolerance(0.00001));
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(1.0, 1.0, 2.0, 3.0, 6.0) == 3.0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(2.0, 1.0, 2.0, 3.0, 6.0) == 6.0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::gen_map(3.0, 1.0, 2.0, 3.0, 6.0) == 9.0,  boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::gen_map(0.0, 1.0, 2.0, 3.0, 6.0), 0.0,  1.0e-5);
+  EXPECT_NEAR(mjr::math::linm::gen_map(1.0, 1.0, 2.0, 3.0, 6.0), 3.0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::gen_map(2.0, 1.0, 2.0, 3.0, 6.0), 6.0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::gen_map(3.0, 1.0, 2.0, 3.0, 6.0), 9.0,  1.0e-5); 
 }
 
-BOOST_AUTO_TEST_CASE(scl_real_to_int) {
-  BOOST_TEST_CHECK(mjr::math::linm::scl_real_to_int(0.0,  255)  ==   0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::scl_real_to_int(1.0,  255)  == 255,  boost::test_tools::tolerance(0.00001)); 
+TEST(FN_scl_real_to_int, Comprehensive) {
+  EXPECT_NEAR(mjr::math::linm::scl_real_to_int(0.0,  255),  0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::scl_real_to_int(1.0,  255),  255,  1.0e-5); 
                                                                       
-  BOOST_TEST_CHECK(mjr::math::linm::scl_real_to_int(0.0,  254)  ==   0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::scl_real_to_int(0.5,  254)  == 127,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::scl_real_to_int(1.0,  254)  == 254,  boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::scl_real_to_int(0.0,  254),  0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::scl_real_to_int(0.5,  254),  127,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::scl_real_to_int(1.0,  254),  254,  1.0e-5); 
                                                                      
-  BOOST_TEST_CHECK(mjr::math::linm::scl_real_to_int(0.0,  255)  ==   0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::scl_real_to_int(1.4,  255)  == 357,  boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::scl_real_to_int(0.0,  255),  0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::scl_real_to_int(1.4,  255),  357,  1.0e-5); 
                                                                      
-  BOOST_TEST_CHECK(mjr::math::linm::scl_real_to_int(0.0f, 255)  ==   0,  boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::scl_real_to_int(1.0f, 255)  == 255,  boost::test_tools::tolerance(0.00001)); 
+  EXPECT_NEAR(mjr::math::linm::scl_real_to_int(0.0f, 255),  0,  1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::scl_real_to_int(1.0f, 255),  255,  1.0e-5); 
                                                                     
-  BOOST_TEST_CHECK(mjr::math::linm::scl_real_to_int(0.0,  255L) ==   0L, boost::test_tools::tolerance(0.00001)); 
-  BOOST_TEST_CHECK(mjr::math::linm::scl_real_to_int(1.0,  255L) == 255L, boost::test_tools::tolerance(0.00001)); 
-
+  EXPECT_NEAR(mjr::math::linm::scl_real_to_int(0.0,  255L), 0L, 1.0e-5); 
+  EXPECT_NEAR(mjr::math::linm::scl_real_to_int(1.0,  255L), 255L, 1.0e-5); 
 }
 /** @endcond */

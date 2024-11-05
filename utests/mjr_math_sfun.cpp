@@ -30,72 +30,63 @@
 /*******************************************************************************************************************************************************.H.E.**/
 /** @cond exj */
 
-#define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MODULE Main
-#include <boost/test/unit_test.hpp>
-
-#define BOOST_TEST_DYN_LINK
-#ifdef STAND_ALONE
-#   define BOOST_TEST_MODULE Main
-#endif
-#include <boost/test/unit_test.hpp>
+#include <gtest/gtest.h>
 
 #include "MRMathSFUN.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-BOOST_AUTO_TEST_CASE(sgn) {
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn( 2) ==  1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn( 1) ==  1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn( 0) ==  0);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn(-1) == -1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn(-2) == -1);
+TEST(FN_sgn, Comprehensive) {
+  EXPECT_EQ(mjr::math::sfun::sgn( 2), 1);
+  EXPECT_EQ(mjr::math::sfun::sgn( 1), 1);
+  EXPECT_EQ(mjr::math::sfun::sgn( 0), 0);
+  EXPECT_EQ(mjr::math::sfun::sgn(-1), -1);
+  EXPECT_EQ(mjr::math::sfun::sgn(-2), -1);
 
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn( 2.0) ==  1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn( 1.0) ==  1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn( 0.0) ==  0);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn(-1.0) == -1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn(-2.0) == -1);
+  EXPECT_EQ(mjr::math::sfun::sgn( 2.0), 1);
+  EXPECT_EQ(mjr::math::sfun::sgn( 1.0), 1);
+  EXPECT_EQ(mjr::math::sfun::sgn( 0.0), 0);
+  EXPECT_EQ(mjr::math::sfun::sgn(-1.0), -1);
+  EXPECT_EQ(mjr::math::sfun::sgn(-2.0), -1);
 
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn( 2.1) ==  1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn( 1.1) ==  1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn( 0.1) ==  1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn(-0.1) == -1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn(-1.1) == -1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn(-2.1) == -1);
+  EXPECT_EQ(mjr::math::sfun::sgn( 2.1), 1);
+  EXPECT_EQ(mjr::math::sfun::sgn( 1.1), 1);
+  EXPECT_EQ(mjr::math::sfun::sgn( 0.1), 1);
+  EXPECT_EQ(mjr::math::sfun::sgn(-0.1), -1);
+  EXPECT_EQ(mjr::math::sfun::sgn(-1.1), -1);
+  EXPECT_EQ(mjr::math::sfun::sgn(-2.1), -1);
 
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn( 2.9) ==  1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn( 1.9) ==  1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn( 0.9) ==  1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn(-0.9) == -1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn(-1.9) == -1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgn(-2.9) == -1);
+  EXPECT_EQ(mjr::math::sfun::sgn( 2.9), 1);
+  EXPECT_EQ(mjr::math::sfun::sgn( 1.9), 1);
+  EXPECT_EQ(mjr::math::sfun::sgn( 0.9), 1);
+  EXPECT_EQ(mjr::math::sfun::sgn(-0.9), -1);
+  EXPECT_EQ(mjr::math::sfun::sgn(-1.9), -1);
+  EXPECT_EQ(mjr::math::sfun::sgn(-2.9), -1);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-BOOST_AUTO_TEST_CASE(sgne) {
+TEST(FN_sgne, Comprehensive) {
+  EXPECT_EQ(mjr::math::sfun::sgne( 2.0, 1.0e-5), 1);
+  EXPECT_EQ(mjr::math::sfun::sgne( 1.0, 1.0e-5), 1);
+  EXPECT_EQ(mjr::math::sfun::sgne( 0.0, 1.0e-5), 0);
+  EXPECT_EQ(mjr::math::sfun::sgne(-1.0, 1.0e-5), -1);
+  EXPECT_EQ(mjr::math::sfun::sgne(-2.0, 1.0e-5), -1);
 
-  BOOST_TEST_CHECK(mjr::math::sfun::sgne( 2.0, 1.0e-5) ==  1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgne( 1.0, 1.0e-5) ==  1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgne( 0.0, 1.0e-5) ==  0);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgne(-1.0, 1.0e-5) == -1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgne(-2.0, 1.0e-5) == -1);
+  EXPECT_EQ(mjr::math::sfun::sgne( 2.1, 1.0e-5), 1);
+  EXPECT_EQ(mjr::math::sfun::sgne( 1.1, 1.0e-5), 1);
+  EXPECT_EQ(mjr::math::sfun::sgne( 0.1, 1.0e-5), 1);
+  EXPECT_EQ(mjr::math::sfun::sgne(-0.1, 1.0e-5), -1);
+  EXPECT_EQ(mjr::math::sfun::sgne(-1.1, 1.0e-5), -1);
+  EXPECT_EQ(mjr::math::sfun::sgne(-2.1, 1.0e-5), -1);
 
-  BOOST_TEST_CHECK(mjr::math::sfun::sgne( 2.1, 1.0e-5) ==  1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgne( 1.1, 1.0e-5) ==  1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgne( 0.1, 1.0e-5) ==  1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgne(-0.1, 1.0e-5) == -1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgne(-1.1, 1.0e-5) == -1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgne(-2.1, 1.0e-5) == -1);
-
-  BOOST_TEST_CHECK(mjr::math::sfun::sgne( 2.9, 1.0e-5) ==  1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgne( 1.9, 1.0e-5) ==  1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgne( 0.9, 1.0e-5) ==  1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgne(-0.9, 1.0e-5) == -1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgne(-1.9, 1.0e-5) == -1);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgne(-2.9, 1.0e-5) == -1);
+  EXPECT_EQ(mjr::math::sfun::sgne( 2.9, 1.0e-5), 1);
+  EXPECT_EQ(mjr::math::sfun::sgne( 1.9, 1.0e-5), 1);
+  EXPECT_EQ(mjr::math::sfun::sgne( 0.9, 1.0e-5), 1);
+  EXPECT_EQ(mjr::math::sfun::sgne(-0.9, 1.0e-5), -1);
+  EXPECT_EQ(mjr::math::sfun::sgne(-1.9, 1.0e-5), -1);
+  EXPECT_EQ(mjr::math::sfun::sgne(-2.9, 1.0e-5), -1);
 
   // epsilon is big enough 0.1 & -0.1 are considered zero
-  BOOST_TEST_CHECK(mjr::math::sfun::sgne( 0.1, 0.20) ==  0);
-  BOOST_TEST_CHECK(mjr::math::sfun::sgne(-0.1, 0.20) ==  0);
+  EXPECT_EQ(mjr::math::sfun::sgne( 0.1, 0.20), 0);
+  EXPECT_EQ(mjr::math::sfun::sgne(-0.1, 0.20), 0);
 }
 /** @endcond */

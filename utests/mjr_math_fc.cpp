@@ -30,56 +30,48 @@
 /*******************************************************************************************************************************************************.H.E.**/
 /** @cond exj */
 
-#define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MODULE Main
-#include <boost/test/unit_test.hpp>
-
-#define BOOST_TEST_DYN_LINK
-#ifdef STAND_ALONE
-#   define BOOST_TEST_MODULE Main
-#endif
-#include <boost/test/unit_test.hpp>
+#include <gtest/gtest.h>
 
 #include "MRMathFC.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-BOOST_AUTO_TEST_CASE(near_zero) {
-  BOOST_TEST_CHECK(mjr::math::fc::near_zero( 0.0, 1e-5) == true);
-  BOOST_TEST_CHECK(mjr::math::fc::near_zero(1e-5, 1e-5) == true);  // Can fail if system has bad FP arithmatic (non-IEEE for example)
-  BOOST_TEST_CHECK(mjr::math::fc::near_zero(1e-6, 1e-5) == true);
-  BOOST_TEST_CHECK(mjr::math::fc::near_zero(2e-5, 1e-5) == false);
+TEST(FN_near_zero, Comprehensive) {
+  EXPECT_TRUE(mjr::math::fc::near_zero( 0.0, 1e-5));
+  EXPECT_TRUE(mjr::math::fc::near_zero(1e-5, 1e-5));  // Can fail if system has bad FP arithmatic (non-IEEE for example)
+  EXPECT_TRUE(mjr::math::fc::near_zero(1e-6, 1e-5));
+  EXPECT_FALSE(mjr::math::fc::near_zero(2e-5, 1e-5));
 
-  BOOST_TEST_CHECK(mjr::math::fc::near_zero(std::complex( 0.0,  0.0), 1e-5) == true);
-  BOOST_TEST_CHECK(mjr::math::fc::near_zero(std::complex(1e-5,  0.0), 1e-5) == true);
-  BOOST_TEST_CHECK(mjr::math::fc::near_zero(std::complex(1e-6,  0.0), 1e-5) == true);
-  BOOST_TEST_CHECK(mjr::math::fc::near_zero(std::complex(2e-5,  0.0), 1e-5) == false);
+  EXPECT_TRUE(mjr::math::fc::near_zero(std::complex( 0.0,  0.0), 1e-5));
+  EXPECT_TRUE(mjr::math::fc::near_zero(std::complex(1e-5,  0.0), 1e-5));
+  EXPECT_TRUE(mjr::math::fc::near_zero(std::complex(1e-6,  0.0), 1e-5));
+  EXPECT_FALSE(mjr::math::fc::near_zero(std::complex(2e-5,  0.0), 1e-5));
 
-  BOOST_TEST_CHECK(mjr::math::fc::near_zero(std::complex( 0.0,  0.0), 1e-5) == true);
-  BOOST_TEST_CHECK(mjr::math::fc::near_zero(std::complex( 0.0, 1e-5), 1e-5) == true);
-  BOOST_TEST_CHECK(mjr::math::fc::near_zero(std::complex( 0.0, 1e-6), 1e-5) == true);
-  BOOST_TEST_CHECK(mjr::math::fc::near_zero(std::complex( 0.0, 2e-5), 1e-5) == false);
+  EXPECT_TRUE(mjr::math::fc::near_zero(std::complex( 0.0,  0.0), 1e-5));
+  EXPECT_TRUE(mjr::math::fc::near_zero(std::complex( 0.0, 1e-5), 1e-5));
+  EXPECT_TRUE(mjr::math::fc::near_zero(std::complex( 0.0, 1e-6), 1e-5));
+  EXPECT_FALSE(mjr::math::fc::near_zero(std::complex( 0.0, 2e-5), 1e-5));
 
-  BOOST_TEST_CHECK(mjr::math::fc::near_zero(std::complex( 0.0,  0.0), 1e-5) == true);
-  BOOST_TEST_CHECK(mjr::math::fc::near_zero(std::complex(1e-5, 1e-5), 1e-5) == true);
-  BOOST_TEST_CHECK(mjr::math::fc::near_zero(std::complex(1e-6, 1e-6), 1e-5) == true);
-  BOOST_TEST_CHECK(mjr::math::fc::near_zero(std::complex(2e-5, 2e-5), 1e-5) == false);
+  EXPECT_TRUE(mjr::math::fc::near_zero(std::complex( 0.0,  0.0), 1e-5));
+  EXPECT_TRUE(mjr::math::fc::near_zero(std::complex(1e-5, 1e-5), 1e-5));
+  EXPECT_TRUE(mjr::math::fc::near_zero(std::complex(1e-6, 1e-6), 1e-5));
+  EXPECT_FALSE(mjr::math::fc::near_zero(std::complex(2e-5, 2e-5), 1e-5));
 }
 
-BOOST_AUTO_TEST_CASE(near) {
-  BOOST_TEST_CHECK(mjr::math::fc::near( 0.0,      0.0, 1e-5) == true);
-  BOOST_TEST_CHECK(mjr::math::fc::near(1e-5,      0.0, 1e-5) == true);  // Can fail if system has bad FP arithmatic (non-IEEE for example)
-  BOOST_TEST_CHECK(mjr::math::fc::near(1e-6,      0.0, 1e-5) == true);
-  BOOST_TEST_CHECK(mjr::math::fc::near(2e-5,      0.0, 1e-5) == false);
+TEST(FN_near, Comprehensive) {
+  EXPECT_TRUE(mjr::math::fc::near( 0.0,      0.0, 1e-5));
+  EXPECT_TRUE(mjr::math::fc::near(1e-5,      0.0, 1e-5));  // Can fail if system has bad FP arithmatic (non-IEEE for example)
+  EXPECT_TRUE(mjr::math::fc::near(1e-6,      0.0, 1e-5));
+  EXPECT_FALSE(mjr::math::fc::near(2e-5,      0.0, 1e-5));
                                                  
-  BOOST_TEST_CHECK(mjr::math::fc::near( 0.0,      0.0, 1e-5) == true);
-  BOOST_TEST_CHECK(mjr::math::fc::near( 0.0,     1e-5, 1e-5) == true);  // Can fail if system has bad FP arithmatic (non-IEEE for example)
-  BOOST_TEST_CHECK(mjr::math::fc::near( 0.0,     1e-6, 1e-5) == true);
-  BOOST_TEST_CHECK(mjr::math::fc::near( 0.0,     2e-5, 1e-5) == false);
+  EXPECT_TRUE(mjr::math::fc::near( 0.0,      0.0, 1e-5));
+  EXPECT_TRUE(mjr::math::fc::near( 0.0,     1e-5, 1e-5));  // Can fail if system has bad FP arithmatic (non-IEEE for example)
+  EXPECT_TRUE(mjr::math::fc::near( 0.0,     1e-6, 1e-5));
+  EXPECT_FALSE(mjr::math::fc::near( 0.0,     2e-5, 1e-5));
                                                  
-  BOOST_TEST_CHECK(mjr::math::fc::near( 1.0,      1.0, 1e-5) == true);
-  BOOST_TEST_CHECK(mjr::math::fc::near(1e-5,     3e-5, 1e-5) == false);
+  EXPECT_TRUE(mjr::math::fc::near( 1.0,      1.0, 1e-5));
+  EXPECT_FALSE(mjr::math::fc::near(1e-5,     3e-5, 1e-5));
 
-  BOOST_TEST_CHECK(mjr::math::fc::near( 1.0, 1.000020, 1e-5) == false);
-  BOOST_TEST_CHECK(mjr::math::fc::near( 1.0, 1.000002, 1e-5) == true);
+  EXPECT_FALSE(mjr::math::fc::near( 1.0, 1.000020, 1e-5));
+  EXPECT_TRUE(mjr::math::fc::near(  1.0, 1.000002, 1e-5));
 }
 /** @endcond */

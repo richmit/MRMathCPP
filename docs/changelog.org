@@ -57,7 +57,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
     - Updated
       - N/A
   - Miscellaneous
-    - N/A
+    - Moved from Boost Test to GTest
 * v2.0.0.0
 :PROPERTIES:
 :CUSTOM_ID: v2.0.0.0
