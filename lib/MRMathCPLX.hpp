@@ -85,7 +85,8 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Square of 2-norm (Euclidean) distance between two complex numbers.
-          @param z Complex number. */
+          @param z1 Complex number. 
+          @param z2 Complex number. */
       template <typename numType>
       requires (std::is_arithmetic_v<numType>)
       inline numType dist2sqr(std::complex<numType> z1, std::complex<numType> z2) {
@@ -93,7 +94,8 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** 2-norm (Euclidean) distance between two complex numbers.
-          @param z Complex number. */
+          @param z1 Complex number. 
+          @param z2 Complex number. */
       template <typename numType>
       requires (std::is_arithmetic_v<numType>)
       inline numType dist2(std::complex<numType> z1, std::complex<numType> z2) {
@@ -101,7 +103,8 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** @f$\infty@f$-norm distance between two complex numbers.
-          @param z Complex number. */
+          @param z1 Complex number. 
+          @param z2 Complex number. */
       template <typename numType>
       requires (std::is_arithmetic_v<numType>)
       inline numType distI(std::complex<numType> z1, std::complex<numType> z2) {
@@ -109,7 +112,8 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** 1-norm distance between two complex numbers.
-          @param z Complex number. */
+          @param z1 Complex number. 
+          @param z2 Complex number. */
       template <typename numType>
       requires (std::is_arithmetic_v<numType>)
       inline numType dist1(std::complex<numType> z1, std::complex<numType> z2) {
