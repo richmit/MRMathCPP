@@ -49,6 +49,12 @@
 
 namespace mjr {
   namespace math {
+    /** Mathematical Real/Complex Vectors Stored In std::array Containers.
+        The focus of this library is small, fixed size mathematical vectors like might be used to implement things like
+          - Coordinates for 2D imaging or vector rendering
+          - Points in 3D Euclidean space for geometric modeling & visualization
+          - Channels in color space models
+    */
     namespace vec {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Square of the 2-norm (Euclidean) -- real vectors.
@@ -73,19 +79,27 @@ namespace mjr {
         return ret_val;
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** 2-norm (Euclidean) -- real vectors.
+      /** 2-norm (Euclidean) -- floating point real vectors.
           @param v  A vector*/
-      template <typename numType, std::size_t size>
-      requires ((size > 0) && std::is_arithmetic_v<numType>)
-      inline numType norm2(const std::array<numType, size>& v) {
+      template <typename realType, std::size_t size>
+      requires ((size > 0) && std::floating_point<realType>)
+      inline realType norm2(const std::array<realType, size>& v) {
         return std::sqrt(norm2sqr(v));
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** 2-norm (Euclidean) -- complex vectors.
+      /** 2-norm (Euclidean) -- integer real vectors.
           @param v  A vector*/
-      template <typename numType, std::size_t size>
-      requires ((size > 0) && std::is_arithmetic_v<numType>)
-      inline numType norm2(std::array<std::complex<numType>, size> v) {
+      template <typename intType, std::size_t size>
+      requires ((size > 0) && std::integral<intType>)
+      inline intType norm2(const std::array<intType, size>& v) {
+        return static_cast<intType>(std::floor(std::sqrt(norm2sqr(v))));
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** 2-norm (Euclidean) -- floating piont complex vectors.
+          @param v  A vector*/
+      template <typename realType, std::size_t size>
+      requires ((size > 0) && std::floating_point<realType>)
+      inline realType norm2(std::array<std::complex<realType>, size> v) {
         return std::sqrt(norm2sqr(v));
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -159,7 +173,7 @@ namespace mjr {
         return ret_val;
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** The cross product -- real and complex vectors.
+      /** The cross product -- real and complex vectors of length 3.
           @param v1  A vector (must be of length 3)
           @param v2  A vector (must be of length 3) */
       template <typename numType, std::size_t size>
@@ -212,7 +226,7 @@ namespace mjr {
         return ret_val;
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** The triple product -- real vectors.
+      /** The triple product -- real vectors of length 3.
           @param v1  A vector (must be of length 3)
           @param v2  A vector (must be of length 3) 
           @param v3  A vector (must be of length 3) */
@@ -226,9 +240,8 @@ namespace mjr {
                 v1[2] * v2[0] * v3[1] -
                 v1[2] * v2[1] * v3[0]);
       }
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** The scalar quadruple product -- real vectors.
+      /** The scalar quadruple product -- real vectors of length 3.
           @param v1  A vector (must be of length 3)
           @param v2  A vector (must be of length 3) 
           @param v3  A vector (must be of length 3) 
@@ -240,7 +253,7 @@ namespace mjr {
         return dot_product(cross_product(v1, v2), cross_product(v3, v4));
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** The vector quadruple product -- real vectors.
+      /** The vector quadruple product -- real vectors of length 3.
           @param v1  A vector (must be of length 3)
           @param v2  A vector (must be of length 3) 
           @param v3  A vector (must be of length 3) 
@@ -289,7 +302,7 @@ namespace mjr {
           @param v            A vector
           @param zero_epsilon Epsilon to detect zero sign.  See: mjr::math::fc::near_zero() */
       template <typename realType, std::size_t size>
-      requires (size > 0)
+      requires ((size > 0) && std::floating_point<realType>)
       bool near_zeroI(const std::array<realType, size>& v, realType zero_epsilon) {
         for(auto e : v) 
           if ( !(mjr::math::fc::near_zero(e, zero_epsilon)))
@@ -302,7 +315,7 @@ namespace mjr {
           @param v            A vector
           @param zero_epsilon Epsilon to detect zero sign.  See: mjr::math::fc::near_zero() */
       template <typename realType, std::size_t size>
-      requires (size > 0)
+      requires ((size > 0) && std::floating_point<realType>)
       inline bool near_zeroI(const std::array<std::complex<realType>, size>& v, realType zero_epsilon) {
         for(auto e : v) 
           if ( !(mjr::math::fc::near_zero(e, zero_epsilon)))
@@ -315,7 +328,7 @@ namespace mjr {
           @param v2           A vector
           @param zero_epsilon Epsilon to detect zero sign.  See: mjr::math::fc::near_zero() */
       template <typename realType, std::size_t size>
-      requires (size > 0)
+      requires ((size > 0) && std::floating_point<realType>)
       inline bool nearI(const std::array<realType, size>& v1, const std::array<realType, size>& v2, realType zero_epsilon) {
         for(std::size_t i=0; i<size; ++i)
           if ( !(mjr::math::fc::near(v1[i], v2[i], zero_epsilon)))
@@ -328,7 +341,7 @@ namespace mjr {
           @param v2           A vector
           @param zero_epsilon Epsilon to detect zero sign.  See: mjr::math::fc::near_zero() */
       template <typename realType, std::size_t size>
-      requires (size > 0)
+      requires ((size > 0) && std::floating_point<realType>)
       inline bool nearI(const std::array<std::complex<realType>, size>& v1, const std::array<std::complex<realType>, size>& v2, realType zero_epsilon) {
         for(std::size_t i=0; i<size; ++i)
           if ( !(mjr::math::fc::near(v1[i], v2[i], zero_epsilon)))
@@ -365,16 +378,118 @@ namespace mjr {
         stringStream << "(" << std::real(v[size-1]) << ", " << std::imag(v[size-1]) << ") ]";;
         return stringStream.str();
       }
+
+
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Square of the 2-norm (Euclidean) distance between two vectors -- real vectors.
+          @param v1  A vector
+          @param v2  A vector */
+      template <typename numType, std::size_t size>
+      requires ((size > 0) && std::is_arithmetic_v<numType>)
+      inline numType dist2sqr(const std::array<numType, size>& v1, const std::array<numType, size>& v2) {
+        numType ret_val = 0;
+        for(std::size_t i=0; i<size; ++i)
+          ret_val += std::pow(v1[i] - v2[i], 2);
+        return ret_val;
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Square of the 2-norm (Euclidean) distance between two vectors -- complex vectors.
+          @param v1  A vector
+          @param v2  A vector */
+      template <typename numType, std::size_t size>
+      requires ((size > 0) && std::is_arithmetic_v<numType>)
+      inline numType dist2sqr(const std::array<std::complex<numType>, size>& v1, const std::array<std::complex<numType>, size>& v2) {
+        numType ret_val = 0;
+        for(std::size_t i=0; i<size; ++i)
+          ret_val += std::pow(std::abs(v1[i]-v2[i]), 2);
+        return ret_val;
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** The 2-norm (Euclidean) distance between two vectors -- real vectors.
+          @param v1  A vector
+          @param v2  A vector */
+      template <typename numType, std::size_t size>
+      requires ((size > 0) && std::is_arithmetic_v<numType>)
+      inline numType dist2(const std::array<numType, size>& v1, const std::array<numType, size>& v2) {
+        return std::sqrt(dist2sqr(v1, v2));
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** The 2-norm (Euclidean) distance between two vectors -- complex vectors.
+          @param v1  A vector
+          @param v2  A vector */
+      template <typename numType, std::size_t size>
+      requires ((size > 0) && std::is_arithmetic_v<numType>)
+      inline numType dist2(const std::array<std::complex<numType>, size>& v1, const std::array<std::complex<numType>, size>& v2) {
+        return std::sqrt(dist2sqr(v1, v2));
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Are two vectors equal -- real or complex vectors.
+          Elements are compared with ==.  This function can be used with floating point numbers, but be careful.
+          @param v1  A vector
+          @param v2  A vector */
+      template <typename numType, std::size_t size>
+      requires (size > 0)
+      inline bool equal(const std::array<numType, size>& v1, const std::array<numType, size>& v2) {
+        for(std::size_t i=0; i<size; ++i)
+          if ( !(v1[i] == v2[i]))
+            return false;
+        return true;
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Lexicographic Less Than Predicate -- floating point real vectors.
+          @param v1  A vector
+          @param v2  A vector */
+      template <typename realType, std::size_t size>
+      requires ((size > 0) && std::floating_point<realType>)
+      inline bool lex_less(const std::array<realType, size>& v1, const std::array<realType, size>& v2, realType zero_epsilon) {
+        for(std::size_t i=0; i<size; ++i) {
+          if (mjr::math::fc::near(v1[i], v2[i], zero_epsilon)) {
+            if (i == size-1) {
+              return false;
+            }
+          } else {
+            if (v1[i] < v2[i]) {
+              return true;
+            } else {
+              return false;
+            } 
+          }
+        }
+        return true; // Can't get here...
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Lexicographic Less Than Predicate -- integer real vectors.
+          This function is redundant given std::lexicographical_compare(); however, it makes for a nice uniform interface.
+          @param v1  A vector
+          @param v2  A vector */
+      template <typename intType, std::size_t size>
+      requires ((size > 0) && std::integral<intType>)
+      inline bool lex_less(std::array<intType, size> v1, std::array<intType, size> v2) {
+        for(std::size_t i=0; i<size; ++i)
+          if (v1[i] < v2[i]) {
+            return true;
+          } else {
+            if (v1[i] == v2[i]) {
+              if (i == size-1) {
+                return false;
+              }
+            } else {
+              return false;
+            }
+          }
+        return true; // Can't get here...
+      }
     } // end namespace vec
   } // end namespace math
 } // end namespace mjr
 
 #define MJR_INCLUDE_MRMATHVEC
 #endif
-
-// TODO:
-// - dist2sqr
-// - dist2
-// - distI
-// - dist1
-// - lex_less (integer vectors)

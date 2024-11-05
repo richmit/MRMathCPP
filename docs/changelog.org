@@ -53,7 +53,10 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
   - Deprecated functionality
     - N/A
   - New functionality
-    - N/A
+    - mjr::math::vec::dist2()
+    - mjr::math::vec::dist2sqr()
+    - mjr::math::vec::equal()
+    - mjr::math::vec::lex_less()
   - Documentation
     - Added link in main project readme to Doxygen documentation
     - Published Doxygen documentation to web page.

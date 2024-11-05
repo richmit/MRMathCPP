@@ -46,6 +46,8 @@ typedef std::array<double, 2> r2_t;
 typedef std::array<double, 3> r3_t;
 typedef std::array<double, 4> r4_t;
 
+typedef std::array<int, 3> i3_t;
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST(PKG_vec, VecLen1_double) {
   r1_t v1 = {1.1};
@@ -76,14 +78,24 @@ TEST(PKG_vec, VecLen1_double) {
   EXPECT_TRUE(mjr::math::vec::nearI(mjr::math::vec::diff(v2, v1),                             r1_t{  1.1 }, 1.0e-5)); 
   EXPECT_TRUE(mjr::math::vec::nearI(mjr::math::vec::linear_combination(2.0, v1, 3.0, v2),     r1_t{  8.8 }, 1.0e-5)); 
 
+  EXPECT_NEAR(mjr::math::vec::dist2sqr(v1, v2),                                               1.21,  1.0e-5);
+  EXPECT_NEAR(mjr::math::vec::dist2sqr(v2, v1),                                               1.21,  1.0e-5);
+  EXPECT_NEAR(mjr::math::vec::dist2(v1, v2),                                                  1.1,   1.0e-5);
+  EXPECT_NEAR(mjr::math::vec::dist2(v2, v1),                                                  1.1,   1.0e-5);
+
+  EXPECT_FALSE(mjr::math::vec::lex_less(v1, v1, 1.0e-5));
+  EXPECT_TRUE( mjr::math::vec::lex_less(v1, v2, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::lex_less(v2, v1, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::lex_less(v1, v2, 2.0));
+
   EXPECT_FALSE(mjr::math::vec::nearI(v1, v2, 1.0e-5));
   EXPECT_FALSE(mjr::math::vec::nearI(v1, v3, 1.0e-5));
   EXPECT_FALSE(mjr::math::vec::nearI(v2, v3, 1.0e-5));
-  EXPECT_TRUE(mjr::math::vec::nearI(v1, v1, 1.0e-5));
-  EXPECT_TRUE(mjr::math::vec::nearI(v2, v2, 1.0e-5));
-  EXPECT_TRUE(mjr::math::vec::nearI(v3, v3, 1.0e-5));
+  EXPECT_TRUE( mjr::math::vec::nearI(v1, v1, 1.0e-5));
+  EXPECT_TRUE( mjr::math::vec::nearI(v2, v2, 1.0e-5));
+  EXPECT_TRUE( mjr::math::vec::nearI(v3, v3, 1.0e-5));
 
-  mjr::math::vec::unitize2_destructive(v1,                                                           1.0e-5);
+  mjr::math::vec::unitize2_destructive(v1, 1.0e-5);
   EXPECT_TRUE(mjr::math::vec::nearI(v1, r1_t{ 1.0 }, 1.0e-5));
   EXPECT_TRUE(mjr::math::vec::nearI(v1, v1, 1.0e-5));
   EXPECT_NEAR(mjr::math::vec::norm2sqr(v1),                                                   1.0,   1.0e-5);
@@ -122,6 +134,16 @@ TEST(PKG_vec, VecLen2_double) {
   EXPECT_TRUE(mjr::math::vec::nearI(mjr::math::vec::diff(v1, v2),                             r2_t{ -2.2, -2.2 }, 1.0e-5)); 
   EXPECT_TRUE(mjr::math::vec::nearI(mjr::math::vec::diff(v2, v1),                             r2_t{  2.2,  2.2 }, 1.0e-5)); 
   EXPECT_TRUE(mjr::math::vec::nearI(mjr::math::vec::linear_combination(2.0, v1, 3.0, v2),     r2_t{ 12.1, 17.6 }, 1.0e-5)); 
+
+  EXPECT_NEAR(mjr::math::vec::dist2sqr(v1, v2),                                               9.68000000000,  1.0e-5);  
+  EXPECT_NEAR(mjr::math::vec::dist2sqr(v2, v1),                                               9.68000000000,  1.0e-5);
+  EXPECT_NEAR(mjr::math::vec::dist2(v1, v2),                                                  3.11126983722,  1.0e-5);
+  EXPECT_NEAR(mjr::math::vec::dist2(v2, v1),                                                  3.11126983722,  1.0e-5);
+
+  EXPECT_FALSE(mjr::math::vec::lex_less(v1, v1, 1.0e-5));
+  EXPECT_TRUE( mjr::math::vec::lex_less(v1, v2, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::lex_less(v2, v1, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::lex_less(v1, v2, 10.0));
 
   EXPECT_FALSE(mjr::math::vec::nearI(v1, v2, 1.0e-5));
   EXPECT_FALSE(mjr::math::vec::nearI(v1, v3, 1.0e-5));
@@ -176,6 +198,21 @@ TEST(PKG_vec, VecLen3_Double_Positive) {
   EXPECT_TRUE(mjr::math::vec::nearI(mjr::math::vec::vector_quadruple_product(v1, v2, v3, v4), r3_t{ -30.7461, -35.1384, -39.5307 }, 1.0e-5)); 
   EXPECT_TRUE(mjr::math::vec::nearI(mjr::math::vec::linear_combination(2.0, v1, 3.0, v2),     r3_t{  15.4000,  20.9000,  26.4000 }, 1.0e-5)); 
 
+  EXPECT_NEAR(mjr::math::vec::dist2sqr(v1, v2),                                               32.6700000000,  1.0e-5);  
+  EXPECT_NEAR(mjr::math::vec::dist2sqr(v2, v1),                                               32.6700000000,  1.0e-5);
+  EXPECT_NEAR(mjr::math::vec::dist2(v1, v2),                                                  5.71576766498,  1.0e-5);
+  EXPECT_NEAR(mjr::math::vec::dist2(v2, v1),                                                  5.71576766498,  1.0e-5);
+
+  EXPECT_NEAR(mjr::math::vec::dist2sqr(v1, v4),                                               2.01,  1.0e-5);    
+  EXPECT_NEAR(mjr::math::vec::dist2sqr(v4, v1),                                               2.01,  1.0e-5);
+  EXPECT_NEAR(mjr::math::vec::dist2(v1, v4),                                                  1.41774468788,  1.0e-5);
+  EXPECT_NEAR(mjr::math::vec::dist2(v4, v1),                                                  1.41774468788,  1.0e-5);
+
+  EXPECT_FALSE(mjr::math::vec::lex_less(v1, v1, 1.0e-5));
+  EXPECT_TRUE( mjr::math::vec::lex_less(v1, v2, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::lex_less(v2, v1, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::lex_less(v1, v2, 10.0));
+
   EXPECT_FALSE(mjr::math::vec::nearI(v1, v2, 1.0e-5));
   EXPECT_FALSE(mjr::math::vec::nearI(v1, v3, 1.0e-5));
   EXPECT_FALSE(mjr::math::vec::nearI(v2, v3, 1.0e-5));
@@ -193,7 +230,7 @@ TEST(PKG_vec, VecLen3_Double_Positive) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(PKG_vec, VecLen3__Double_Negative) {
+TEST(PKG_vec, VecLen3_Double_Negative) {
   r3_t v1 = {-1.1,  2.2,  3.3};
   r3_t v2 = { 4.4, -5.5,  6.6};
   r3_t v3 = { 7.7,  8.8, -9.9};
@@ -246,6 +283,58 @@ TEST(PKG_vec, VecLen3__Double_Negative) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(PKG_vec, VecLen3_Int_Negative) {
+  i3_t v1 = {-11,  22,  33};
+  i3_t v2 = { 44, -55,  66};
+  i3_t v3 = { 77,  88, -99};
+  i3_t v4 = { 01, -12,  34};
+  i3_t v5 = { 01, -12,  31};
+
+  EXPECT_EQ(mjr::math::vec::norm2sqr(v1),                                                    1694);
+  EXPECT_EQ(mjr::math::vec::norm2(v1),                                                       41);
+  EXPECT_EQ(mjr::math::vec::norm1(v1),                                                       66);
+  EXPECT_EQ(mjr::math::vec::normI(v1),                                                       33);
+
+  EXPECT_EQ(mjr::math::vec::norm2sqr(v2),                                                    9317);
+  EXPECT_EQ(mjr::math::vec::norm2(v2),                                                       96);
+  EXPECT_EQ(mjr::math::vec::norm1(v2),                                                       165);
+  EXPECT_EQ(mjr::math::vec::normI(v2),                                                       66);
+
+  EXPECT_EQ(mjr::math::vec::norm2sqr(v3),                                                    23474);
+  EXPECT_EQ(mjr::math::vec::norm2(v3),                                                       153);
+  EXPECT_EQ(mjr::math::vec::norm1(v3),                                                       264);
+  EXPECT_EQ(mjr::math::vec::normI(v3),                                                       99);
+
+  EXPECT_TRUE(mjr::math::vec::equal(v1, v1));
+  EXPECT_TRUE(mjr::math::vec::equal(v2, v2));
+  EXPECT_TRUE(mjr::math::vec::equal(v3, v3));
+  EXPECT_TRUE(mjr::math::vec::equal(v4, v4));
+
+  EXPECT_FALSE(mjr::math::vec::equal(v1, v2));
+  EXPECT_FALSE(mjr::math::vec::equal(v1, v3));
+  EXPECT_FALSE(mjr::math::vec::equal(v1, v4));
+
+  EXPECT_EQ(mjr::math::vec::dot_product(v1, v2),                                             484);
+  EXPECT_EQ(mjr::math::vec::scalar_triple_product(v1, v2, v3),                               479160);
+  EXPECT_EQ(mjr::math::vec::scalar_triple_product(v1, v2, v3),                               mjr::math::vec::dot_product(v1, mjr::math::vec::cross_product(v2, v3)));
+  EXPECT_EQ(mjr::math::vec::scalar_quadruple_product(v1, v2, v3, v4),                        343398);
+  EXPECT_TRUE(mjr::math::vec::equal(mjr::math::vec::sum(v1, v2),                              i3_t{       33,     -33,        99 })); 
+  EXPECT_TRUE(mjr::math::vec::equal(mjr::math::vec::diff(v1, v2),                             i3_t{      -55,      77,       -33 })); 
+  EXPECT_TRUE(mjr::math::vec::equal(mjr::math::vec::diff(v2, v1),                             i3_t{       55,     -77,        33 })); 
+  EXPECT_TRUE(mjr::math::vec::equal(mjr::math::vec::cross_product(v1, v2),                    i3_t{     3267,    2178,      -363 })); 
+  EXPECT_TRUE(mjr::math::vec::equal(mjr::math::vec::cross_product(v2, v1),                    i3_t{    -3267,   -2178,       363 })); 
+  EXPECT_TRUE(mjr::math::vec::equal(mjr::math::vec::vector_quadruple_product(v1, v2, v3, v4), i3_t{ -3190407, 2651352, -12805551 })); 
+  EXPECT_TRUE(mjr::math::vec::equal(mjr::math::vec::linear_combination(2, v1, 3, v2),         i3_t{      110,    -121,       264 })); 
+
+  EXPECT_FALSE(mjr::math::vec::lex_less(v1, v1));
+  EXPECT_TRUE( mjr::math::vec::lex_less(v1, v2));
+  EXPECT_FALSE(mjr::math::vec::lex_less(v2, v1));
+
+  EXPECT_TRUE( mjr::math::vec::lex_less(v5, v4));
+  EXPECT_FALSE(mjr::math::vec::lex_less(v4, v5));
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST(PKG_vec, VecLen3_Double_Complex) {
   c3_t v1 = {cc_t(-1.1,  2.2), cc_t(3.3,  4.4), cc_t( 5.5,  6.6)};
   c3_t v2 = {cc_t( 7.7,  8.8), cc_t(9.9, -1.2), cc_t( 2.3,  3.4)};
@@ -278,6 +367,11 @@ TEST(PKG_vec, VecLen3_Double_Complex) {
   EXPECT_TRUE(mjr::math::vec::nearI(mjr::math::vec::cross_product(v1, v2),                    c3_t{ cc_t(-69.74, -37.4), cc_t(-5.72,  97.9), cc_t(  5.06, -39.82) }, 1.0e-5)); 
   EXPECT_TRUE(mjr::math::vec::nearI(mjr::math::vec::cross_product(v2, v1),                    c3_t{ cc_t( 69.74,  37.4), cc_t( 5.72, -97.9), cc_t( -5.06,  39.82) }, 1.0e-5)); 
   EXPECT_TRUE(mjr::math::vec::nearI(mjr::math::vec::linear_combination(s1, v1, s2, v2),       c3_t{ cc_t( -22.00, 74.8), cc_t(39.00,  63.4), cc_t(-16.60,  54.80) }, 1.0e-5)); 
+
+  EXPECT_NEAR(mjr::math::vec::dist2sqr(v1, v2),                                               216.400000000,  1.0e-5);  /// FIX ME  8.8 6.6
+  EXPECT_NEAR(mjr::math::vec::dist2sqr(v2, v1),                                               216.400000000,  1.0e-5);
+  EXPECT_NEAR(mjr::math::vec::dist2(v1, v2),                                                  14.7105404388,  1.0e-5);
+  EXPECT_NEAR(mjr::math::vec::dist2(v2, v1),                                                  14.7105404388,  1.0e-5);
 
   EXPECT_FALSE(mjr::math::vec::nearI(v1, v2, 1.0e-5));
   EXPECT_FALSE(mjr::math::vec::nearI(v1, v3, 1.0e-5));
@@ -325,6 +419,16 @@ TEST(PKG_vec, VecLen4_double) {
   EXPECT_TRUE(mjr::math::vec::nearI(mjr::math::vec::diff(v2, v1),                             r4_t{  4.4,  4.4,   4.4,  4.4 }, 1.0e-5)); 
   EXPECT_TRUE(mjr::math::vec::nearI(mjr::math::vec::linear_combination(2.0, v1, 3.0, v2),     r4_t{ 18.7,  24.2, 29.7, 35.2 }, 1.0e-5)); 
 
+  EXPECT_NEAR(mjr::math::vec::dist2sqr(v1, v2),                                               77.44,  1.0e-5);  
+  EXPECT_NEAR(mjr::math::vec::dist2sqr(v2, v1),                                               77.44,  1.0e-5);
+  EXPECT_NEAR(mjr::math::vec::dist2(v1, v2),                                                  8.8,  1.0e-5);
+  EXPECT_NEAR(mjr::math::vec::dist2(v2, v1),                                                  8.8,  1.0e-5);
+
+  EXPECT_FALSE(mjr::math::vec::lex_less(v1, v1, 1.0e-5));
+  EXPECT_TRUE( mjr::math::vec::lex_less(v1, v2, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::lex_less(v2, v1, 1.0e-5));
+  EXPECT_FALSE(mjr::math::vec::lex_less(v1, v2, 10.0));
+
   EXPECT_FALSE(mjr::math::vec::nearI(v1, v2, 1.0e-5));
   EXPECT_FALSE(mjr::math::vec::nearI(v1, v3, 1.0e-5));
   EXPECT_FALSE(mjr::math::vec::nearI(v2, v3, 1.0e-5));
@@ -340,6 +444,5 @@ TEST(PKG_vec, VecLen4_double) {
   EXPECT_NEAR(mjr::math::vec::normI(v1),                                                       0.730297, 1.0e-5);
   EXPECT_FALSE(mjr::math::vec::near_zeroI(v1, 1.0e-5));
 }
-
 /** @endcond */
 
