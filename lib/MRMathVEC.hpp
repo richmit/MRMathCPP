@@ -371,3 +371,10 @@ namespace mjr {
 
 #define MJR_INCLUDE_MRMATHVEC
 #endif
+
+// TODO:
+// - dist2sqr
+// - dist2
+// - distI
+// - dist1
+// - lex_less (integer vectors)

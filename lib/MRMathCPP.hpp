@@ -42,7 +42,7 @@
 #include "MRMathODR.hpp"   // Order
 #include "MRMathSFUN.hpp"  // Special functions
 #include "MRMathIVL.hpp"   // Intervals
-#include "MRMathRVEC.hpp"  // Vectors in R^N (as std::array)
+#include "MRMathVEC.hpp"   // Vectors in R^N (as std::array)
 
 // #include "MRMathCPLX.hpp"  // Complex Numbers
 
