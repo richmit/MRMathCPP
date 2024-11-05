@@ -39,6 +39,9 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
 :PROPERTIES:
 :CUSTOM_ID: latest
 :END:
+
+  Most likely next version number: v3.0.0.0
+
   - Fixed Bugs
     - N/A
   - Known Issues
@@ -52,7 +55,8 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
   - New functionality
     - N/A
   - Documentation
-    - N/A
+    - Added link in main project readme to Doxygen documentation
+    - Published Doxygen documentation to web page.
   - Examples
     - New
       - N/A
@@ -126,6 +130,9 @@ file contains a title line and the contents of the section above named
 :PROPERTIES:
 :CUSTOM_ID: latest_TEMPLATE
 :END:
+
+  Most likely next version number: v0.0.0.0
+
   - Fixed Bugs
     - N/A
   - Known Issues

@@ -1,7 +1,14 @@
 * MRMathCPP
 
-MRMathCPP is a collection of very simple math routines very carefully implemented.
+MRMathCPP is a collection of very simple math routines very carefully
+implemented.
 
-Really this is a place to house all of those little math things that I
-use all the time.  Things like =sgn= or =max4=.
+What do I mean by "simple"?  This library started as a way to
+simplify common constructs like ~abs(x1-x2)<eps~ into things like
+~fc::near(x1, x2, eps)~.  Later I added simple things like =sgn= and
+=max4=.  In short, this library is a collection of simple math things
+I tend to use over and over again.
+
+Documentation:
+   https://www.mitchr.me/SS/MRMathCPP/doc-lib/autodocs/html/index.html
 
