@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-11-06 Wed 14:53 -->
+<!-- 2024-11-06 Wed 15:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=1024, initial-scale=1" />
 <title>MRMathCPP Change Log</title>
@@ -229,12 +229,12 @@
 
 <tr>
 <td class="org-right"><b>Updated:</b></td>
-<td class="org-left"><i>2024-11-06 14:53:01</i></td>
+<td class="org-left"><i>2024-11-06 15:13:48</i></td>
 </tr>
 
 <tr>
 <td class="org-right"><b>Generated:</b></td>
-<td class="org-left"><i>2024-11-06 14:53:03</i></td>
+<td class="org-left"><i>2024-11-06 15:14:03</i></td>
 </tr>
 </tbody>
 </table>
@@ -247,9 +247,10 @@ Copyright &copy; 2024 Mitch Richling. All rights reserved.
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
 <li><a href="#latest">1. Changes On HEAD Since Last Release</a></li>
-<li><a href="#v2.5.0.0">2. v2.5.0.0</a></li>
-<li><a href="#v2.0.0.0">3. v2.0.0.0</a></li>
-<li><a href="#v0.0.0.0">4. v0.0.0.0: Initial Release</a></li>
+<li><a href="#v3.0.0.0">2. v3.0.0.0</a></li>
+<li><a href="#v2.5.0.0">3. v2.5.0.0</a></li>
+<li><a href="#v2.0.0.0">4. v2.0.0.0</a></li>
+<li><a href="#v0.0.0.0">5. v0.0.0.0</a></li>
 </ul>
 </div>
 </div>
@@ -258,13 +259,13 @@ Copyright &copy; 2024 Mitch Richling. All rights reserved.
 <h2 id="latest"><span class="section-number-2">1.</span> Changes On HEAD Since Last Release</h2>
 <div class="outline-text-2" id="text-latest">
 <p>
-Most likely next version number: v3.0.0.0
+Most likely next version number: v3.1.0.0
 </p>
 
 <ul class="org-ul">
 <li>Fixed Bugs
 <ul class="org-ul">
-<li>Several issues with MRMathCPP_config.hpp</li>
+<li>N/A</li>
 </ul></li>
 <li>Known Issues
 <ul class="org-ul">
@@ -272,9 +273,7 @@ Most likely next version number: v3.0.0.0
 </ul></li>
 <li>API breaking Changes
 <ul class="org-ul">
-<li>Removed: mjr::math::vec::any_near_zero()</li>
-<li>Renamed: mjr::math::vec::all_near_zero() to mjr::math::vec::near_zeroI()</li>
-<li>Renamed defines in MRMathCPP_config.hpp</li>
+<li>N/A</li>
 </ul></li>
 <li>Deprecated functionality
 <ul class="org-ul">
@@ -282,17 +281,11 @@ Most likely next version number: v3.0.0.0
 </ul></li>
 <li>New functionality
 <ul class="org-ul">
-<li>mjr::math::vec::dist2()</li>
-<li>mjr::math::vec::dist2sqr()</li>
-<li>mjr::math::vec::equal()</li>
-<li>mjr::math::vec::lex_less()</li>
-<li>mjr::math::sfun::isqrt()</li>
+<li>N/A</li>
 </ul></li>
 <li>Documentation
 <ul class="org-ul">
-<li>Added link in main project readme to Doxygen documentation</li>
-<li>Published Doxygen documentation to web page.</li>
-<li>Reworked all comments to include better math.</li>
+<li>N/A</li>
 </ul></li>
 <li>Examples
 <ul class="org-ul">
@@ -307,13 +300,46 @@ Most likely next version number: v3.0.0.0
 </ul></li>
 <li>Miscellaneous
 <ul class="org-ul">
+<li>N/A</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-v3.0.0.0" class="outline-2">
+<h2 id="v3.0.0.0"><span class="section-number-2">2.</span> v3.0.0.0</h2>
+<div class="outline-text-2" id="text-v3.0.0.0">
+<ul class="org-ul">
+<li>Fixed Bugs
+<ul class="org-ul">
+<li>Several issues with MRMathCPP_config.hpp</li>
+</ul></li>
+<li>API breaking Changes
+<ul class="org-ul">
+<li>Removed: mjr::math::vec::any_near_zero()</li>
+<li>Renamed: mjr::math::vec::all_near_zero() to mjr::math::vec::near_zeroI()</li>
+<li>Renamed defines in MRMathCPP_config.hpp</li>
+</ul></li>
+<li>New functionality
+<ul class="org-ul">
+<li>mjr::math::vec::dist2()</li>
+<li>mjr::math::vec::dist2sqr()</li>
+<li>mjr::math::vec::equal()</li>
+<li>mjr::math::vec::lex_less()</li>
+<li>mjr::math::sfun::isqrt()</li>
+</ul></li>
+<li>Documentation
+<ul class="org-ul">
+<li>Added link in main project readme to Doxygen documentation</li>
+<li>Published Doxygen documentation to web page.</li>
+<li>Reworked all comments to include better math.</li>
 <li>Tons of comment cleanup</li>
 </ul></li>
 </ul>
 </div>
 </div>
 <div id="outline-container-v2.5.0.0" class="outline-2">
-<h2 id="v2.5.0.0"><span class="section-number-2">2.</span> v2.5.0.0</h2>
+<h2 id="v2.5.0.0"><span class="section-number-2">3.</span> v2.5.0.0</h2>
 <div class="outline-text-2" id="text-v2.5.0.0">
 <ul class="org-ul">
 <li>New functionality
@@ -328,7 +354,7 @@ Most likely next version number: v3.0.0.0
 </div>
 </div>
 <div id="outline-container-v2.0.0.0" class="outline-2">
-<h2 id="v2.0.0.0"><span class="section-number-2">3.</span> v2.0.0.0</h2>
+<h2 id="v2.0.0.0"><span class="section-number-2">4.</span> v2.0.0.0</h2>
 <div class="outline-text-2" id="text-v2.0.0.0">
 <ul class="org-ul">
 <li>New functionality
@@ -345,7 +371,7 @@ Most likely next version number: v3.0.0.0
 </div>
 </div>
 <div id="outline-container-v0.0.0.0" class="outline-2">
-<h2 id="v0.0.0.0"><span class="section-number-2">4.</span> v0.0.0.0: Initial Release</h2>
+<h2 id="v0.0.0.0"><span class="section-number-2">5.</span> v0.0.0.0</h2>
 <div class="outline-text-2" id="text-v0.0.0.0">
 <p>
 Initial release blurb.

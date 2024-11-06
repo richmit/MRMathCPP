@@ -40,18 +40,38 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
 :CUSTOM_ID: latest
 :END:
 
-  Most likely next version number: v3.0.0.0
+  Most likely next version number: v3.1.0.0
 
   - Fixed Bugs
-    - Several issues with MRMathCPP_config.hpp
+    - N/A
   - Known Issues
     - N/A
+  - API breaking Changes
+    - N/A
+  - Deprecated functionality
+    - N/A
+  - New functionality
+    - N/A
+  - Documentation
+    - N/A
+  - Examples
+    - New
+      - N/A
+    - Updated
+      - N/A
+  - Miscellaneous
+    - N/A
+
+* v3.0.0.0
+:PROPERTIES:
+:CUSTOM_ID: v3.0.0.0
+:END:
+  - Fixed Bugs
+    - Several issues with MRMathCPP_config.hpp
   - API breaking Changes
     - Removed: mjr::math::vec::any_near_zero()
     - Renamed: mjr::math::vec::all_near_zero() to mjr::math::vec::near_zeroI()
     - Renamed defines in MRMathCPP_config.hpp
-  - Deprecated functionality
-    - N/A
   - New functionality
     - mjr::math::vec::dist2()
     - mjr::math::vec::dist2sqr()
@@ -62,12 +82,6 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
     - Added link in main project readme to Doxygen documentation
     - Published Doxygen documentation to web page.
     - Reworked all comments to include better math.
-  - Examples
-    - New
-      - N/A
-    - Updated
-      - N/A
-  - Miscellaneous
     - Tons of comment cleanup
 * v2.5.0.0
 :PROPERTIES:
@@ -87,7 +101,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
     - Added changelog.org & changelog.html
     - Fixed several doxygen bugs
     - Spell checked headers
-* v0.0.0.0: Initial Release
+* v0.0.0.0
 :PROPERTIES:
 :CUSTOM_ID: v0.0.0.0
 :END:

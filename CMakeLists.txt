@@ -6,12 +6,12 @@ cmake_minimum_required(VERSION 3.20.0 FATAL_ERROR)
 # Proejct meta data
 
 project(MRMathCPP
-  VERSION 2.5.0.0
+  VERSION 3.0.0.0
   DESCRIPTION "Simple Mathematical Utilities"
   HOMEPAGE_URL "https://github.com/richmit/MRMathCPP/"
   LANGUAGES CXX)
 
-set(MRMATHCPP_VERSION_DATE  2024-08-20)
+set(MRMATHCPP_VERSION_DATE  2024-11-06)
 mark_as_advanced(MRMATHCPP_VERSION_DATE)
 
 string(TIMESTAMP MRMATHCPP_CONFIG_DATE "%Y-%m-%d")
