@@ -34,7 +34,6 @@
 #include <numbers>                                                       /* C++ math constants      C++20    */
 #include <vector>                                                        /* STL vector              C++11    */
 
-// Put everything in the mjr namespace
 namespace mjr {
   namespace math {
     /** Real Bivariate Polynomials.

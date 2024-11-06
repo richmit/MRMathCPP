@@ -34,9 +34,8 @@
 #include <cmath>                                                         /* std:: C math.h          C++11    */
 #include <numbers>                                                       /* C++ math constants      C++20    */
 #include <algorithm>                                                     /* STL algorithm           C++11    */
-#include <vector>
+#include <vector>                                                        /* STL vector              C++11    */ 
 
-// Put everything in the mjr namespace
 namespace mjr {
   namespace math {
     /** Univariate polynomials.
@@ -44,11 +43,11 @@ namespace mjr {
     namespace uply {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Evaluate a uni-variate polynomial with double coefficients.
-          A polynomial is defined by it's coefficients.  In this function those coefficients are provided in a vector, and are in lexicographic order:
-          $$a_0+a_1x+a_2x^2+...+a_nx^n$$
+          A polynomial is defined by it's coefficients.  In this function those coefficients are provided in a vector, and are ordered from lowest degree
+          to highest (such that the index of the coefficient is equal to the degree of the term):
+          @f[a_0+a_1x+a_2x^2+...+a_nx^n@f]
           @param uniPoly The polynomial
-          @param x       x value at which to evaluate the polynomial
-          @return Value of polynomial evaluated at x. */
+          @param x       x value at which to evaluate the polynomial */
       inline double eval(std::vector<double> const& uniPoly, double x) {
         if (uniPoly.empty()) {
           return 0;

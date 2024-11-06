@@ -30,7 +30,6 @@
 */
 /*******************************************************************************************************************************************************.H.E.**/
 
-/*############################################################################################################################################################*/
 #ifndef MJR_INCLUDE_MRMATHVEC
 
 #include <array>                                                         /* array template          C++11    */
@@ -42,8 +41,8 @@
 #include <sstream>                                                       /* C++ string stream       C++      */
 #include <string>                                                        /* C++ strings             C++11    */
 #include <type_traits>                                                   /* C++ metaprogramming     C++11    */
-#include <vector>                                                        /* STL vector              C++11    */
-#include <complex>
+#include <vector>                                                        /* STL vector              C++11    */ 
+#include <complex>                                                       /* Complex Numbers         C++11    */
 
 #include "MRMathFC.hpp"
 

@@ -1,1 +1,14 @@
-Header Files -- the entire library is right here.
+* Header Files -- the entire library is right here.
+
+If you are using an IDE, then simply add this directory, or the =.hpp=
+files, to your project.  If you are using GCC/Clang on the command line, then
+add this directory to your include path with the =-I= compiler option.
+
+In your code you can include the specific you need, or include them
+all by with =MRMathCPP.hpp=.
+
+HAVE FUN!
+
+-mitch
+
+

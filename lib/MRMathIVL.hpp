@@ -31,9 +31,8 @@
 #ifndef MJR_INCLUDE_MRMATHIVL
 
 #include <concepts>                                                      /* Concepts library        C++20    */
-#include <cmath>
+#include <cmath>                                                         /* std:: C math.h          C++11    */
 
-// Put everything in the mjr namespace
 namespace mjr {
   namespace math {
     /** Numeric Interval Maps.
