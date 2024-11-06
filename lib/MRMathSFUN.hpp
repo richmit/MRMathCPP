@@ -44,9 +44,15 @@ namespace mjr {
     */
     namespace sfun {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** Signum (sgn, sign) function -- -1 if input is negative, +1 if it is positive, and 0 if it is zero.
-          @param x        Value to test.  Must be an integer or floating point type.
-          @return The sign */
+      /** Signum (sgn, sign) function.
+          The Signum function is defined as follows:
+          @f[ \mathrm{sgn}(x)=
+                \begin{cases}
+                    -1           & \text{if } x<0 \\
+                    \phantom{-}0 & \text{if } x=0 \\
+                    \phantom{-}1 & \text{if } x>0
+                \end{cases} @f]
+          @param x        Input value.  Must be an integer or floating point type. */
       template <typename numType>
       requires (std::integral<numType> || std::floating_point<numType>)
       inline int
@@ -58,10 +64,14 @@ namespace mjr {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Signum with zero epsilon check.
           This function is used if we want to make sure a non-zero sign is only returned if the input value is larger than some epsilon.  i.e. we don't want tiny
-          values near zero to show up as positive or negative.
-          @param x            Value to test.  Must be an integer or floating point type.
-          @param zero_epsilon Epsilion to detect zero sign.  Must be the saem type as x.
-          @return 0 if x in the closed ball of radius zero_epsilon around zero, otherwise like sgn(x). */
+          values near zero to show up as positive or negative.  More formally the function is defined as follows:
+          @f[ \mathrm{sgne}(x)=
+                \begin{cases}
+                    0               & \text{if } \vert x\vert<\epsilon \\
+                    \mathrm{sgn}(x) & \text{otherwise}
+                \end{cases} @f]
+          @param x            Input value.  Must be an integer or floating point type.
+          @param zero_epsilon Epsilion to detect zero.  Must be the saem type as x. See: mjr::math::fc::near_zero(). */
       template <typename numType>
       requires (std::floating_point<numType>)
       inline int
@@ -74,6 +84,17 @@ namespace mjr {
           else
             return -1;
         }
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Integer square root.
+          @f[ \text{isqrt}(x)= \text{floor}(\sqrt{x}) @f]
+          @par WARNING
+          This implementation is not particularly good -- kinda a hack really.
+          @param x  A non-negative integer */
+      template <typename intType>
+      requires (std::integral<intType>)
+      inline intType isqrt(intType x) {
+        return static_cast<intType>(std::floor(std::sqrt(x)));
       }
     } // end namespace sfun
   } // end namespace math

@@ -90,3 +90,40 @@ TEST(FN_sgne, Comprehensive) {
   EXPECT_EQ(mjr::math::sfun::sgne(-0.1, 0.20), 0);
 }
 /** @endcond */
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_isqrt, Comprehensive) {
+  EXPECT_EQ(mjr::math::sfun::isqrt( 0), 0);
+  EXPECT_EQ(mjr::math::sfun::isqrt( 1), 1);
+  EXPECT_EQ(mjr::math::sfun::isqrt( 2), 1);
+  EXPECT_EQ(mjr::math::sfun::isqrt( 3), 1);
+  EXPECT_EQ(mjr::math::sfun::isqrt( 4), 2);
+  EXPECT_EQ(mjr::math::sfun::isqrt( 5), 2);
+  EXPECT_EQ(mjr::math::sfun::isqrt( 6), 2);
+  EXPECT_EQ(mjr::math::sfun::isqrt( 7), 2);
+  EXPECT_EQ(mjr::math::sfun::isqrt( 8), 2);
+  EXPECT_EQ(mjr::math::sfun::isqrt( 9), 3);
+  EXPECT_EQ(mjr::math::sfun::isqrt(10), 3);
+  EXPECT_EQ(mjr::math::sfun::isqrt(11), 3);
+  EXPECT_EQ(mjr::math::sfun::isqrt(12), 3);
+  EXPECT_EQ(mjr::math::sfun::isqrt(13), 3);
+  EXPECT_EQ(mjr::math::sfun::isqrt(14), 3);
+  EXPECT_EQ(mjr::math::sfun::isqrt(15), 3);
+  EXPECT_EQ(mjr::math::sfun::isqrt(16), 4);
+  EXPECT_EQ(mjr::math::sfun::isqrt(17), 4);
+  EXPECT_EQ(mjr::math::sfun::isqrt(18), 4);
+  EXPECT_EQ(mjr::math::sfun::isqrt(19), 4);
+  EXPECT_EQ(mjr::math::sfun::isqrt(20), 4);
+  EXPECT_EQ(mjr::math::sfun::isqrt(21), 4);
+  EXPECT_EQ(mjr::math::sfun::isqrt(22), 4);
+  EXPECT_EQ(mjr::math::sfun::isqrt(23), 4);
+  EXPECT_EQ(mjr::math::sfun::isqrt(24), 4);
+  EXPECT_EQ(mjr::math::sfun::isqrt(25), 5);
+  EXPECT_EQ(mjr::math::sfun::isqrt(26), 5);
+  EXPECT_EQ(mjr::math::sfun::isqrt(27), 5);
+  EXPECT_EQ(mjr::math::sfun::isqrt(28), 5);
+  EXPECT_EQ(mjr::math::sfun::isqrt(29), 5);
+
+  for(int i=0; i<100; i++) 
+    EXPECT_EQ(mjr::math::sfun::isqrt(i*i), i);
+}

@@ -45,6 +45,7 @@
 #include <complex>                                                       /* Complex Numbers         C++11    */
 
 #include "MRMathFC.hpp"
+#include "MRMathSFUN.hpp"
 
 namespace mjr {
   namespace math {
@@ -91,10 +92,10 @@ namespace mjr {
       template <typename intType, std::size_t size>
       requires ((size > 0) && std::integral<intType>)
       inline intType norm2(const std::array<intType, size>& v) {
-        return static_cast<intType>(std::floor(std::sqrt(norm2sqr(v))));
+        return mjr::math::sfun::isqrt(norm2sqr(v));
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** 2-norm (Euclidean) -- floating piont complex vectors.
+      /** 2-norm (Euclidean) -- floating point complex vectors.
           @param v  A vector*/
       template <typename realType, std::size_t size>
       requires ((size > 0) && std::floating_point<realType>)
@@ -212,9 +213,9 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** linear combination (s1*v1_s2*v2) -- real vectors.
-          @param s1  A scaler
+          @param s1  A scalar
           @param v1  A vector
-          @param s2  A scaler
+          @param s2  A scalar
           @param v2  A vector */
       template <typename numType, std::size_t size>
       requires (size > 0)
@@ -226,6 +227,8 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** The triple product -- real vectors of length 3.
+          The triple product is defined as:
+          @F[\vec{v_1}\cdot(\vec{v_2}\times\vec{v_3}) = \text{det}[\vec{v_1}, \vec{v_2}, \vec{v_3}] @F]
           @param v1  A vector (must be of length 3)
           @param v2  A vector (must be of length 3)
           @param v3  A vector (must be of length 3) */
@@ -241,6 +244,8 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** The scalar quadruple product -- real vectors of length 3.
+          The scalar quadruple product is defined as:
+          @F[(\vec{v_1}\times\vec{v_2})\cdot(\vec{v_3}\times\vec{v_4})@F]
           @param v1  A vector (must be of length 3)
           @param v2  A vector (must be of length 3)
           @param v3  A vector (must be of length 3)
@@ -253,6 +258,8 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** The vector quadruple product -- real vectors of length 3.
+          The vector quadruple product is defined as:
+          @F[(\vec{v_1}\times\vec{v_2})\times(\vec{v_3}\times\vec{v_4})@F]
           @param v1  A vector (must be of length 3)
           @param v2  A vector (must be of length 3)
           @param v3  A vector (must be of length 3)
