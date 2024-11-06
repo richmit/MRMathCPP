@@ -228,7 +228,7 @@ namespace mjr {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** The triple product -- real vectors of length 3.
           The triple product is defined as:
-          @F[\vec{v_1}\cdot(\vec{v_2}\times\vec{v_3}) = \text{det}[\vec{v_1}, \vec{v_2}, \vec{v_3}] @F]
+          @f[ \vec{v_1}\cdot(\vec{v_2}\times\vec{v_3}) = \text{det}[\vec{v_1}, \vec{v_2}, \vec{v_3}] @f]
           @param v1  A vector (must be of length 3)
           @param v2  A vector (must be of length 3)
           @param v3  A vector (must be of length 3) */
@@ -245,7 +245,7 @@ namespace mjr {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** The scalar quadruple product -- real vectors of length 3.
           The scalar quadruple product is defined as:
-          @F[(\vec{v_1}\times\vec{v_2})\cdot(\vec{v_3}\times\vec{v_4})@F]
+          @f[(\vec{v_1}\times\vec{v_2})\cdot(\vec{v_3}\times\vec{v_4})@f]
           @param v1  A vector (must be of length 3)
           @param v2  A vector (must be of length 3)
           @param v3  A vector (must be of length 3)
@@ -259,7 +259,7 @@ namespace mjr {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** The vector quadruple product -- real vectors of length 3.
           The vector quadruple product is defined as:
-          @F[(\vec{v_1}\times\vec{v_2})\times(\vec{v_3}\times\vec{v_4})@F]
+          @f[(\vec{v_1}\times\vec{v_2})\times(\vec{v_3}\times\vec{v_4})@f]
           @param v1  A vector (must be of length 3)
           @param v2  A vector (must be of length 3)
           @param v3  A vector (must be of length 3)

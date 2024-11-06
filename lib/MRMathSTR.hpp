@@ -47,14 +47,17 @@ namespace mjr {
     */
     namespace str {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** Format an integer as a string
+      /** Format an integer as a string.
+          If the type of inInt is convertable to an int, then it will be converted to int and will be formated via an std::ostringstream.  If it can't be
+          converted, then it will be passed unchanged.
+          @par Warning
+          For new code I suggest using C++20's std::format.
           @param inInt         The integer to format
           @param width         The width of the string
           @param fill          Fill character
           @param base          An integer (valid values: 16, 10, 8)
           @param rightJustify  If true, then right justify.  Otherwise, left.
-          If the type of inInt is convertable to an int, then it will be converted to int and will be formated via an std::ostringstream.  If it can't be converted,
-          then it will be passed unchanged.
+          
           @return A formatted string.  */
       template <typename intType>
       requires (std::integral<intType>)

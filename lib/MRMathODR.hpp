@@ -42,9 +42,9 @@ namespace mjr {
     namespace odr {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Minimum of three numbers.
-          @param x1 First number.Must be an integer or floating point type.
-          @param x2 Second number.  Must be the saem type as x1.
-          @param x3 Third number.  Must be the saem type as x1.
+          @param x1 First number.  Must be an integer or floating point type.
+          @param x2 Second number.  Must be the same type as x1.
+          @param x3 Third number.  Must be the same type as x1.
           @return Minimum of input values. */
       template <typename numType>
       inline numType min3(numType x1, numType x2, numType x3) {
@@ -64,9 +64,9 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Maximum of three numbers.
-          @param x1 First number.Must be an integer or floating point type.
-          @param x2 Second number.  Must be the saem type as x1.
-          @param x3 Third number.  Must be the saem type as x1.
+          @param x1 First number.  Must be an integer or floating point type.
+          @param x2 Second number.  Must be the same type as x1.
+          @param x3 Third number.  Must be the same type as x1.
           @return Maximum of input values. */
       template <typename numType>
       inline numType max3(numType x1, numType x2, numType x3) {
@@ -86,10 +86,10 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Minimum of four numbers.
-          @param x1 First number.Must be an integer or floating point type.
-          @param x2 Second number.  Must be the saem type as x1.
-          @param x3 Third number.  Must be the saem type as x1.
-          @param x4 Fourth number.  Must be the saem type as x1.
+          @param x1 First number.  Must be an integer or floating point type.
+          @param x2 Second number.  Must be the same type as x1.
+          @param x3 Third number.  Must be the same type as x1.
+          @param x4 Fourth number.  Must be the same type as x1.
           @return Minimum of input values. */
       template <typename numType>
       inline numType min4(numType x1, numType x2, numType x3, numType x4) {
@@ -100,10 +100,10 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Maximum of four numbers.
-          @param x1 First number.Must be an integer or floating point type.
-          @param x2 Second number.  Must be the saem type as x1.
-          @param x3 Third number.  Must be the saem type as x1.
-          @param x4 Fourth number.  Must be the saem type as x1.
+          @param x1 First number.  Must be an integer or floating point type.
+          @param x2 Second number.  Must be the same type as x1.
+          @param x3 Third number.  Must be the same type as x1.
+          @param x4 Fourth number.  Must be the same type as x1.
           @return Maximum of input values. */
       template <typename numType>
       inline numType max4(numType x1, numType x2, numType x3, numType x4) {

@@ -39,10 +39,9 @@ namespace mjr {
     */
     namespace ivl {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** Wrap a numbers outside [0, max_out] onto [0, max_out].
-          @param in_num       The value to be wrapped
-          @param max_out The maximum output value
-          @return The wrapped value. */
+      /** Wrap a integers outside [0, max_out] onto [0, max_out].
+          @param in_num  The value to be wrapped
+          @param max_out The maximum output value */
       template <typename inType, typename maxType>
       requires (std::convertible_to<maxType, inType> && std::integral<inType> && std::integral<maxType>)
       inline inType wrapCC(inType in_num, maxType max_out) {
@@ -50,7 +49,9 @@ namespace mjr {
         return (in_num % tmp + tmp) % tmp;
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** Teplate specialization. */
+      /** Wrap a floating piont numbers outside [0, max_out] onto [0, max_out].
+          @param in_num  The value to be wrapped
+          @param max_out The maximum output value */
       template <typename inType, typename maxType>
       requires (std::convertible_to<maxType, inType> && std::floating_point<inType> && std::floating_point<maxType>)
       inline inType wrapCC(inType in_num, maxType max_out) {
@@ -62,20 +63,22 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Wrap a floating point value to the range [0, maxValue) via a modulus like function that wraps the value onto the range (i.e. max_out will map to 0).
-          Handy way to wrap angles in degrees to [0, 360).
           @param in_num The value to be wrapped
-          @param max_out The maximum output value
-          @return The wrapped value. */
+          @param max_out The maximum output value */
       template <typename realType>
       inline realType wrapCO(realType in_num, realType max_out) {
         return std::fmod(std::fmod(in_num, max_out) + max_out, max_out);
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** Clamp a number (integer/float) to the range [0,max_out] via a true clamping function.
-          Values below the range map to 0 while values above the range map to max_out).
+      /** Clamp a number (integer/float) to the range [0,max_out].
+          @f[ \mathrm{clamp}(x)=
+                \begin{cases}
+                    0              & \text{if } x<0 \\
+                    x              & \text{if } 0\le x \le \text{max_out} \\
+                    \text{max_out} & \text{if } x>\text{max_out}
+                \end{cases} @f]
           @param in_num The value to be clamped
-          @param max_out The maximum output value
-          @return The clamped value. */
+          @param max_out The maximum output value */
       template <typename inType, typename maxType>
       requires (std::convertible_to<maxType, inType> && ( std::integral<inType> || std::floating_point<inType>))
       inline inType clamp(inType in_num, maxType max_out) {
@@ -86,7 +89,7 @@ namespace mjr {
         return in_num;
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** Clamp a floating point number to the range [0,1].
+      /** Clamp a floating point number to the range [0,1] -- see clamp().
           Values below the range map to 0 while values above the range map to 1.
           @param in_num The value to be clamped
           @return The clamped value. */
@@ -98,8 +101,12 @@ namespace mjr {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Map a non-negative floating value into the unit interval.
           0 maps to 1 and @f$\infty@f$ maps to 0.  Negative numbers are mapped to themselves -- instead of throwing an error.
-          @param x The value to be mapped
-          @return The mapped value. */
+          @f[ \text{right_ray_to_unit}(x)=
+                \begin{cases}
+                    x              & \text{if } x<0 \\
+                    \frac{1}{x+1}  & \text{otherwise}
+                \end{cases} @f]
+          @param x The value to be mapped */
       template <typename realType>
       requires (std::floating_point<realType>)
       inline realType right_ray_to_unit(realType x) {
@@ -109,7 +116,9 @@ namespace mjr {
           return static_cast<realType>(1)/(x + static_cast<realType>(1));
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** Teplate specialization. */
+      /** Map a non-negative integer value into the unit interval -- see right_ray_to_unit().
+          The result is a double and all arithmetic is performed using doubles.
+          @param x The value to be mapped */
       template <typename intType>
       requires (std::convertible_to<intType, double> && std::integral<intType>)
       inline double right_ray_to_unit(intType x) {

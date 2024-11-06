@@ -72,7 +72,7 @@ namespace mjr {
         return std::max(std::abs(std::real(z)), std::abs(std::imag(z)));
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** 1-norm (sum of absolute value) of a complex number.
+      /** 1-norm (taxi cab, sum of absolute value) of a complex number.
           @param z Complex number. */
       template <typename numType>
       requires (std::is_arithmetic_v<numType>)
@@ -98,6 +98,7 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** 2-norm (Euclidean) distance between two complex numbers.
+          This is effectively the same as std::abs().
           @param z1 Complex number.
           @param z2 Complex number. */
       template <typename numType>

@@ -59,9 +59,11 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Evaluate a bi-variate polynomial with double coefficients.
-          A polynomial is defined by it's coefficients.  In this function those coefficients are provided in a vector, and are in lexicographic order:
-          - 2nd: 00 01 02 10 11 12 20 21 22 -> a00*x^2*y^2 + a01*x^2*y^1 + ... + a21*x^0*y^1 + a22*x^0*y^0
-          - 3rd: 00 01 02 03 10 11 12 13 20 21 22 23 30 31 32 33
+          A polynomial is defined by a coefficient vector in lexicographic order.  The powers on the variables in the leading term must be equal.  In other
+          words, the leading term must be of the form @f$ax^ny^n@f$ for some positive integer @f$n@f$ and real number @f$a@f$. The vector must contain a value
+          for every possible coefficient.  In particular, that means the vectors will be of length @f$n^2@f$. The polynomials for @f$n=2@f$ and @f$n=3@f$:
+           - @f$n=2@f$: @f$a_0x^2y^2+a_1x^2y+a_2x^2+a_3xy^2+a_4xy+a_5x+a_7y^2+a_8y+a_9@f$
+           - @f$n=3@f$: @f$a_0x^3y^3+a_1x^3y^2+a_2x^3y+a_3x^3+$a_4x^2y^3+a_5x^2y^2+a_6x^2y+a_7x^2+$a_8xy^3+a_9xy^2+a_{10}xy+a_{12}x+$a_{13}0y^3+a_{14}y^2+a_{15}y+a_{16}@f$
           @param biPoly The polynomial
           @param x      x value at which to evaluate the polynomial
           @param y      x value at which to evaluate the polynomial
@@ -77,6 +79,8 @@ namespace mjr {
         for(int i=1; i<=maxPower; i++) {
           xpowers[i] = x * xpowers[i-1];
           ypowers[i] = y * ypowers[i-1];
+
+          std::cout << "x: " << xpowers[i] << " y: " << ypowers[i] << std::endl;
         }
         double pvalue = 0;
         std::vector<double>::size_type k=biPoly.size()-1;

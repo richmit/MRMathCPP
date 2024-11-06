@@ -57,9 +57,11 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
     - mjr::math::vec::dist2sqr()
     - mjr::math::vec::equal()
     - mjr::math::vec::lex_less()
+    - mjr::math::sfun::isqrt()
   - Documentation
     - Added link in main project readme to Doxygen documentation
     - Published Doxygen documentation to web page.
+    - Reworked all comments to include better math.
   - Examples
     - New
       - N/A
