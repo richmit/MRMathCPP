@@ -32,19 +32,10 @@ OPTION(OWNLOAD_GTEST "Download latest Google Test from Github"  OFF )
 # Find tools & libraries used to build targets
 
 if(O_DOXYGEN)
-  set(MRMATHCPP_OPT_DOXYGEN "1")
   find_package(Doxygen)
-  if(Doxygen_FOUND)
-    set(MRMATHCPP_FOUND_DOXYGEN "1")
-  else()
-    set(MRMATHCPP_FOUND_DOXYGEN "0")
-  endif()
-else()
-  set(MRMATHCPP_OPT_DOXYGEN "0")
 endif()
 
 if(O_GTEST)
-  set(MRMATHCPP_OPT_GTEST "1")
   if(OWNLOAD_GTEST)
     message(STATUS "Downloading GTest")
     include(FetchContent)
@@ -68,7 +59,6 @@ if(O_GTEST)
     endif()
   endif()
 else()
-  set(MRMATHCPP_OPT_GTEST "0")
   if(OWNLOAD_GTEST)
     message(FATAL_ERROR "-DO_GTEST must be YES if -DOWNLOAD_GTEST is YES!")
   endif()
@@ -135,11 +125,6 @@ if(GTest_FOUND)
 endif()
 
 ######################################################################################################################################################
-# Generate an include file with various methdata about the build.
-
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/MRMathCPP_config.hpp.cmake ${CMAKE_BINARY_DIR}/MRMathCPP_config.hpp)
-
-######################################################################################################################################################
 # Add targets for documentation generation & publication
 
 if(Doxygen_FOUND)
@@ -168,8 +153,7 @@ endif()
 ######################################################################################################################################################
 # Create interface target for the entire project
 
-set(MRMATHCPP_INCLUDES "build/MRMathCPP_config.hpp"
-                       "lib/MRMathBPLY.hpp"
+set(MRMATHCPP_INCLUDES "lib/MRMathBPLY.hpp"
                        "lib/MRMathCPLX.hpp"
                        "lib/MRMathCPP.hpp"
                        "lib/MRMathFC.hpp"
