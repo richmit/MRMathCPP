@@ -79,8 +79,6 @@ namespace mjr {
         for(int i=1; i<=maxPower; i++) {
           xpowers[i] = x * xpowers[i-1];
           ypowers[i] = y * ypowers[i-1];
-
-          std::cout << "x: " << xpowers[i] << " y: " << ypowers[i] << std::endl;
         }
         double pvalue = 0;
         std::vector<double>::size_type k=biPoly.size()-1;
