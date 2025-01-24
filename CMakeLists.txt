@@ -166,10 +166,10 @@ if(Doxygen_FOUND)
       VERBATIM)
   endforeach(DOXINPUT)
   # Pub target
-  if(EXISTS "c:/Users/richmit/Documents/WWW/site/SS/MRMathCPP/doc-lib/")
+  if(EXISTS "c:/Users/richmit/MJR/WWW/site/SS/MRMathCPP/doc-lib/")
     add_custom_target(install-doc-lib
       DEPENDS doc-lib
-      COMMAND  rsync -rlt --log-format=%f --stats --delete --delete-excluded --modify-window=2 doc-lib/ /c/Users/richmit/Documents/WWW/site/SS/MRMathCPP/doc-lib
+      COMMAND  rsync -rlt --log-format=%f --stats --delete --delete-excluded --modify-window=2 doc-lib/ /c/Users/richmit/MJR/WWW/site/SS/MRMathCPP/doc-lib
       COMMENT "Put doc-lib data in web site directory"
     )
   endif()
