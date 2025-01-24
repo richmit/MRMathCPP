@@ -82,24 +82,19 @@ EOF
 
   if grep -q '^OPTION(O_' ../CMakeLists.txt; then
      echo '     - Optional features'
-     sed -En 's/^OPTION\(O_([A-Z0-9_]+)( +)"([^"]+)".*(ON|OFF).*$/       - -DO_\1=[ON|OFF] \2 \3 (Default: \4)/p' < ../CMakeLists.txt
+     sed -En 's/^[#O]PTION\(O_([A-Z0-9_]+)( +)"([^"]+)".*(ON|OFF).*$/       - -DO_\1=[ON|OFF] \2 \3 (Default: \4)/p' < ../CMakeLists.txt
   fi
 
   OPH='     - Search Paths For MR* Components'
   for opath in "${OPATHS[@]}"; do
-    if grep -q "${opath}_DIR" ../CMakeLists.txt; then
+    if grep -q "${opath}_PATH" ../CMakeLists.txt; then
       if [ -n "$OPH" ]; then
         echo "$OPH"
       fi
       OPH=''
-      echo "       - -D${opath}_DIR=<PATH>"
+      echo "       - -D${opath}_PATH=<PATH>"
     fi
   done
-
-  if grep -q '^OPTION(OWNLOAD_' ../CMakeLists.txt; then
-     echo '     - Optional downloads'
-     sed -En 's/^OPTION\(OWNLOAD_([A-Z0-9_]+)( +)"([^"]+)".*(ON|OFF).*$/       - -DOWNLOAD_\1=[ON|OFF] \2 \3 (Default: \4)/p' < ../CMakeLists.txt
-  fi
 
 exit
 fi
@@ -128,6 +123,7 @@ fi
       else
         rm -rf *
       fi
+      echo 'This is the build directory.  You should run CMake inside this directory to build project targets.' >> README.md
     fi
     #
     # Figure out target
