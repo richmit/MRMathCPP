@@ -119,8 +119,7 @@ if(GTest_FOUND)
     target_compile_features(${CURTGT} PUBLIC cxx_std_23)
 
     # MRMathCPP specific header libs
-    target_include_directories(${CURTGT} PRIVATE lib)
-    target_include_directories(${CURTGT} PRIVATE ${CMAKE_BINARY_DIR})
+    target_include_directories(${CURTGT} PRIVATE ${MRMathCPP_INCLUDE})
 
     # Compiler specific stuff
     if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
