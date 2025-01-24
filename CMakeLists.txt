@@ -65,6 +65,34 @@ else()
 endif()
 
 ######################################################################################################################################################
+# Create interface target for the entire project
+
+set(MRMATHCPP_INCLUDES "lib/MRMathBPLY.hpp"
+                       "lib/MRMathCPLX.hpp"
+                       "lib/MRMathCPP.hpp"
+                       "lib/MRMathFC.hpp"
+                       "lib/MRMathIVL.hpp"
+                       "lib/MRMathLINM.hpp"
+                       "lib/MRMathODR.hpp"
+                       "lib/MRMathSFUN.hpp"
+                       "lib/MRMathSTR.hpp"
+                       "lib/MRMathUPLY.hpp"
+                       "lib/MRMathVEC.hpp"
+                    )
+add_library(MRMathCPP INTERFACE ${MRMATHCPP_INCLUDES})
+target_include_directories(MRMathCPP INTERFACE "${PROJECT_SOURCE_DIR}/lib")
+
+######################################################################################################################################################
+# Export the library interface cmake file
+
+export(TARGETS MRMathCPP FILE "${CMAKE_BINARY_DIR}/MRMathCPPLib.cmake")
+
+######################################################################################################################################################
+# Create variable for project includes
+get_target_property(MRMathCPP_INCLUDE MRMathCPP INTERFACE_INCLUDE_DIRECTORIES)
+message(STATUS "Combined Project Includes: ${MRMathCPP_INCLUDE}")
+
+######################################################################################################################################################
 # Create Unit Test Targets
 
 if(GTest_FOUND)
@@ -149,68 +177,3 @@ if(Doxygen_FOUND)
 else()
   message("Warning: Doxygen not found.  No documentation targets!")
 endif()
-
-######################################################################################################################################################
-# Create interface target for the entire project
-
-set(MRMATHCPP_INCLUDES "lib/MRMathBPLY.hpp"
-                       "lib/MRMathCPLX.hpp"
-                       "lib/MRMathCPP.hpp"
-                       "lib/MRMathFC.hpp"
-                       "lib/MRMathIVL.hpp"
-                       "lib/MRMathLINM.hpp"
-                       "lib/MRMathODR.hpp"
-                       "lib/MRMathSFUN.hpp"
-                       "lib/MRMathSTR.hpp"
-                       "lib/MRMathUPLY.hpp"
-                       "lib/MRMathVEC.hpp"
-                    )
-add_library(MRMathCPP INTERFACE ${MRMATHCPP_INCLUDES})
-target_include_directories(MRMathCPP INTERFACE
-                           "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/lib>"
-                           "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/build>"
-                           "$<INSTALL_INTERFACE:include>")
-
-######################################################################################################################################################
-# Export the library interface cmake file
-
-export(TARGETS MRMathCPP FILE "${CMAKE_BINARY_DIR}/MRMathCPPLib.cmake")
-
-######################################################################################################################################################
-# Create Package Files
-
-include(CMakePackageConfigHelpers)
-
-configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/MRMathCPPConfig.cmake.in"
-                              "${CMAKE_CURRENT_BINARY_DIR}/MRMathCPPConfig.cmake"
-                              INSTALL_DESTINATION $"{CMAKE_INSTALL_LIBDIR}/cmake/MRMathCPP")
-
-write_basic_package_version_file("${CMAKE_CURRENT_BINARY_DIR}/MRMathCPPConfigVersion.cmake"
-                                 COMPATIBILITY AnyNewerVersion)
-
-######################################################################################################################################################
-# Install
-#
-# This configuration "installs" all the stuff required to build things with MRMathCPP into the export directory:
-#  - Non-deprecated Header files
-#  - cmake package
-#  - cmake export for library
-
-set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/build/install")
-include(GNUInstallDirs)
-install(FILES ${MRMATHCPP_INCLUDES} TYPE INCLUDE)
-install(TARGETS MRMathCPP EXPORT MRMathCPPLib)
-
-install(EXPORT MRMathCPPLib
-        FILE MRMathCPPLib.cmake
-        DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/MRMathCPP")
-
-install(FILES
-        "${CMAKE_CURRENT_BINARY_DIR}/MRMathCPPConfig.cmake"
-        "${CMAKE_CURRENT_BINARY_DIR}/MRMathCPPConfigVersion.cmake"
-        DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/MRMathCPP")
-
-
-
-# include(GoogleTest)
-# gtest_discover_tests(hello_test)
