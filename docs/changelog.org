@@ -47,7 +47,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
   - Known Issues
     - N/A
   - API breaking Changes
-    - N/A
+    - Removed configuration header
   - Deprecated functionality
     - N/A
   - New functionality
@@ -60,7 +60,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
     - Updated
       - N/A
   - Miscellaneous
-    - N/A
+    - Streamlined cmake config
 
 * v3.0.0.0
 :PROPERTIES:
