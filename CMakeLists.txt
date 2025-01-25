@@ -6,27 +6,24 @@ cmake_minimum_required(VERSION 3.20.0 FATAL_ERROR)
 # Proejct meta data
 
 project(MRMathCPP
-  VERSION 3.0.0.0
+  VERSION 4.0.0.0
   DESCRIPTION "Simple Mathematical Utilities"
   HOMEPAGE_URL "https://github.com/richmit/MRMathCPP/"
   LANGUAGES CXX)
 
-set(MRMATHCPP_VERSION_DATE  2024-11-06)
+set(MRMATHCPP_VERSION_DATE  2025-01-25)
 mark_as_advanced(MRMATHCPP_VERSION_DATE)
-
-string(TIMESTAMP MRMATHCPP_CONFIG_DATE "%Y-%m-%d")
-mark_as_advanced(MRMATHCPP_CONFIG_DATE)
 
 ######################################################################################################################################################
 # Include ctest
 include(CTest)
 
 ######################################################################################################################################################
-# Here are the options we use to modify the build -- these options are passed to cmake like so: cmake -DO_BTEST=YES or -DO_BTEST=NO
+# Here are the options we use to modify the build -- these options are passed to cmake like so: cmake -DO_GTEST=YES or -DO_GTEST=NO
 
-OPTION(O_DOXYGEN     "Include support for doxygen"              ON  )
-OPTION(O_GTEST       "Include support for Google Test"          ON  )
-OPTION(OWNLOAD_GTEST "Download latest Google Test from Github"  OFF )
+OPTION(O_DOXYGEN     "Include support for doxygen"             ON  )
+OPTION(O_GTEST       "Include support for Google Test"         ON  )
+OPTION(OWNLOAD_GTEST "Download latest Google Test from Github" OFF )
 
 ######################################################################################################################################################
 # Find tools & libraries used to build targets
@@ -37,7 +34,7 @@ endif()
 
 if(O_GTEST)
   if(OWNLOAD_GTEST)
-    message(STATUS "Downloading GTest")
+    message(STATUS "GTest: Downloading")
     include(FetchContent)
     FetchContent_Declare(
       googletest
@@ -47,16 +44,10 @@ if(O_GTEST)
     # For Windows: Prevent overriding the parent project's compiler/linker settings
     set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
     FetchContent_MakeAvailable(googletest)
-    set(MRMATHCPP_FOUND_GTEST "1")  # If FetchContent_MakeAvailable didn't work, then cmake will error out.
-    set(GTest_FOUND "YES")         # If FetchContent_MakeAvailable didn't work, then cmake will error out.
+    set(GTest_FOUND "YES") # If FetchContent_MakeAvailable didn't work, then cmake will error out.
   else()
-    message(STATUS "Not downloading GTest")
+    message(STATUS "GTest: Not downloading GTest")
     find_package(GTest)
-    if(GTest_FOUND)
-      set(MRMATHCPP_FOUND_GTEST "1")
-    else()
-      set(MRMATHCPP_FOUND_GTEST "0")
-    endif()
   endif()
 else()
   if(OWNLOAD_GTEST)
@@ -170,8 +161,7 @@ if(Doxygen_FOUND)
     add_custom_target(install-doc-lib
       DEPENDS doc-lib
       COMMAND  rsync -rlt --log-format=%f --stats --delete --delete-excluded --modify-window=2 doc-lib/ /c/Users/richmit/MJR/WWW/site/SS/MRMathCPP/doc-lib
-      COMMENT "Put doc-lib data in web site directory"
-    )
+      COMMENT "Put doc-lib data in web site directory")
   endif()
 else()
   message("Warning: Doxygen not found.  No documentation targets!")
