@@ -35,30 +35,13 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
 
 #+TOC: headlines 5
 
-* Changes On HEAD Since Last Release
+* v4.0.0.0: Changes On HEAD Since Last Release
 :PROPERTIES:
-:CUSTOM_ID: latest
+:CUSTOM_ID: v4.0.0.0
 :END:
 
-  Most likely next version number: v3.1.0.0
-
-  - Fixed Bugs
-    - N/A
-  - Known Issues
-    - N/A
   - API breaking Changes
     - Removed configuration header
-  - Deprecated functionality
-    - N/A
-  - New functionality
-    - N/A
-  - Documentation
-    - N/A
-  - Examples
-    - New
-      - N/A
-    - Updated
-      - N/A
   - Miscellaneous
     - Streamlined cmake config
 
