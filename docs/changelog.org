@@ -61,6 +61,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
       - N/A
   - Miscellaneous
     - Cleaned up leftovers of old CMake config
+    - Added IncludeMRMathCPPLib.cmake
 
 * v4.0.0.0: Changes On HEAD Since Last Release
 :PROPERTIES:
