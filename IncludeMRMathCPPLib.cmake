@@ -34,12 +34,14 @@
 #
 #  I keep dependent repositories I have authored in the same base directory, and I always use a build directory called 'build'.  While this makes it super
 #  simple for me to pull in include files using a fixed relative path, it also complicates matters for people trying to use my code.  This include file
-#  contains a bit of code that looks for project dependencies using my preferred conventions, but produces far more meaningful error message.
+#  contains a bit of code that looks for project dependencies using my preferred conventions, but provides for a bit of simple configuration and produces a
+#  far more meaningful error message.
 #
-#  In addition to providing a better error message, this code also allows the user to specify the absolute path to the MRMathCPPLib.cmake file on the cmake
-#  command line with an option like this:  -DMRMathCPP_PATH=/full/path/to/the/file/MRMathCPPLib.cmake
+#  The user to specify the absolute path to the MRMathCPPLib.cmake file on the cmake command line with an option like this:
 #
-#  Note the PATHS argument for find_file can be used to hardware the location of the MRMathCPPLib.cmake file into the CMakeLists.txt file.
+#         -DMRMathCPP_PATH=/full/path/to/the/file/MRMathCPPLib.cmake
+#
+#  Note the PATHS argument for find_file can be used to hard code the location of the MRMathCPPLib.cmake file into the CMakeLists.txt file.
 #
 #  This code sets some variables:
 #   - MRMathCPP_PATH will be set to MRMathCPP_PATH-NOTFOUND if the file is not found.  This can be useful if you wish to replace the FATAL_ERROR message 
@@ -53,6 +55,7 @@ find_file(MRMathCPP_PATH "MRMathCPPLib.cmake" PATHS "MRMathCPP/build"  "../MRMat
 if(NOT MRMathCPP_PATH STREQUAL "MRMathCPP_PATH-NOTFOUND")
   message(STATUS "Found MRMathCPP: ${MRMathCPP_PATH}")
   include("${MRMathCPP_PATH}")
+  get_target_property(MRMathCPP_INCLUDE MRMathCPP INTERFACE_INCLUDE_DIRECTORIES)
 else()
   message(FATAL_ERROR " MRMathCPP Search Failed!\n"
                       "     The MRMathCPP repository must be located in the same directory as this repository,\n"
@@ -65,4 +68,3 @@ else()
                       "        cd ../..                                            \n"
                       "     Then return to this repository, and try to configure it again.\n")
 endif()
-get_target_property(MRMathCPP_INCLUDE MRMathCPP INTERFACE_INCLUDE_DIRECTORIES)
