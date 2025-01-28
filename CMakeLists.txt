@@ -32,6 +32,7 @@ if(O_DOXYGEN)
   find_package(Doxygen)
 endif()
 
+# CODE GEN: ~/MJR/core/codeBits/bin/src2orgListing ~/core/codeBits/cmake-template/include_gtest.cmake
 if(O_GTEST)
   if(OWNLOAD_GTEST)
     message(STATUS "GTest: Downloading")
