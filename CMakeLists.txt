@@ -144,26 +144,25 @@ if(GTest_FOUND)
 endif()
 
 ######################################################################################################################################################
-# Add targets for documentation generation & publication
-
+# CODE GEN: ~/MJR/core/codeBits/bin/src2orgListing ~/core/codeBits/cmake-template/include_doxygen-targets.cmake | sed 's/PROJECT_NAME/MRMathCPP/g; s/SRCP/"lib"/'
 if(Doxygen_FOUND)
-  # Gen targets
   foreach(DOXINPUT IN ITEMS "lib")
-    message(STATUS "Generateing doxygen target for ${DOXINPUT}")
+    message(STATUS "Generateing doxygen generation target for ${DOXINPUT}")
     CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/Doxyfile.cmake ${CMAKE_BINARY_DIR}/doc-${DOXINPUT}/Doxyfile)
     add_custom_target(doc-${DOXINPUT}
       COMMAND ${DOXYGEN_EXECUTABLE} > dox.out
       WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/doc-${DOXINPUT}
       COMMENT "Generating ${DOXINPUT} documentation with Doxygen"
       VERBATIM)
+    if(EXISTS "c:/Users/richmit/MJR/WWW/site/SS/MRMathCPP/doc-${DOXINPUT}/")
+      message(STATUS "Generateing doxygen publish target for ${DOXINPUT}")
+      add_custom_target("install-doc-${DOXINPUT}"
+        DEPENDS "doc-${DOXINPUT}"
+        COMMAND  rsync -rlt --log-format=%f --stats --delete --delete-excluded --modify-window=2 "doc-${DOXINPUT}/" "/c/Users/richmit/MJR/WWW/site/SS/MRMathCPP/doc-${DOXINPUT}"
+        COMMENT "Put ${DOXINPUT} data in web site directory")
+    endif()
   endforeach(DOXINPUT)
-  # Pub target
-  if(EXISTS "c:/Users/richmit/MJR/WWW/site/SS/MRMathCPP/doc-lib/")
-    add_custom_target(install-doc-lib
-      DEPENDS doc-lib
-      COMMAND  rsync -rlt --log-format=%f --stats --delete --delete-excluded --modify-window=2 doc-lib/ /c/Users/richmit/MJR/WWW/site/SS/MRMathCPP/doc-lib
-      COMMENT "Put doc-lib data in web site directory")
-  endif()
 else()
-  message("Warning: Doxygen not found.  No documentation targets!")
+  message(STATUS "Warning: Doxygen not found.  No documentation targets!")
 endif()
+
