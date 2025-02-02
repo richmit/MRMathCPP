@@ -89,7 +89,6 @@ TEST(FN_sgne, Comprehensive) {
   EXPECT_EQ(mjr::math::sfun::sgne( 0.1, 0.20), 0);
   EXPECT_EQ(mjr::math::sfun::sgne(-0.1, 0.20), 0);
 }
-/** @endcond */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST(FN_isqrt, Comprehensive) {
@@ -127,3 +126,4 @@ TEST(FN_isqrt, Comprehensive) {
   for(int i=0; i<100; i++) 
     EXPECT_EQ(mjr::math::sfun::isqrt(i*i), i);
 }
+/** @endcond */
