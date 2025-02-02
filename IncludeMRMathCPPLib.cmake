@@ -37,7 +37,7 @@
 #  contains a bit of code that looks for project dependencies using my preferred conventions, but provides for a bit of simple configuration and produces a
 #  far more meaningful error message.
 #
-#  The user to specify the absolute path to the MRMathCPPLib.cmake file on the cmake command line with an option like this:
+#  An absolute path to the MRMathCPPLib.cmake file may be specified on the cmake command line with an option like this:
 #
 #         -DMRMathCPP_PATH=/full/path/to/the/file/MRMathCPPLib.cmake
 #
