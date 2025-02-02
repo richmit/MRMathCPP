@@ -40,7 +40,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
 :CUSTOM_ID: latest
 :END:
 
-  Most likely next version number: v4.1.0.0
+  Most likely next version number: v5.0.0.0
 
   - Fixed Bugs
     - N/A
@@ -51,16 +51,13 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
   - Deprecated functionality
     - N/A
   - New functionality
-    - N/A
+    - New Header: MRMathCPP.hpp: Enumerated Signs for SDF Function Tests.
   - Documentation
-    - N/A
-  - Examples
-    - New
-      - N/A
-    - Updated
-      - N/A
+    - Removed "examples" item from changelog.org release section template
+    - Updated readmes to include CMake note.
   - Miscellaneous
     - Cleaned up leftovers of old CMake config
+    - Updated configure.sh to 2025-01-30 version
     - Added IncludeMRMathCPPLib.cmake
 
 * v4.0.0.0: Changes On HEAD Since Last Release
@@ -175,10 +172,5 @@ file contains a title line and the contents of the section above named
     - N/A
   - Documentation
     - N/A
-  - Examples
-    - New
-      - N/A
-    - Updated
-      - N/A
   - Miscellaneous
     - N/A

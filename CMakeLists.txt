@@ -62,6 +62,7 @@ endif()
 set(MRMATHCPP_INCLUDES "lib/MRMathBPLY.hpp"
                        "lib/MRMathCPLX.hpp"
                        "lib/MRMathCPP.hpp"
+                       "lib/MRMathESGN.hpp"
                        "lib/MRMathFC.hpp"
                        "lib/MRMathIVL.hpp"
                        "lib/MRMathLINM.hpp"
@@ -92,6 +93,7 @@ if(GTest_FOUND)
   set(TARGETS
               "mjr_math_bply"
               "mjr_math_cplx"
+              "mjr_math_esgn"
               "mjr_math_fc"
               "mjr_math_ivl"
               "mjr_math_linm"
