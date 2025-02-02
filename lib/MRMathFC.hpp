@@ -44,6 +44,9 @@ namespace mjr {
     /** Real & Complex Floating Point Comparisons.
     */
     namespace fc {
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      /** @name Zero Comparison */
+      //@{
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Detect if a floating point value is near zero.
           @param x            Value to test.  Must be a floating point type.
@@ -65,6 +68,10 @@ namespace mjr {
       inline bool near_zero(std::complex<realType> z, realType zero_epsilon) {
         return (near_zero(std::real(z), zero_epsilon) && near_zero(std::imag(z), zero_epsilon));
       }
+      //@}
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      /** @name Non-Zero Comparison */ 
+      //@{
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Detect if two floating point values are near each other.
           In other words make sure @f$x_1-x_2@f$ is near zero -- See: near_zero().
@@ -89,6 +96,7 @@ namespace mjr {
       inline bool near(std::complex<realType> z1, std::complex<realType> z2, realType zero_epsilon) {
         return near_zero(z1 - z2, zero_epsilon);
       }
+      //@}
     } // end namespace fc
   } // end namespace math
 } // end namespace mjr

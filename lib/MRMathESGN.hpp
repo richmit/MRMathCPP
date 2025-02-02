@@ -79,11 +79,9 @@ namespace mjr {
     /** Enumerated Signs for SDF Function Tests.
     */
     namespace esgn {
-
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       /** @name Types For esgn */
       //@{
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Enum to represent a sign.
           Careful selection of underlying integer values for the signs allows for optimization of common SDF questions. */
@@ -91,32 +89,25 @@ namespace mjr {
                                         esPos  = 1, //!< Positive.
                                         esNeg  = 2  //!< Negative.
                                       };
-
       //@}
-
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       /** @name Boundry Intersection */
       //@{
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Return true if one or more values are zero or if any of the values differ.
           @param s1 First value
           @param s2 Second value
           @return Boolean true if one or more values are zero or if any of the values differ. */
       bool zero_or_change(signT s1, signT s2)                               { return (0 == (std::to_underlying(s1) & std::to_underlying(s2)));                                                                            } // Segment
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** @overload */
       bool zero_or_change(signT s1, signT s2, signT s3)                     { return (0 == (std::to_underlying(s1) & std::to_underlying(s2) & std::to_underlying(s3)));                                                   } // Triangle
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** @overload */
       bool zero_or_change(signT s1, signT s2, signT s3, signT s4)           { return (0 == (std::to_underlying(s1) & std::to_underlying(s2) & std::to_underlying(s3) & std::to_underlying(s4)));                          } // Quad, 2D Pixel, or Tetrahedron
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** @overload */
       bool zero_or_change(signT s1, signT s2, signT s3, signT s4, signT s5) { return (0 == (std::to_underlying(s1) & std::to_underlying(s2) & std::to_underlying(s3) & std::to_underlying(s4) & std::to_underlying(s5))); } // Rectangular Pyramid
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** @overload */
       template< class InputIt>
@@ -128,8 +119,7 @@ namespace mjr {
             return true;
         }
         return false;
-      }
-
+      }    
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** @overload */
       inline bool zero_or_change(std::vector<signT> v) {
@@ -145,32 +135,25 @@ namespace mjr {
           return false;
         }
       }
-
       //@}
-
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       /** @name Boundary Crossing */
       //@{
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Return true if there exist a pair of non-zero values that differ.
           @param s1 First value
           @param s2 Second value
           @return Boolean true if there exist a pair of non-zero values that differ. */
       bool non_zero_change(signT s1, signT s2)                               { return(3 == (std::to_underlying(s1) | std::to_underlying(s2)));                                                                            } // Segment
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** @overload */
       bool non_zero_change(signT s1, signT s2, signT s3)                     { return(3 == (std::to_underlying(s1) | std::to_underlying(s2) | std::to_underlying(s3)));                                                   } // Triangle
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** @overload */
       bool non_zero_change(signT s1, signT s2, signT s3, signT s4)           { return(3 == (std::to_underlying(s1) | std::to_underlying(s2) | std::to_underlying(s3) | std::to_underlying(s4)));                          } // Quad or Tetrahedron
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** @overload */
       bool non_zero_change(signT s1, signT s2, signT s3, signT s4, signT s5) { return(3 == (std::to_underlying(s1) | std::to_underlying(s2) | std::to_underlying(s3) | std::to_underlying(s4) | std::to_underlying(s5))); } // Rectangular Pyramid
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** @overload */
       template< class InputIt>
@@ -183,20 +166,15 @@ namespace mjr {
         }
         return false;
       }
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** @overload */
       inline bool non_zero_change(std::vector<signT> v) { return (non_zero_change(v.cbegin(), v.cend())); }
-
       //@}
-
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       /** @name Counting Signs */
       //@{
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Return an std::array<int, 3> of sign counts (element 0: number of zeros, element 1: number of positives, and element 2: number of negatives).
-
           @param s1 First value
           @return Boolean true if there exist a pair of non-zero values that differ. */
       inline std::array<int, 3> count_signs(signT s1) {
@@ -204,7 +182,6 @@ namespace mjr {
         counts[std::to_underlying(s1)]++;
         return (counts);
       }
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** @overload */
       inline std::array<int, 3> count_signs(signT s1, signT s2) {
@@ -213,7 +190,6 @@ namespace mjr {
         counts[std::to_underlying(s2)]++;
         return (counts);
       }
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** @overload */
       inline std::array<int, 3> count_signs(signT s1, signT s2, signT s3) {
@@ -223,7 +199,6 @@ namespace mjr {
         counts[std::to_underlying(s3)]++;
         return (counts);
       }
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** @overload */
       inline std::array<int, 3> count_signs(signT s1, signT s2, signT s3, signT s4) {
@@ -234,7 +209,6 @@ namespace mjr {
         counts[std::to_underlying(s4)]++;
         return (counts);
       }
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** @overload */
       inline std::array<int, 3> count_signs(signT s1, signT s2, signT s3, signT s4, signT s5) {
@@ -246,7 +220,6 @@ namespace mjr {
         counts[std::to_underlying(s5)]++;
         return (counts);
       }
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** @overload */
       template< class InputIt>
@@ -256,17 +229,13 @@ namespace mjr {
           counts[std::to_underlying(*p)]++;
         return (counts);
       }
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** @overload */
       inline std::array<int, 3> count_signs(std::vector<signT> v) { return (count_signs(v.cbegin(), v.cend())); }
-
       //@}
-
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       /** @name Sign Functions */
       //@{
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Signum (sgn, sign) function that returns a signT value.  See: mjr::math::sfun::sgn().
           @param x Input value.  Must be an integer or floating point type. */
@@ -280,7 +249,6 @@ namespace mjr {
         else
           return signT::esZero;
       }
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Signum with zero epsilon check that returns a signT value.  See: See: mjr::math::sfun::sgne().
           @param x            Input value.  Must be an integer or floating point type.
@@ -297,26 +265,20 @@ namespace mjr {
             return signT::esNeg;
         }
       }
-
       //@}
-
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       /** @name Sign Conversions */
       //@{
-
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Map -1, 0, and 1 to signT::esNeg, signT::esZero, signT::esPos restpectively.
           @param x Input value to map.  Must be a signed integer type. */
       template <typename intType>
       requires (std::signed_integral<intType>) 
       inline signT sign2encSgnENum(intType x) { return sgn(x); }
-
       //@}
-
     } // end namespace esn
   } // end namespace math
 } // end namespace mjr
-
 #define MJR_INCLUDE_MRMATHESGN
 #endif
 

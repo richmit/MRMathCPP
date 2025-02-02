@@ -38,6 +38,9 @@ namespace mjr {
     /** Numeric Interval Maps.
     */
     namespace ivl {
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      /** @name Wrap To Interval */ 
+      //@{
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Wrap a integers outside [0, max_out] onto [0, max_out].
           @param in_num  The value to be wrapped
@@ -69,6 +72,10 @@ namespace mjr {
       inline realType wrapCO(realType in_num, realType max_out) {
         return std::fmod(std::fmod(in_num, max_out) + max_out, max_out);
       }
+      //@}
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      /** @name Clamp To Interval */ 
+      //@{
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Clamp a number (integer/float) to the range [0,max_out].
           @f[ \mathrm{clamp}(x)=
@@ -98,6 +105,10 @@ namespace mjr {
       inline realType unit_clamp(realType in_num) {
         return clamp(in_num, static_cast<realType>(1));
       }
+      //@}
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      /** @name Ray To Interval */ 
+      //@{
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Map a non-negative floating value into the unit interval.
           0 maps to 1 and @f$\infty@f$ maps to 0.  Negative numbers are mapped to themselves -- instead of throwing an error.
@@ -124,6 +135,7 @@ namespace mjr {
       inline double right_ray_to_unit(intType x) {
         return right_ray_to_unit(static_cast<double>(x));
       }
+      //@}
     } // end namespace ivl
   } // end namespace math
 } // end namespace mjr

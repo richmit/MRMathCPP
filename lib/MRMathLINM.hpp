@@ -41,6 +41,10 @@ namespace mjr {
     /** One Dimensional Linear Transformations.
     */
     namespace linm {
+      //@}
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      /** @name Interpolation */ 
+      //@{
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Linear interpolation between two real values.
           The return is @f$(v2-v1)\cdot w+v1@f$ -- in particular the return is v1 when w is 0.0 and v2 when w is 1.0.
@@ -93,6 +97,10 @@ namespace mjr {
       inline realType interpolate_radians(realType v1, realType v2, realType w) {
         return interpolate_wrapCO(v1, v2, w, static_cast<realType>(std::numbers::pi * 2.0));
       }
+      //@}
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      /** @name Linear Mapping (Interpolation & Extrapolation) */ 
+      //@{
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Map an integer in the range [0,max_in] onto the range [0,max_out] via a linear mapping function.  
           That is to say, 0 maps to zero, and max_in maps to max_out. Input values outside the allowed input range will be linearly mapped outside of the
@@ -104,6 +112,18 @@ namespace mjr {
       requires (std::integral<xType> && std::floating_point<moType> && std::integral<miType> && std::convertible_to<miType, moType>)
       inline moType scl_int_to_real(xType x, moType max_out, miType max_in) {
         return (static_cast<moType>(x) * static_cast<moType>(max_out) / static_cast<moType>(max_in));
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Map an floating point type in the unit interval, the range [0,1], onto the integers in the range [0,maxOutValue] via a linear mapping function.
+          That is to say, 0.0 maps to 0, and 1.0 maps to maxOutValue. Input values outside the unit interval will be linearly mapped outside of the given
+          output range -- i.e. the output is not clamped.
+          @param x           The value to be mapped (must be a floating point type)
+          @param maxOutValue The maximum output value (must be convertible to the type use for x)
+          @return The mapped value. */
+      template <typename realType, typename intType>
+      requires (std::floating_point<realType> && std::integral<intType> && std::convertible_to<intType, realType>)
+      inline intType scl_real_to_int(realType x, intType maxOutValue) {
+        return static_cast<intType>(x*static_cast<realType>(maxOutValue));
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Compute equation of a line containing the points @f$(x1, y1)@f$ and @f$(x2, y2)@f$ and return the value of this equation evaluated at @f$x@f$.
@@ -127,18 +147,7 @@ namespace mjr {
           return static_cast<yType>(m * x + b);
         }
       }
-      //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** Map an floating point type in the unit interval, the range [0,1], onto the integers in the range [0,maxOutValue] via a linear mapping function.
-          That is to say, 0.0 maps to 0, and 1.0 maps to maxOutValue. Input values outside the unit interval will be linearly mapped outside of the given
-          output range -- i.e. the output is not clamped.
-          @param x           The value to be mapped (must be a floating point type)
-          @param maxOutValue The maximum output value (must be convertible to the type use for x)
-          @return The mapped value. */
-      template <typename realType, typename intType>
-      requires (std::floating_point<realType> && std::integral<intType> && std::convertible_to<intType, realType>)
-      inline intType scl_real_to_int(realType x, intType maxOutValue) {
-        return static_cast<intType>(x*static_cast<realType>(maxOutValue));
-      }
+      //@}
     } // end namespace linm
   } // end namespace math
 } // end namespace mjr

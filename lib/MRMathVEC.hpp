@@ -56,6 +56,9 @@ namespace mjr {
           - Channels in color space models
     */
     namespace vec {
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      /** @name Two Norm */ 
+      //@{
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Square of the 2-norm (Euclidean) -- real vectors.
           @param v  A vector*/
@@ -102,6 +105,10 @@ namespace mjr {
       inline realType norm2(std::array<std::complex<realType>, size> v) {
         return std::sqrt(norm2sqr(v));
       }
+      //@}
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      /** @name Infinity Norm */ 
+      //@{
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** @f$\infty@f$-norm (maximum absolute value) -- real vectors.
           @param v  A vector*/
@@ -126,6 +133,10 @@ namespace mjr {
             ret_val = std::abs(e);
         return ret_val;
       }
+      //@}
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      /** @name One Norm */ 
+      //@{
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** The 1-norm (taxi cab, sum of absolute values) -- real vectors.
           @param v  A vector*/
@@ -148,6 +159,10 @@ namespace mjr {
           ret_val += std::abs(e);
         return ret_val;
       }
+      //@}
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      /** @name Sums & Products */ 
+      //@{
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** The dot product -- real vectors.
           @param v1  A vector
@@ -270,6 +285,10 @@ namespace mjr {
                                                                 const std::array<numType, size>& v3, const std::array<numType, size>& v4) {
         return cross_product(cross_product(v1, v2), cross_product(v3, v4));
       }
+      //@}
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      /** @name Unitize */ 
+      //@{
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Unitize the given vector in place with the two norm returning true if the result is valid -- real vectors.
           @param v            A vector
@@ -302,6 +321,10 @@ namespace mjr {
           return true;
         }
       }
+      //@}
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      /** @name Comparisons */ 
+      //@{
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Test if all elements are near zero using mjr::math::fc::near_zero() -- real vectors.
           The "I" in the name indicates the @f$\infty@f$-norm. Also see mjr::math::vec::nearI().
@@ -353,78 +376,6 @@ namespace mjr {
           if ( !(mjr::math::fc::near(v1[i], v2[i], zero_epsilon)))
             return false;
         return true;
-      }
-      //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** Convert a vector to a string -- real vectors.
-          @param v  A vector*/
-      template <typename numType, std::size_t size>
-      requires ((size > 0) && std::is_arithmetic_v<numType>)
-      std::string to_string(const std::array<numType, size>& v) {
-        std::ostringstream stringStream;
-        stringStream << std::setprecision(6);
-        stringStream << std::fixed;
-        stringStream << "[ ";
-        for(std::size_t i=0; i<size-1; ++i)
-          stringStream << v[i] << ", ";
-        stringStream << v[size-1] << " ]";
-        return stringStream.str();
-      }
-      //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** Convert a vector to a string -- complex vectors.
-          @param v  A vector*/
-      template <typename numType, std::size_t size>
-      requires ((size > 0) && std::is_arithmetic_v<numType>)
-      std::string to_string(const std::array<std::complex<numType>, size>& v) {
-        std::ostringstream stringStream;
-        stringStream << std::setprecision(6);
-        stringStream << std::fixed;
-        stringStream << "[ ";
-        for(std::size_t i=0; i<size-1; ++i)
-          stringStream << "(" << std::real(v[i]) << ", " << std::imag(v[i]) << "), ";
-        stringStream << "(" << std::real(v[size-1]) << ", " << std::imag(v[size-1]) << ") ]";;
-        return stringStream.str();
-      }
-      //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** Square of the 2-norm (Euclidean) distance between two vectors -- real vectors.
-          @param v1  A vector
-          @param v2  A vector */
-      template <typename numType, std::size_t size>
-      requires ((size > 0) && std::is_arithmetic_v<numType>)
-      inline numType dist2sqr(const std::array<numType, size>& v1, const std::array<numType, size>& v2) {
-        numType ret_val = 0;
-        for(std::size_t i=0; i<size; ++i)
-          ret_val += std::pow(v1[i] - v2[i], 2);
-        return ret_val;
-      }
-      //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** Square of the 2-norm (Euclidean) distance between two vectors -- complex vectors.
-          @param v1  A vector
-          @param v2  A vector */
-      template <typename numType, std::size_t size>
-      requires ((size > 0) && std::is_arithmetic_v<numType>)
-      inline numType dist2sqr(const std::array<std::complex<numType>, size>& v1, const std::array<std::complex<numType>, size>& v2) {
-        numType ret_val = 0;
-        for(std::size_t i=0; i<size; ++i)
-          ret_val += std::pow(std::abs(v1[i]-v2[i]), 2);
-        return ret_val;
-      }
-      //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** The 2-norm (Euclidean) distance between two vectors -- real vectors.
-          @param v1  A vector
-          @param v2  A vector */
-      template <typename numType, std::size_t size>
-      requires ((size > 0) && std::is_arithmetic_v<numType>)
-      inline numType dist2(const std::array<numType, size>& v1, const std::array<numType, size>& v2) {
-        return std::sqrt(dist2sqr(v1, v2));
-      }
-      //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** The 2-norm (Euclidean) distance between two vectors -- complex vectors.
-          @param v1  A vector
-          @param v2  A vector */
-      template <typename numType, std::size_t size>
-      requires ((size > 0) && std::is_arithmetic_v<numType>)
-      inline numType dist2(const std::array<std::complex<numType>, size>& v1, const std::array<std::complex<numType>, size>& v2) {
-        return std::sqrt(dist2sqr(v1, v2));
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Are two vectors equal -- real or complex vectors.
@@ -484,6 +435,87 @@ namespace mjr {
           }
         return true; // Can't get here...
       }
+      //@}
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      /** @name Strings */ 
+      //@{
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Convert a vector to a string -- real vectors.
+          @param v  A vector*/
+      template <typename numType, std::size_t size>
+      requires ((size > 0) && std::is_arithmetic_v<numType>)
+      std::string to_string(const std::array<numType, size>& v) {
+        std::ostringstream stringStream;
+        stringStream << std::setprecision(6);
+        stringStream << std::fixed;
+        stringStream << "[ ";
+        for(std::size_t i=0; i<size-1; ++i)
+          stringStream << v[i] << ", ";
+        stringStream << v[size-1] << " ]";
+        return stringStream.str();
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Convert a vector to a string -- complex vectors.
+          @param v  A vector*/
+      template <typename numType, std::size_t size>
+      requires ((size > 0) && std::is_arithmetic_v<numType>)
+      std::string to_string(const std::array<std::complex<numType>, size>& v) {
+        std::ostringstream stringStream;
+        stringStream << std::setprecision(6);
+        stringStream << std::fixed;
+        stringStream << "[ ";
+        for(std::size_t i=0; i<size-1; ++i)
+          stringStream << "(" << std::real(v[i]) << ", " << std::imag(v[i]) << "), ";
+        stringStream << "(" << std::real(v[size-1]) << ", " << std::imag(v[size-1]) << ") ]";;
+        return stringStream.str();
+      }
+      //@}
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      /** @name Distances */ 
+      //@{
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Square of the 2-norm (Euclidean) distance between two vectors -- real vectors.
+          @param v1  A vector
+          @param v2  A vector */
+      template <typename numType, std::size_t size>
+      requires ((size > 0) && std::is_arithmetic_v<numType>)
+      inline numType dist2sqr(const std::array<numType, size>& v1, const std::array<numType, size>& v2) {
+        numType ret_val = 0;
+        for(std::size_t i=0; i<size; ++i)
+          ret_val += std::pow(v1[i] - v2[i], 2);
+        return ret_val;
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Square of the 2-norm (Euclidean) distance between two vectors -- complex vectors.
+          @param v1  A vector
+          @param v2  A vector */
+      template <typename numType, std::size_t size>
+      requires ((size > 0) && std::is_arithmetic_v<numType>)
+      inline numType dist2sqr(const std::array<std::complex<numType>, size>& v1, const std::array<std::complex<numType>, size>& v2) {
+        numType ret_val = 0;
+        for(std::size_t i=0; i<size; ++i)
+          ret_val += std::pow(std::abs(v1[i]-v2[i]), 2);
+        return ret_val;
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** The 2-norm (Euclidean) distance between two vectors -- real vectors.
+          @param v1  A vector
+          @param v2  A vector */
+      template <typename numType, std::size_t size>
+      requires ((size > 0) && std::is_arithmetic_v<numType>)
+      inline numType dist2(const std::array<numType, size>& v1, const std::array<numType, size>& v2) {
+        return std::sqrt(dist2sqr(v1, v2));
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** The 2-norm (Euclidean) distance between two vectors -- complex vectors.
+          @param v1  A vector
+          @param v2  A vector */
+      template <typename numType, std::size_t size>
+      requires ((size > 0) && std::is_arithmetic_v<numType>)
+      inline numType dist2(const std::array<std::complex<numType>, size>& v1, const std::array<std::complex<numType>, size>& v2) {
+        return std::sqrt(dist2sqr(v1, v2));
+      }
+      //@}
     } // end namespace vec
   } // end namespace math
 } // end namespace mjr
