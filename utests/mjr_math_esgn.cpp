@@ -65,6 +65,33 @@ TEST(FN_sgn, Comprehensive) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_sgne, Comprehensive) {
+  EXPECT_EQ(mjr::math::esgn::sgne( 2.0, 1.0e-5), mjr::math::esgn::signT::esPos);
+  EXPECT_EQ(mjr::math::esgn::sgne( 1.0, 1.0e-5), mjr::math::esgn::signT::esPos);
+  EXPECT_EQ(mjr::math::esgn::sgne( 0.0, 1.0e-5), mjr::math::esgn::signT::esZero);
+  EXPECT_EQ(mjr::math::esgn::sgne(-1.0, 1.0e-5), mjr::math::esgn::signT::esNeg);
+  EXPECT_EQ(mjr::math::esgn::sgne(-2.0, 1.0e-5), mjr::math::esgn::signT::esNeg);
+
+  EXPECT_EQ(mjr::math::esgn::sgne( 2.1, 1.0e-5), mjr::math::esgn::signT::esPos);
+  EXPECT_EQ(mjr::math::esgn::sgne( 1.1, 1.0e-5), mjr::math::esgn::signT::esPos);
+  EXPECT_EQ(mjr::math::esgn::sgne( 0.1, 1.0e-5), mjr::math::esgn::signT::esPos);
+  EXPECT_EQ(mjr::math::esgn::sgne(-0.1, 1.0e-5), mjr::math::esgn::signT::esNeg);
+  EXPECT_EQ(mjr::math::esgn::sgne(-1.1, 1.0e-5), mjr::math::esgn::signT::esNeg);
+  EXPECT_EQ(mjr::math::esgn::sgne(-2.1, 1.0e-5), mjr::math::esgn::signT::esNeg);
+
+  EXPECT_EQ(mjr::math::esgn::sgne( 2.9, 1.0e-5), mjr::math::esgn::signT::esPos);
+  EXPECT_EQ(mjr::math::esgn::sgne( 1.9, 1.0e-5), mjr::math::esgn::signT::esPos);
+  EXPECT_EQ(mjr::math::esgn::sgne( 0.9, 1.0e-5), mjr::math::esgn::signT::esPos);
+  EXPECT_EQ(mjr::math::esgn::sgne(-0.9, 1.0e-5), mjr::math::esgn::signT::esNeg);
+  EXPECT_EQ(mjr::math::esgn::sgne(-1.9, 1.0e-5), mjr::math::esgn::signT::esNeg);
+  EXPECT_EQ(mjr::math::esgn::sgne(-2.9, 1.0e-5), mjr::math::esgn::signT::esNeg);
+
+  // epsilon is big enough 0.1 & -0.1 are considered zero
+  EXPECT_EQ(mjr::math::esgn::sgne( 0.1, 0.20), mjr::math::esgn::signT::esZero);
+  EXPECT_EQ(mjr::math::esgn::sgne(-0.1, 0.20), mjr::math::esgn::signT::esZero);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST(FN_zero_or_change, TwoArg) {
   EXPECT_FALSE(zero_or_change(mjr::math::esgn::signT::esNeg,  mjr::math::esgn::signT::esNeg  ));
   EXPECT_TRUE( zero_or_change(mjr::math::esgn::signT::esZero, mjr::math::esgn::signT::esNeg  )); // zero + diff
