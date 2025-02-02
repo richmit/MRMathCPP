@@ -35,7 +35,7 @@
 
 #include "MRMathBPLY.hpp"  // Bivariate polynomiales
 #include "MRMathCPLX.hpp"  // Complex Numbers
-#include "MRMathESGN.hpp"  // Encoded Sign Function
+#include "MRMathESGN.hpp"  // Enumerated Signs for SDF Function Tests
 #include "MRMathFC.hpp"    // FLoating point comparison
 #include "MRMathIVL.hpp"   // Intervals
 #include "MRMathLINM.hpp"  // Linear Mappings

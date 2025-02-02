@@ -55,6 +55,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
   - Documentation
     - Removed "examples" item from changelog.org release section template
     - Updated readmes to include CMake note.
+    - Added doxygen grouping
   - Miscellaneous
     - Cleaned up leftovers of old CMake config
     - Updated configure.sh to 2025-01-30 version
