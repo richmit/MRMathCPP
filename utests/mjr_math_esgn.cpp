@@ -1559,4 +1559,17 @@ TEST(FN_count_signs, Itr) {
   }
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_sgn_to_esgn, Comprehensive) {
+  EXPECT_EQ(mjr::math::esgn::sgn_to_esgn(-1), mjr::math::esgn::signT::esNeg );
+  EXPECT_EQ(mjr::math::esgn::sgn_to_esgn( 0), mjr::math::esgn::signT::esZero);
+  EXPECT_EQ(mjr::math::esgn::sgn_to_esgn( 1), mjr::math::esgn::signT::esPos );
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_esgn_to_sgn, Comprehensive) {
+  EXPECT_EQ(mjr::math::esgn::esgn_to_sgn(mjr::math::esgn::signT::esNeg ), -1);
+  EXPECT_EQ(mjr::math::esgn::esgn_to_sgn(mjr::math::esgn::signT::esZero),  0);
+  EXPECT_EQ(mjr::math::esgn::esgn_to_sgn(mjr::math::esgn::signT::esPos ),  1);
+}
 /** @endcond */

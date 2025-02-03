@@ -274,7 +274,18 @@ namespace mjr {
           @param x Input value to map.  Must be a signed integer type. */
       template <typename intType>
       requires (std::signed_integral<intType>) 
-      inline signT sign2encSgnENum(intType x) { return sgn(x); }
+      inline signT sgn_to_esgn(intType x) { return sgn(x); }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Map signT values to -1, 0, and 1.
+          @param x Input value to map.*/
+      inline int esgn_to_sgn(signT x) { 
+        switch (x) {
+          case signT::esZero : return  0;
+          case signT::esPos  : return  1;
+          case signT::esNeg  : return -1;
+        }
+        return -2;
+      }
       //@}
     } // end namespace esn
   } // end namespace math
