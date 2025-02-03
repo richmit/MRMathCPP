@@ -47,7 +47,7 @@ namespace mjr {
       //@{
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Linear interpolation between two real values.
-          The return is @f$(v2-v1)\cdot w+v1@f$ -- in particular the return is v1 when w is 0.0 and v2 when w is 1.0.
+          The return is @f$(v_2-v_1)\cdot w+v_1@f$ -- in particular the return is v1 when w is 0.0 and v2 when w is 1.0.
           For interpolation @f$w\in[0,1]@f$.  If w is outside this range, then the result is extrapolation.
           @param v1 First value
           @param v2 Second value
@@ -59,7 +59,7 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Linear interpolation between two real values on a wrapped interval [0, maxv) -- See: mjr::math::ivl::wrapCO & interpolate().
-          This is useful for wrapping angles (degrees, radians) and time.
+          This is useful for interpolation of angles (degrees, radians) and time.
           @param v1   First angle (in degrees)
           @param v2   Second angle (in degrees)
           @param w    Weight
