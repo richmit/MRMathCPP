@@ -52,6 +52,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
     - N/A
   - New functionality
     - New Header: MRMathCPP.hpp: Enumerated Signs for SDF Function Tests.
+    - Added integer version of mjr::math::ivl::wrapCO
   - Documentation
     - Removed "examples" item from changelog.org release section template
     - Updated readmes to include CMake note.

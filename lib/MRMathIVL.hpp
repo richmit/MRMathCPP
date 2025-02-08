@@ -65,10 +65,20 @@ namespace mjr {
         }
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** Wrap a floating point value to the range [0, maxValue) via a modulus like function that wraps the value onto the range (i.e. max_out will map to 0).
+      /** Wrap a integers outside [0, max_out) onto [0, max_out).
+          @param in_num  The value to be wrapped
+          @param max_out The maximum output value */
+      template <typename inType, typename maxType>
+      requires (std::convertible_to<maxType, inType> && std::integral<inType> && std::integral<maxType>)
+      inline inType wrapCO(inType in_num, maxType max_out) {
+        return (in_num % max_out + max_out) % max_out;
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Wrap a floating point value to the range [0, max_out) via a modulus like function that wraps the value onto the range (i.e. max_out will map to 0).
           @param in_num The value to be wrapped
           @param max_out The maximum output value */
       template <typename realType>
+      requires (std::floating_point<realType>)
       inline realType wrapCO(realType in_num, realType max_out) {
         return std::fmod(std::fmod(in_num, max_out) + max_out, max_out);
       }
