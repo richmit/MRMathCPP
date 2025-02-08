@@ -47,12 +47,15 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
   - Known Issues
     - N/A
   - API breaking Changes
-    - N/A
+    - Added max_out>0 assertions on mjr::math::ivl::wrapCC.
+    - Added upper_bound>0 assertions on mjr::math::ivl::wrapCO
   - Deprecated functionality
     - N/A
   - New functionality
     - New Header: MRMathCPP.hpp: Enumerated Signs for SDF Function Tests.
     - Added integer version of mjr::math::ivl::wrapCO
+    - Added unit tests for integer inputs to mjr::math::ivl::wrapCO
+    - Added unit tests comparing mjr::math::ivl::wrapCO & mjr::math::ivl::wrapCC on integers.
   - Documentation
     - Removed "examples" item from changelog.org release section template
     - Updated readmes to include CMake note.
@@ -61,6 +64,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
     - Cleaned up leftovers of old CMake config
     - Updated configure.sh to 2025-01-30 version
     - Added IncludeMRMathCPPLib.cmake
+    - Changed max_out formal argument name to upper_bound on mjr::math::ivl::wrapCO.
 
 * v4.0.0.0: Changes On HEAD Since Last Release
 :PROPERTIES:

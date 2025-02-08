@@ -203,7 +203,130 @@ TEST(FN_wrapCC, TYP_Float) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(FN_wrapCO, Comprehensive) {
+TEST(FN_wrapCO, TYP_Int) {
+
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-50, 10), 0);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-49, 10), 1);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-48, 10), 2);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-47, 10), 3);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-46, 10), 4);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-45, 10), 5);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-44, 10), 6);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-43, 10), 7);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-42, 10), 8);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-41, 10), 9);
+
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-40, 10), 0);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-39, 10), 1);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-38, 10), 2);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-37, 10), 3);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-36, 10), 4);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-35, 10), 5);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-34, 10), 6);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-33, 10), 7);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-32, 10), 8);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-31, 10), 9);
+
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-30, 10), 0);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-29, 10), 1);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-28, 10), 2);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-27, 10), 3);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-26, 10), 4);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-25, 10), 5);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-24, 10), 6);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-23, 10), 7);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-22, 10), 8);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-21, 10), 9);
+
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-20, 10), 0);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-19, 10), 1);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-18, 10), 2);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-17, 10), 3);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-16, 10), 4);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-15, 10), 5);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-14, 10), 6);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-13, 10), 7);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-12, 10), 8);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-11, 10), 9);
+
+  EXPECT_EQ(mjr::math::ivl::wrapCO(-10, 10), 0);
+  EXPECT_EQ(mjr::math::ivl::wrapCO( -9, 10), 1);
+  EXPECT_EQ(mjr::math::ivl::wrapCO( -8, 10), 2);
+  EXPECT_EQ(mjr::math::ivl::wrapCO( -7, 10), 3);
+  EXPECT_EQ(mjr::math::ivl::wrapCO( -6, 10), 4);
+  EXPECT_EQ(mjr::math::ivl::wrapCO( -5, 10), 5);
+  EXPECT_EQ(mjr::math::ivl::wrapCO( -4, 10), 6);
+  EXPECT_EQ(mjr::math::ivl::wrapCO( -3, 10), 7);
+  EXPECT_EQ(mjr::math::ivl::wrapCO( -2, 10), 8);
+  EXPECT_EQ(mjr::math::ivl::wrapCO( -1, 10), 9);
+
+  EXPECT_EQ(mjr::math::ivl::wrapCO(  0, 10), 0);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(  1, 10), 1);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(  2, 10), 2);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(  3, 10), 3);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(  4, 10), 4);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(  5, 10), 5);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(  6, 10), 6);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(  7, 10), 7);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(  8, 10), 8);
+  EXPECT_EQ(mjr::math::ivl::wrapCO(  9, 10), 9);
+
+  EXPECT_EQ(mjr::math::ivl::wrapCO( 10, 10), 0);
+  EXPECT_EQ(mjr::math::ivl::wrapCO( 11, 10), 1);
+  EXPECT_EQ(mjr::math::ivl::wrapCO( 12, 10), 2);
+  EXPECT_EQ(mjr::math::ivl::wrapCO( 13, 10), 3);
+  EXPECT_EQ(mjr::math::ivl::wrapCO( 14, 10), 4);
+  EXPECT_EQ(mjr::math::ivl::wrapCO( 15, 10), 5);
+  EXPECT_EQ(mjr::math::ivl::wrapCO( 16, 10), 6);
+  EXPECT_EQ(mjr::math::ivl::wrapCO( 17, 10), 7);
+  EXPECT_EQ(mjr::math::ivl::wrapCO( 18, 10), 8);
+  EXPECT_EQ(mjr::math::ivl::wrapCO( 19, 10), 9);
+
+  EXPECT_EQ(mjr::math::ivl::wrapCO( 20, 10), 0);
+  EXPECT_EQ(mjr::math::ivl::wrapCO( 21, 10), 1);
+  EXPECT_EQ(mjr::math::ivl::wrapCO( 22, 10), 2);
+
+  { // Integer Tests
+    int k=-50;
+    for(int j=0; j<10; j++) {
+      for(int i=0; i<10; i++) {
+        EXPECT_EQ(mjr::math::ivl::wrapCO(k, 10), i);
+        k++;
+      }
+    }
+  }
+
+  { // Long Tests
+    long k=-50;
+    for(long j=0; j<10; j++) {
+      for(long i=0; i<10; i++) {
+        EXPECT_EQ(mjr::math::ivl::wrapCO(k, 10L), i);
+        k++;
+      }
+    }
+  }
+
+  { // Unsigned Long Tests
+    unsigned long k=0;
+    for(unsigned long j=0; j<10; j++) {
+      for(unsigned long i=0; i<10; i++) {
+        EXPECT_EQ(mjr::math::ivl::wrapCO(k, 10UL), i);
+        k++;
+      }
+    }
+  }
+
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_wrapCO_and_wrapCC, TYP_Int) {
+  for(int j=2; j<100; j++) 
+    for(int i=-1000; i<1000; i++) 
+      EXPECT_EQ(mjr::math::ivl::wrapCO(i, j), mjr::math::ivl::wrapCC(i, j-1));
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_wrapCO, TYP_Float) {
 
   EXPECT_NEAR(mjr::math::ivl::wrapCO(-20.0, 10.0), 0.0, 1.0e-5);
   EXPECT_NEAR(mjr::math::ivl::wrapCO(-19.0, 10.0), 1.0, 1.0e-5);
