@@ -50,7 +50,7 @@ namespace mjr {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Detect if a floating point value is near zero.
           @param x            Value to test.  Must be a floating point type.
-          @param zero_epsilon Epsilon to detect zero sign.  Must be the saem type as x.
+          @param zero_epsilon Epsilon to detect zero sign.  Must be the same type as x.
           @return Returns true if @f$\vert x\vert_1=\vert x\vert_2=\vert x\vert_\infty\le\epsilon@f$, otherwise returns false. */
       template <typename realType>
       requires (std::floating_point<realType>)
@@ -61,12 +61,33 @@ namespace mjr {
       /** Detect if a complex floating point value is near zero with regard to the @f$\infty@f$-norm.
           @f$z@f$ is near zero with regard to the @f$\infty@f$-norm if both the real and imaginary parts of @f$z@f$ are near zero.
           @param z            Value to test.  Must be a floating point type.
-          @param zero_epsilon Epsilon to detect zero sign.  Must be the saem type as z.
+          @param zero_epsilon Epsilon to detect zero sign.  Must be the same type as z.
           @return Returns true if @f$\vert z\vert_\infty\le\epsilon@f$, otherwise returns false.  */
       template <typename realType>
       requires (std::floating_point<realType>)
       inline bool near_zero(std::complex<realType> z, realType zero_epsilon) {
         return (near_zero(std::real(z), zero_epsilon) && near_zero(std::imag(z), zero_epsilon));
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Detect if a floating point value is not near zero.
+          @param x            Value to test.  Must be a floating point type.
+          @param zero_epsilon Epsilon to detect zero sign.  Must be the same type as x.
+          @return Returns true if @f$\vert x\vert_1=\vert x\vert_2=\vert x\vert_\infty\le\epsilon@f$, otherwise returns false. */
+      template <typename realType>
+      requires (std::floating_point<realType>)
+      inline bool not_near_zero(realType x, realType zero_epsilon) {
+        return ((x > zero_epsilon) || (x < -zero_epsilon));
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Detect if a complex floating point value is not near zero with regard to the @f$\infty@f$-norm.
+          @f$z@f$ is near zero with regard to the @f$\infty@f$-norm if both the real and imaginary parts of @f$z@f$ are near zero.
+          @param z            Value to test.  Must be a floating point type.
+          @param zero_epsilon Epsilon to detect zero sign.  Must be the same type as z.
+          @return Returns true if @f$\vert z\vert_\infty\le\epsilon@f$, otherwise returns false.  */
+      template <typename realType>
+      requires (std::floating_point<realType>)
+      inline bool not_near_zero(std::complex<realType> z, realType zero_epsilon) {
+        return (not_near_zero(std::real(z), zero_epsilon) || not_near_zero(std::imag(z), zero_epsilon));
       }
       //@}
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -77,7 +98,7 @@ namespace mjr {
           In other words make sure @f$x_1-x_2@f$ is near zero -- See: near_zero().
           @param x1           Value to test.  Must be a floating point type.
           @param x2           Value to test.  Must be an integer or floating point type.
-          @param zero_epsilon Epsilon to detect zero sign.  Must be the saem type as x.
+          @param zero_epsilon Epsilon to detect zero sign.  Must be the same type as x.
           @return Returns true if @f$\vert x_1-x_2\vert_1=\vert x_1-x_2\vert_2=\vert x_1-x_2\vert_\infty\le\epsilon@f$, otherwise returns false. */
       template <typename realType>
       requires (std::floating_point<realType>)
@@ -89,7 +110,7 @@ namespace mjr {
           In other words make sure @f$z_1-z_2@f$ is near zero -- See: near_zero().
           @param z1           Value to test.  Must be a floating point type.
           @param z2           Value to test.  Must be an integer or floating point type.
-          @param zero_epsilon Epsilon to detect zero sign.  Must be the saem type as x.
+          @param zero_epsilon Epsilon to detect zero sign.  Must be the same type as x.
           @return Returns true if @f$\vert z_1-z_2\vert_\infty\le\epsilon@f$, otherwise returns false. */
       template <typename realType>
       requires (std::floating_point<realType>)

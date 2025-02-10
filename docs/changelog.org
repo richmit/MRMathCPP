@@ -56,6 +56,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
     - Added integer version of mjr::math::ivl::wrapCO
     - Added unit tests for integer inputs to mjr::math::ivl::wrapCO
     - Added unit tests comparing mjr::math::ivl::wrapCO & mjr::math::ivl::wrapCC on integers.
+    - Added mjr::math::fc:not_near_zero for floating point & complex floating point types
   - Documentation
     - Removed "examples" item from changelog.org release section template
     - Updated readmes to include CMake note.

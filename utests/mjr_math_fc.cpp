@@ -36,42 +36,67 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST(FN_near_zero, Comprehensive) {
-  EXPECT_TRUE(mjr::math::fc::near_zero( 0.0, 1e-5));
-  EXPECT_TRUE(mjr::math::fc::near_zero(1e-5, 1e-5));  // Can fail if system has bad FP arithmatic (non-IEEE for example)
-  EXPECT_TRUE(mjr::math::fc::near_zero(1e-6, 1e-5));
+  EXPECT_TRUE( mjr::math::fc::near_zero( 0.0, 1e-5));
+  EXPECT_TRUE( mjr::math::fc::near_zero(1e-5, 1e-5));  // Can fail if system has bad FP arithmatic (non-IEEE for example)
+  EXPECT_TRUE( mjr::math::fc::near_zero(1e-6, 1e-5));
   EXPECT_FALSE(mjr::math::fc::near_zero(2e-5, 1e-5));
 
-  EXPECT_TRUE(mjr::math::fc::near_zero(std::complex( 0.0,  0.0), 1e-5));
-  EXPECT_TRUE(mjr::math::fc::near_zero(std::complex(1e-5,  0.0), 1e-5));
-  EXPECT_TRUE(mjr::math::fc::near_zero(std::complex(1e-6,  0.0), 1e-5));
+  EXPECT_TRUE( mjr::math::fc::near_zero(std::complex( 0.0,  0.0), 1e-5));
+  EXPECT_TRUE( mjr::math::fc::near_zero(std::complex(1e-5,  0.0), 1e-5));
+  EXPECT_TRUE( mjr::math::fc::near_zero(std::complex(1e-6,  0.0), 1e-5));
   EXPECT_FALSE(mjr::math::fc::near_zero(std::complex(2e-5,  0.0), 1e-5));
 
-  EXPECT_TRUE(mjr::math::fc::near_zero(std::complex( 0.0,  0.0), 1e-5));
-  EXPECT_TRUE(mjr::math::fc::near_zero(std::complex( 0.0, 1e-5), 1e-5));
-  EXPECT_TRUE(mjr::math::fc::near_zero(std::complex( 0.0, 1e-6), 1e-5));
+  EXPECT_TRUE( mjr::math::fc::near_zero(std::complex( 0.0,  0.0), 1e-5));
+  EXPECT_TRUE( mjr::math::fc::near_zero(std::complex( 0.0, 1e-5), 1e-5));
+  EXPECT_TRUE( mjr::math::fc::near_zero(std::complex( 0.0, 1e-6), 1e-5));
   EXPECT_FALSE(mjr::math::fc::near_zero(std::complex( 0.0, 2e-5), 1e-5));
 
-  EXPECT_TRUE(mjr::math::fc::near_zero(std::complex( 0.0,  0.0), 1e-5));
-  EXPECT_TRUE(mjr::math::fc::near_zero(std::complex(1e-5, 1e-5), 1e-5));
-  EXPECT_TRUE(mjr::math::fc::near_zero(std::complex(1e-6, 1e-6), 1e-5));
+  EXPECT_TRUE( mjr::math::fc::near_zero(std::complex( 0.0,  0.0), 1e-5));
+  EXPECT_TRUE( mjr::math::fc::near_zero(std::complex(1e-5, 1e-5), 1e-5));
+  EXPECT_TRUE( mjr::math::fc::near_zero(std::complex(1e-6, 1e-6), 1e-5));
   EXPECT_FALSE(mjr::math::fc::near_zero(std::complex(2e-5, 2e-5), 1e-5));
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST(FN_near, Comprehensive) {
-  EXPECT_TRUE(mjr::math::fc::near( 0.0,      0.0, 1e-5));
-  EXPECT_TRUE(mjr::math::fc::near(1e-5,      0.0, 1e-5));  // Can fail if system has bad FP arithmatic (non-IEEE for example)
-  EXPECT_TRUE(mjr::math::fc::near(1e-6,      0.0, 1e-5));
+  EXPECT_TRUE( mjr::math::fc::near( 0.0,      0.0, 1e-5));
+  EXPECT_TRUE( mjr::math::fc::near(1e-5,      0.0, 1e-5));  // Can fail if system has bad FP arithmatic (non-IEEE for example)
+  EXPECT_TRUE( mjr::math::fc::near(1e-6,      0.0, 1e-5));
   EXPECT_FALSE(mjr::math::fc::near(2e-5,      0.0, 1e-5));
                                                  
-  EXPECT_TRUE(mjr::math::fc::near( 0.0,      0.0, 1e-5));
-  EXPECT_TRUE(mjr::math::fc::near( 0.0,     1e-5, 1e-5));  // Can fail if system has bad FP arithmatic (non-IEEE for example)
-  EXPECT_TRUE(mjr::math::fc::near( 0.0,     1e-6, 1e-5));
+  EXPECT_TRUE( mjr::math::fc::near( 0.0,      0.0, 1e-5));
+  EXPECT_TRUE( mjr::math::fc::near( 0.0,     1e-5, 1e-5));  // Can fail if system has bad FP arithmatic (non-IEEE for example)
+  EXPECT_TRUE( mjr::math::fc::near( 0.0,     1e-6, 1e-5));
   EXPECT_FALSE(mjr::math::fc::near( 0.0,     2e-5, 1e-5));
                                                  
-  EXPECT_TRUE(mjr::math::fc::near( 1.0,      1.0, 1e-5));
+  EXPECT_TRUE( mjr::math::fc::near( 1.0,      1.0, 1e-5));
   EXPECT_FALSE(mjr::math::fc::near(1e-5,     3e-5, 1e-5));
 
   EXPECT_FALSE(mjr::math::fc::near( 1.0, 1.000020, 1e-5));
-  EXPECT_TRUE(mjr::math::fc::near(  1.0, 1.000002, 1e-5));
+  EXPECT_TRUE( mjr::math::fc::near( 1.0, 1.000002, 1e-5));
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_not_near_zero, Comprehensive) {
+  EXPECT_FALSE(mjr::math::fc::not_near_zero( 0.0, 1e-5));
+  EXPECT_FALSE(mjr::math::fc::not_near_zero(1e-5, 1e-5));  // Can fail if system has bad FP arithmatic (non-IEEE for example)
+  EXPECT_FALSE(mjr::math::fc::not_near_zero(1e-6, 1e-5));
+  EXPECT_TRUE( mjr::math::fc::not_near_zero(2e-5, 1e-5));
+
+  EXPECT_FALSE(mjr::math::fc::not_near_zero(std::complex( 0.0,  0.0), 1e-5));
+  EXPECT_FALSE(mjr::math::fc::not_near_zero(std::complex(1e-5,  0.0), 1e-5));
+  EXPECT_FALSE(mjr::math::fc::not_near_zero(std::complex(1e-6,  0.0), 1e-5));
+  EXPECT_TRUE( mjr::math::fc::not_near_zero(std::complex(2e-5,  0.0), 1e-5));
+
+  EXPECT_FALSE(mjr::math::fc::not_near_zero(std::complex( 0.0,  0.0), 1e-5));
+  EXPECT_FALSE(mjr::math::fc::not_near_zero(std::complex( 0.0, 1e-5), 1e-5));
+  EXPECT_FALSE(mjr::math::fc::not_near_zero(std::complex( 0.0, 1e-6), 1e-5));
+  EXPECT_TRUE( mjr::math::fc::not_near_zero(std::complex( 0.0, 2e-5), 1e-5));
+
+  EXPECT_FALSE(mjr::math::fc::not_near_zero(std::complex( 0.0,  0.0), 1e-5));
+  EXPECT_FALSE(mjr::math::fc::not_near_zero(std::complex(1e-5, 1e-5), 1e-5));
+  EXPECT_FALSE(mjr::math::fc::not_near_zero(std::complex(1e-6, 1e-6), 1e-5));
+  EXPECT_TRUE( mjr::math::fc::not_near_zero(std::complex(2e-5, 2e-5), 1e-5));
 }
 /** @endcond */
+
