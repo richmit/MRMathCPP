@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-02-09 Sun 18:17 -->
+<!-- 2025-02-12 Wed 14:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=1024, initial-scale=1" />
 <title>MRMathCPP Change Log</title>
@@ -229,12 +229,12 @@
 
 <tr>
 <td class="org-right"><b>Updated:</b></td>
-<td class="org-left"><i>2025-02-09 18:17:43</i></td>
+<td class="org-left"><i>2025-02-12 14:27:44</i></td>
 </tr>
 
 <tr>
 <td class="org-right"><b>Generated:</b></td>
-<td class="org-left"><i>2025-02-09 18:17:44</i></td>
+<td class="org-left"><i>2025-02-12 14:27:46</i></td>
 </tr>
 </tbody>
 </table>
@@ -276,6 +276,7 @@ Most likely next version number: v5.0.0.0
 <ul class="org-ul">
 <li>Added max_out&gt;0 assertions on mjr::math::ivl::wrapCC.</li>
 <li>Added upper_bound&gt;0 assertions on mjr::math::ivl::wrapCO</li>
+<li>Switched to C++23</li>
 </ul></li>
 <li>Deprecated functionality
 <ul class="org-ul">
@@ -288,6 +289,12 @@ Most likely next version number: v5.0.0.0
 <li>Added unit tests for integer inputs to mjr::math::ivl::wrapCO</li>
 <li>Added unit tests comparing mjr::math::ivl::wrapCO &amp; mjr::math::ivl::wrapCC on integers.</li>
 <li>Added mjr::math::fc:not_near_zero for floating point &amp; complex floating point types</li>
+<li>Added MRMathESGN.hpp.
+<ul class="org-ul">
+<li>Provides sgn/sign replacements that work with an enum</li>
+<li>Provide fast tests for SDF functions on points</li>
+<li>Requires C++23.  W will silently disappear from the library without compiler support.</li>
+</ul></li>
 </ul></li>
 <li>Documentation
 <ul class="org-ul">

@@ -49,6 +49,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
   - API breaking Changes
     - Added max_out>0 assertions on mjr::math::ivl::wrapCC.
     - Added upper_bound>0 assertions on mjr::math::ivl::wrapCO
+    - Switched to C++23
   - Deprecated functionality
     - N/A
   - New functionality
@@ -57,6 +58,10 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
     - Added unit tests for integer inputs to mjr::math::ivl::wrapCO
     - Added unit tests comparing mjr::math::ivl::wrapCO & mjr::math::ivl::wrapCC on integers.
     - Added mjr::math::fc:not_near_zero for floating point & complex floating point types
+    - Added MRMathESGN.hpp.
+      - Provides sgn/sign replacements that work with an enum
+      - Provide fast tests for SDF functions on points
+      - Requires C++23.  W will silently disappear from the library without compiler support.
   - Documentation
     - Removed "examples" item from changelog.org release section template
     - Updated readmes to include CMake note.

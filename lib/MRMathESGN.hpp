@@ -66,6 +66,9 @@
 
 #ifndef MJR_INCLUDE_MRMATHESGN
 
+#include <version>
+#ifdef __cpp_lib_to_underlying
+
 #include <cstdint>                                                       /* std:: C stdint.h        C++11    */
 #include <utility>                                                       /* STL Misc Utilities      C++11    */
 #include <vector>                                                        /* STL vector              C++11    */ 
@@ -291,7 +294,8 @@ namespace mjr {
   } // end namespace math
 } // end namespace mjr
 #define MJR_INCLUDE_MRMATHESGN
-#endif
+#endif // MJR_INCLUDE_MRMATHESGN
+#endif //  __has_cpp_attribute(__cpp_lib_to_underlying)
 
 
 // ((s1 == 0) || (s2 == 0)             || (s1 != s2))
