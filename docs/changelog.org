@@ -62,6 +62,12 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
       - Provides sgn/sign replacements that work with an enum
       - Provide fast tests for SDF functions on points
       - Requires C++23.  W will silently disappear from the library without compiler support.
+    - mjr::math::cplx
+      - Added some more fractal functions: 
+        - mjr::math::cplx::iabs()
+        - mjr::math::cplx::rabs()
+        - mjr::math::cplx::rchs_if_ineg()
+      - Improved the namespace comment.
   - Documentation
     - Removed "examples" item from changelog.org release section template
     - Updated readmes to include CMake note.

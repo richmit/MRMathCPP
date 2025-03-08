@@ -43,8 +43,12 @@ namespace mjr {
   namespace math {
     /** Complex Numbers.
         This namespace contains simple functions specific to complex numbers.  
-        Additional complex number support is distributed throughout the library.  For example mjr::math::vec supports
-        complex vectors, and mjr::math::fc supports floating point complex number comparison.
+
+        Some of these functions are quite uncommon, but have specific applications.  For example, the functions mjr::math::cplx::cswap(),
+        mjr::math::cplx::iabs(), mjr::math::cplx::rabs(), mjr::math::cplx::rconj(), and mjr::math::cplx::rchs_if_ineg() are used in fractal art.
+
+        Additional complex number support is distributed throughout the library.  For example mjr::math::vec supports complex vectors, and mjr::math::fc
+        supports floating point complex number comparison.
     */
     namespace cplx {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -124,6 +128,31 @@ namespace mjr {
       inline numType dist1(std::complex<numType> z1, std::complex<numType> z2) {
         return norm1(z1-z2);
       }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Make imag part non-negative by taking it's absolute value.
+          @param z Complex number. */
+      template <typename numType>
+      requires (std::is_arithmetic_v<numType>)
+      inline std::complex<numType> iabs(std::complex<numType> z) {
+        return (std::imag(z)<0 ? std::conj(z) : z);
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Make real part non-negative by taking it's absolute value.
+          @param z Complex number. */
+      template <typename numType>
+      requires (std::is_arithmetic_v<numType>)
+      inline std::complex<numType> rabs(std::complex<numType> z) {
+        return (std::real(z)<0 ? -std::conj(z) : z);
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Change the sign of the real part if the imaginary part is negative.
+          @param z Complex number. */
+      template <typename numType>
+      requires (std::is_arithmetic_v<numType>)
+      inline std::complex<numType> rchs_if_ineg(std::complex<numType> z) {
+        return (std::imag(z)<0 ? -std::conj(z) : z);
+      }
+
     } // end namespace cplx
   } // end namespace math
 } // end namespace mjr

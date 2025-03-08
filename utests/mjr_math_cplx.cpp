@@ -41,16 +41,17 @@ typedef std::complex<int>    ci_t;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST(CPLX, Double) {
-  cd_t z1 = cd_t( 1.1, 2.2);
-  cd_t z2 = cd_t(-3.3, 4.4);
-  cd_t z3 = cd_t( 0.0, 5.5);
+  cd_t z1 = cd_t( 1.1,  2.2);
+  cd_t z2 = cd_t(-3.3,  4.4);
+  cd_t z3 = cd_t( 0.0,  5.5);
+  cd_t z4 = cd_t( 3.3, -4.4);
 
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::norm2sqr(z1),          6.05, 1.0e-5));
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::norm1(z1),             3.30, 1.0e-5));
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::normI(z1),             2.20, 1.0e-5));
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::rconj(z1), cd_t(-1.1,  2.2), 1.0e-5));
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::cswap(z1), cd_t( 2.2,  1.1), 1.0e-5));
-                                                                               
+
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::norm2sqr(z2),         30.25, 1.0e-5));
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::norm1(z2),             7.70, 1.0e-5));
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::normI(z2),             4.40, 1.0e-5));
@@ -72,20 +73,28 @@ TEST(CPLX, Double) {
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::dist2sqr(z2, z1), 24.2000000000, 1.0e-5));
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::distI(   z2, z1),  4.4000000000, 1.0e-5));
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::dist1(   z2, z1),  6.6000000000, 1.0e-5));
+
+  EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::iabs(z1),         z1,               1.0e-5));
+  EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::rabs(z1),         z1,               1.0e-5));
+  EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::rchs_if_ineg(z1), z1,               1.0e-5));
+  EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::iabs(z4),         cd_t( 3.3,  4.4), 1.0e-5));
+  EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::rabs(z2),         cd_t( 3.3,  4.4), 1.0e-5));
+  EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::rchs_if_ineg(z4), cd_t(-3.3, -4.4), 1.0e-5));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST(CPLX, Float) {
-  cf_t z1 = cf_t( 1.1f, 2.2f);
-  cf_t z2 = cf_t(-3.3f, 4.4f);
-  cf_t z3 = cf_t( 0.0f, 5.5f);
+  cf_t z1 = cf_t( 1.1f,  2.2f);
+  cf_t z2 = cf_t(-3.3f,  4.4f);
+  cf_t z3 = cf_t( 0.0f,  5.5f);
+  cf_t z4 = cf_t( 3.3f, -4.4f);
 
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::norm2sqr(z1),           6.05f, 1.0e-5f));
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::norm1(z1),              3.30f, 1.0e-5f));
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::normI(z1),              2.20f, 1.0e-5f));
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::rconj(z1), cf_t(-1.1f,  2.2f), 1.0e-5f));
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::cswap(z1), cf_t( 2.2f,  1.1f), 1.0e-5f));
-                                                                               
+
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::norm2sqr(z2),          30.25f, 1.0e-5f));
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::norm1(z2),              7.70f, 1.0e-5f));
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::normI(z2),              4.40f, 1.0e-5f));
@@ -107,20 +116,28 @@ TEST(CPLX, Float) {
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::dist2sqr(z2, z1), 24.2000000000f, 1.0e-5f));
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::distI(   z2, z1),  4.4000000000f, 1.0e-5f));
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::dist1(   z2, z1),  6.6000000000f, 1.0e-5f));
+
+  EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::iabs(z1),         z1,                 1.0e-5f));
+  EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::rabs(z1),         z1,                 1.0e-5f));
+  EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::rchs_if_ineg(z1), z1,                 1.0e-5f));
+  EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::iabs(z4),         cf_t( 3.3f,  4.4f), 1.0e-5f));
+  EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::rabs(z2),         cf_t( 3.3f,  4.4f), 1.0e-5f));
+  EXPECT_TRUE(mjr::math::fc::near(mjr::math::cplx::rchs_if_ineg(z4), cf_t(-3.3f, -4.4f), 1.0e-5f));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST(CPLX, Integer) {
-  ci_t z1 = ci_t( 1, 2);
-  ci_t z2 = ci_t(-3, 4);
-  ci_t z3 = ci_t( 0, 5);
+  ci_t z1 = ci_t( 1,  2);
+  ci_t z2 = ci_t(-3,  4);
+  ci_t z3 = ci_t( 0,  5);
+  ci_t z4 = ci_t( 3, -4);
 
   EXPECT_EQ(mjr::math::cplx::norm2sqr(z1),  5);
   EXPECT_EQ(mjr::math::cplx::norm1(z1),     3);
   EXPECT_EQ(mjr::math::cplx::normI(z1),     2);
   EXPECT_EQ(mjr::math::cplx::rconj(z1),     ci_t(-1,  2));
   EXPECT_EQ(mjr::math::cplx::cswap(z1),     ci_t( 2,  1));
-                                                           
+
   EXPECT_EQ(mjr::math::cplx::norm2sqr(z2),  25);
   EXPECT_EQ(mjr::math::cplx::norm1(z2),     7);
   EXPECT_EQ(mjr::math::cplx::normI(z2),     4);
@@ -142,7 +159,13 @@ TEST(CPLX, Integer) {
   EXPECT_EQ(mjr::math::cplx::dist2sqr(z2, z1), 20);
   EXPECT_EQ(mjr::math::cplx::distI(   z2, z1), 4);
   EXPECT_EQ(mjr::math::cplx::dist1(   z2, z1), 6);
+
+  EXPECT_EQ(mjr::math::cplx::iabs(z1),         z1);
+  EXPECT_EQ(mjr::math::cplx::rabs(z1),         z1);
+  EXPECT_EQ(mjr::math::cplx::rchs_if_ineg(z1), z1);
+  EXPECT_EQ(mjr::math::cplx::iabs(z4),         ci_t(3, 4));
+  EXPECT_EQ(mjr::math::cplx::rabs(z2),         ci_t(3, 4));
+  EXPECT_EQ(mjr::math::cplx::rchs_if_ineg(z4), ci_t(-3, -4));
 }
 
 /** @endcond */
-
