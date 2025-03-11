@@ -35,13 +35,39 @@
 #include "MRMathSFUN.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(FN_sgn, Comprehensive) {
+TEST(FN_sgn, InInt) {
   EXPECT_EQ(mjr::math::sfun::sgn( 2), 1);
   EXPECT_EQ(mjr::math::sfun::sgn( 1), 1);
   EXPECT_EQ(mjr::math::sfun::sgn( 0), 0);
   EXPECT_EQ(mjr::math::sfun::sgn(-1), -1);
   EXPECT_EQ(mjr::math::sfun::sgn(-2), -1);
+}
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_sgn, InFloat) {
+  EXPECT_EQ(mjr::math::sfun::sgn( 2.0F), 1);
+  EXPECT_EQ(mjr::math::sfun::sgn( 1.0F), 1);
+  EXPECT_EQ(mjr::math::sfun::sgn( 0.0F), 0);
+  EXPECT_EQ(mjr::math::sfun::sgn(-1.0F), -1);
+  EXPECT_EQ(mjr::math::sfun::sgn(-2.0F), -1);
+
+  EXPECT_EQ(mjr::math::sfun::sgn( 2.1F), 1);
+  EXPECT_EQ(mjr::math::sfun::sgn( 1.1F), 1);
+  EXPECT_EQ(mjr::math::sfun::sgn( 0.1F), 1);
+  EXPECT_EQ(mjr::math::sfun::sgn(-0.1F), -1);
+  EXPECT_EQ(mjr::math::sfun::sgn(-1.1F), -1);
+  EXPECT_EQ(mjr::math::sfun::sgn(-2.1F), -1);
+
+  EXPECT_EQ(mjr::math::sfun::sgn( 2.9F), 1);
+  EXPECT_EQ(mjr::math::sfun::sgn( 1.9F), 1);
+  EXPECT_EQ(mjr::math::sfun::sgn( 0.9F), 1);
+  EXPECT_EQ(mjr::math::sfun::sgn(-0.9F), -1);
+  EXPECT_EQ(mjr::math::sfun::sgn(-1.9F), -1);
+  EXPECT_EQ(mjr::math::sfun::sgn(-2.9F), -1);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_sgn, InDouble) {
   EXPECT_EQ(mjr::math::sfun::sgn( 2.0), 1);
   EXPECT_EQ(mjr::math::sfun::sgn( 1.0), 1);
   EXPECT_EQ(mjr::math::sfun::sgn( 0.0), 0);
@@ -126,4 +152,132 @@ TEST(FN_isqrt, Comprehensive) {
   for(int i=0; i<100; i++) 
     EXPECT_EQ(mjr::math::sfun::isqrt(i*i), i);
 }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_heaviside, IntInTypIntZdefault) {
+  EXPECT_EQ(mjr::math::sfun::heaviside( 2), 1);
+  EXPECT_EQ(mjr::math::sfun::heaviside( 1), 1);
+  EXPECT_EQ(mjr::math::sfun::heaviside( 0), 0);
+  EXPECT_EQ(mjr::math::sfun::heaviside(-1), 0);
+  EXPECT_EQ(mjr::math::sfun::heaviside(-2), 0);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_heaviside, DoubleInTypDoubleZdefault) {
+  EXPECT_EQ(mjr::math::sfun::heaviside( 2.0), 1);
+  EXPECT_EQ(mjr::math::sfun::heaviside( 1.0), 1);
+  EXPECT_EQ(mjr::math::sfun::heaviside( 0.0), 0);
+  EXPECT_EQ(mjr::math::sfun::heaviside(-1.0), 0);
+  EXPECT_EQ(mjr::math::sfun::heaviside(-2.0), 0);
+
+  EXPECT_EQ(mjr::math::sfun::heaviside( 2.1), 1);
+  EXPECT_EQ(mjr::math::sfun::heaviside( 1.1), 1);
+  EXPECT_EQ(mjr::math::sfun::heaviside( 0.1), 1);
+  EXPECT_EQ(mjr::math::sfun::heaviside(-0.1), 0);
+  EXPECT_EQ(mjr::math::sfun::heaviside(-1.1), 0);
+  EXPECT_EQ(mjr::math::sfun::heaviside(-2.1), 0);
+
+  EXPECT_EQ(mjr::math::sfun::heaviside( 2.9), 1);
+  EXPECT_EQ(mjr::math::sfun::heaviside( 1.9), 1);
+  EXPECT_EQ(mjr::math::sfun::heaviside( 0.9), 1);
+  EXPECT_EQ(mjr::math::sfun::heaviside(-0.9), 0);
+  EXPECT_EQ(mjr::math::sfun::heaviside(-1.9), 0);
+  EXPECT_EQ(mjr::math::sfun::heaviside(-2.9), 0);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_heaviside, FloatInTypFloatZdefault) {
+  EXPECT_EQ(mjr::math::sfun::heaviside( 2.0F), 1.0F);
+  EXPECT_EQ(mjr::math::sfun::heaviside( 1.0F), 1.0F);
+  EXPECT_EQ(mjr::math::sfun::heaviside( 0.0F), 0.0F);
+  EXPECT_EQ(mjr::math::sfun::heaviside(-1.0F), 0.0F);
+  EXPECT_EQ(mjr::math::sfun::heaviside(-2.0F), 0.0F);
+
+  EXPECT_EQ(mjr::math::sfun::heaviside( 2.1F), 1.0F);
+  EXPECT_EQ(mjr::math::sfun::heaviside( 1.1F), 1.0F);
+  EXPECT_EQ(mjr::math::sfun::heaviside( 0.1F), 1.0F);
+  EXPECT_EQ(mjr::math::sfun::heaviside(-0.1F), 0.0F);
+  EXPECT_EQ(mjr::math::sfun::heaviside(-1.1F), 0.0F);
+  EXPECT_EQ(mjr::math::sfun::heaviside(-2.1F), 0.0F);
+
+  EXPECT_EQ(mjr::math::sfun::heaviside( 2.9F), 1.0F);
+  EXPECT_EQ(mjr::math::sfun::heaviside( 1.9F), 1.0F);
+  EXPECT_EQ(mjr::math::sfun::heaviside( 0.9F), 1.0F);
+  EXPECT_EQ(mjr::math::sfun::heaviside(-0.9F), 0.0F);
+  EXPECT_EQ(mjr::math::sfun::heaviside(-1.9F), 0.0F);
+  EXPECT_EQ(mjr::math::sfun::heaviside(-2.9F), 0.0F);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_heaviside, DoubleInTypDoubleZ0) {
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.0>( 2.0)), 1.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.0>( 1.0)), 1.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.0>( 0.0)), 0.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.0>(-1.0)), 0.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.0>(-2.0)), 0.0);
+
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.0>( 2.1)), 1.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.0>( 1.1)), 1.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.0>( 0.1)), 1.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.0>(-0.1)), 0.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.0>(-1.1)), 0.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.0>(-2.1)), 0.0);
+
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.0>( 2.9)), 1.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.0>( 1.9)), 1.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.0>( 0.9)), 1.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.0>(-0.9)), 0.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.0>(-1.9)), 0.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.0>(-2.9)), 0.0);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_heaviside, DoubleInTypDoubleZ1) {
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 1.0>( 2.0)), 1.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 1.0>( 1.0)), 1.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 1.0>( 0.0)), 1.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 1.0>(-1.0)), 0.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 1.0>(-2.0)), 0.0);
+
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 1.0>( 2.1)), 1.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 1.0>( 1.1)), 1.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 1.0>( 0.1)), 1.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 1.0>(-0.1)), 0.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 1.0>(-1.1)), 0.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 1.0>(-2.1)), 0.0);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_heaviside, DoubleInTypDoubleZ5) {
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.5>( 2.0)), 1.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.5>( 1.0)), 1.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.5>( 0.0)), 0.5);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.5>(-1.0)), 0.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.5>(-2.0)), 0.0);
+
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.5>( 2.1)), 1.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.5>( 1.1)), 1.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.5>( 0.1)), 1.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.5>(-0.1)), 0.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.5>(-1.1)), 0.0);
+  EXPECT_EQ((mjr::math::sfun::heaviside<double, 0.5>(-2.1)), 0.0);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_heaviside, FLoatInTypFLoatZ1) {
+  EXPECT_EQ((mjr::math::sfun::heaviside<float, 1.0F>( 2.0F)), 1.0F);
+  EXPECT_EQ((mjr::math::sfun::heaviside<float, 1.0F>( 1.0F)), 1.0F);
+  EXPECT_EQ((mjr::math::sfun::heaviside<float, 1.0F>( 0.0F)), 1.0F);
+  EXPECT_EQ((mjr::math::sfun::heaviside<float, 1.0F>(-1.0F)), 0.0F);
+  EXPECT_EQ((mjr::math::sfun::heaviside<float, 1.0F>(-2.0F)), 0.0F);
+
+  EXPECT_EQ((mjr::math::sfun::heaviside<float, 1.0F>( 2.1F)), 1.0F);
+  EXPECT_EQ((mjr::math::sfun::heaviside<float, 1.0F>( 1.1F)), 1.0F);
+  EXPECT_EQ((mjr::math::sfun::heaviside<float, 1.0F>( 0.1F)), 1.0F);
+  EXPECT_EQ((mjr::math::sfun::heaviside<float, 1.0F>(-0.1F)), 0.0F);
+  EXPECT_EQ((mjr::math::sfun::heaviside<float, 1.0F>(-1.1F)), 0.0F);
+  EXPECT_EQ((mjr::math::sfun::heaviside<float, 1.0F>(-2.1F)), 0.0F);
+}
+
 /** @endcond */

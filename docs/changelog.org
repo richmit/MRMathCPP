@@ -68,6 +68,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
         - mjr::math::cplx::rabs()
         - mjr::math::cplx::rchs_if_ineg()
       - Improved the namespace comment.
+    - mjr::math::sfun:heaviside()
   - Documentation
     - Removed "examples" item from changelog.org release section template
     - Updated readmes to include CMake note.

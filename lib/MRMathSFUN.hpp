@@ -88,6 +88,28 @@ namespace mjr {
             return -1;
         }
       }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Heaviside function.
+          Similar to mjr::math::sfun::sgn() except:
+            - Result type is that of the input type
+            - Zero when x<0
+            - Return when x=0 is programmable (a template argument).
+          @f[ \mathrm{heaviside}(x)=
+                \begin{cases}
+                    0                  & \text{if } x<0 \\
+                    \text{valueAtZero} & \text{if } x=0 \\
+                    1                  & \text{if } x>0
+                \end{cases} @f]
+          @tparam valueAtZero The value to return for x=0
+          @param x            Input value.  Must be an integer or floating point type. */
+      template <typename numType, numType valueAtZero=static_cast<numType>(0)>
+      requires (std::integral<numType> || std::floating_point<numType>)
+      inline numType
+      heaviside(numType x) {
+        if (x < numType(0)) return static_cast<numType>(0);
+        if (x > numType(0)) return static_cast<numType>(1);
+        return valueAtZero;
+      }
       //@}
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       /** @name Integer Functions */ 
