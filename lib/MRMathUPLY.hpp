@@ -43,9 +43,9 @@ namespace mjr {
     namespace uply {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Evaluate a uni-variate polynomial with double coefficients.
-          A polynomial is defined by it's coefficients.  In this function those coefficients are provided in a vector, and are ordered from lowest degree
-          to highest (such that the index of the coefficient is equal to the degree of the term):
-          @f[a_0+a_1x+a_2x^2+...+a_nx^n@f]
+          A polynomial is defined by it's coefficients.  In this function those coefficients are provided in a vector, and are ordered from highest degree
+          to lowest:
+          @f[a_0x^n+a_1x^{n-1}+\cdots+a_{n-1}x+a_n@f]
           @param uniPoly The polynomial
           @param x       x value at which to evaluate the polynomial */
       inline double eval(std::vector<double> const& uniPoly, double x) {
