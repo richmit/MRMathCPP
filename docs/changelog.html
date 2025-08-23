@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-03-11 Tue 18:38 -->
+<!-- 2025-08-23 Sat 14:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=1024, initial-scale=1" />
 <title>MRMathCPP Change Log</title>
@@ -229,12 +229,12 @@
 
 <tr>
 <td class="org-right"><b>Updated:</b></td>
-<td class="org-left"><i>2025-03-11 18:38:42</i></td>
+<td class="org-left"><i>2025-08-23 14:25:26</i></td>
 </tr>
 
 <tr>
 <td class="org-right"><b>Generated:</b></td>
-<td class="org-left"><i>2025-03-11 18:38:43</i></td>
+<td class="org-left"><i>2025-08-23 14:25:35</i></td>
 </tr>
 </tbody>
 </table>
@@ -276,6 +276,7 @@ Most likely next version number: v5.0.0.0
 <li>Added max_out&gt;0 assertions on mjr::math::ivl::wrapCC.</li>
 <li>Added upper_bound&gt;0 assertions on mjr::math::ivl::wrapCO</li>
 <li>Switched to C++23</li>
+<li>mjr::math::uply::eval being a template will prevent automatic type conversions in existing code.</li>
 </ul></li>
 <li>Deprecated functionality
 <ul class="org-ul">
@@ -303,8 +304,19 @@ Most likely next version number: v5.0.0.0
 <li>mjr::math::cplx::rchs_if_ineg()</li>
 </ul></li>
 <li>Improved the namespace comment.</li>
+<li>Added mjr::math::cplx::is_complex type type trait
+<ul class="org-ul">
+<li>WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING</li>
+<li>I'm not sure this will stay in this namespace</li>
+<li>WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING</li>
+</ul></li>
 </ul></li>
 <li>mjr::math::sfun:heaviside()</li>
+<li>mjr::math::uply
+<ul class="org-ul">
+<li>mjr::math::eval() is now a template</li>
+<li>New: mjr::math::evald() Computes the value of a polynomial and its derivatives.</li>
+</ul></li>
 </ul></li>
 <li>Documentation
 <ul class="org-ul">

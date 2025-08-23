@@ -37,7 +37,8 @@
 #include <cstdlib>                                                       /* std:: C stdlib.h        C++11    */
 #include <algorithm>                                                     /* STL algorithm           C++11    */
 #include <numbers>                                                       /* C++ math constants      C++20    */
-#include <complex>
+#include <complex>                                                       /* Complex Numbers         C++11    */
+#include <type_traits>                                                   /* C++ metaprogramming     C++11    */
 
 namespace mjr {
   namespace math {
@@ -51,6 +52,12 @@ namespace mjr {
         supports floating point complex number comparison.
     */
     namespace cplx {
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      template <class T> struct is_complex                   : public std::false_type {};
+      template <class T> struct is_complex<const T>          : public is_complex<T>{};      /** type_trait for complex types */
+      template <class T> struct is_complex<volatile const T> : public is_complex<T>{};
+      template <class T> struct is_complex<volatile T>       : public is_complex<T>{};
+      template <class T> struct is_complex<std::complex<T>>  : public std::true_type{};
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Change the sign of the real part of a complex number.
           @param z Complex number. */

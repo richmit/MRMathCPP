@@ -50,6 +50,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
     - Added max_out>0 assertions on mjr::math::ivl::wrapCC.
     - Added upper_bound>0 assertions on mjr::math::ivl::wrapCO
     - Switched to C++23
+    - mjr::math::uply::eval being a template will prevent automatic type conversions in existing code.
   - Deprecated functionality
     - N/A
   - New functionality
@@ -68,7 +69,14 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
         - mjr::math::cplx::rabs()
         - mjr::math::cplx::rchs_if_ineg()
       - Improved the namespace comment.
+      - Added mjr::math::cplx::is_complex type type trait
+        - WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING 
+        - I'm not sure this will stay in this namespace
+        - WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING 
     - mjr::math::sfun:heaviside()
+    - mjr::math::uply
+      - mjr::math::eval() is now a template
+      - New: mjr::math::evald() Computes the value of a polynomial and its derivatives.
   - Documentation
     - Removed "examples" item from changelog.org release section template
     - Updated readmes to include CMake note.

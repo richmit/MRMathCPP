@@ -30,32 +30,75 @@
 
 #ifndef MJR_INCLUDE_MRMATHUPLY
 
+#include <array>                                                         /* array template          C++11    */
 #include <type_traits>                                                   /* C++ metaprogramming     C++11    */
 #include <cmath>                                                         /* std:: C math.h          C++11    */
 #include <numbers>                                                       /* C++ math constants      C++20    */
 #include <algorithm>                                                     /* STL algorithm           C++11    */
 #include <vector>                                                        /* STL vector              C++11    */ 
+#include <type_traits>                                                   /* C++ metaprogramming     C++11    */
+
+#include "MRMathCPLX.hpp"
 
 namespace mjr {
   namespace math {
-    /** Univariate polynomials.
+    /** Univariate real/complex polynomials.
+        A polynomial is defined by it's coefficients.  In this function those coefficients are provided in a vector, and are ordered from highest degree
+        to lowest:
+        @f[a_0x^n+a_1x^{n-1}+\cdots+a_{n-1}x+a_n@f]
     */
     namespace uply {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** Evaluate a uni-variate polynomial with double coefficients.
-          A polynomial is defined by it's coefficients.  In this function those coefficients are provided in a vector, and are ordered from highest degree
-          to lowest:
-          @f[a_0x^n+a_1x^{n-1}+\cdots+a_{n-1}x+a_n@f]
-          @param uniPoly The polynomial
-          @param x       x value at which to evaluate the polynomial */
-      inline double eval(std::vector<double> const& uniPoly, double x) {
-        if (uniPoly.empty()) {
+      /** Evaluate a polynomial.
+          @param poly The polynomial
+          @param x    x value at which to evaluate the polynomial */
+      template <typename numType>
+      requires (std::is_arithmetic_v<numType> || mjr::math::cplx::is_complex<numType>::value)
+      inline numType eval(std::vector<numType> const& poly, numType x) {
+        if (poly.empty()) {
           return 0;
         } else {
-          double pvalue = uniPoly[0];
-          for (std::vector<double>::size_type i=1; i<uniPoly.size(); i++)
-            pvalue = pvalue * x + uniPoly[i];
+          numType pvalue = poly[0];
+          for (typename std::vector<numType>::size_type i=1; i<poly.size(); i++)
+            pvalue = pvalue * x + poly[i];
           return pvalue;
+        }
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Evaluate a polynomial and its derivatives.
+         Reference:
+           - W. Pankiewicz (1968); Algorithm 337: calculation of a polynomial and its derivative values by Horner scheme; Communications of the ACM; Vol 11, Issue 9, pp 633; zotero://select/items/0_N73T5N2S      
+          @param poly The polynomial
+          @param x    x value at which to evaluate the polynomial 
+          @param v   Polynomial value and derivative values.  Number of derivatives is determined by size of v.
+      */
+      template <typename numType, std::size_t size>
+      requires ((size > 0) && (std::is_arithmetic_v<numType> || mjr::math::cplx::is_complex<numType>::value))
+      inline void evald(std::vector<numType> const& poly, numType x, std::array<numType, size>& v) {
+        int deg = static_cast<int>(poly.size()) - 1;
+        int order = static_cast<int>(size) - 1;
+        for(int i=0; i<=order; i++)
+          v[i] = 0;
+        if (deg > 0) {
+          v[0] = poly[0];
+          if constexpr (size > 1) 
+            for(int i = 1; i<=order; i++)
+              v[i] = 0;
+          for(int i = deg-1; i>=0; i--) {
+            int nnd = std::min(order, deg - i);
+            for(int j=nnd; j>0; j--) 
+              v[j] = x * v[j] + v[j - 1];
+            v[0] = x * v[0] + poly[deg - i];
+          }
+          numType c = 1;
+          for(int i=2; i<=order; i++) {
+            if constexpr (mjr::math::cplx::is_complex<numType>::value) {
+              c = numType(i, 0) * c;
+            } else {
+              c = i * c;
+            }
+            v[i] = c * v[i];
+          }
         }
       }
     } // end namespace uply
