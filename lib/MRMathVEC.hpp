@@ -83,6 +83,7 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** 2-norm (Euclidean) -- floating point real vectors.
+          BLAS: nrm2
           @param v  A vector*/
       template <typename realType, std::size_t size>
       requires ((size > 0) && std::floating_point<realType>)
@@ -91,6 +92,7 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** 2-norm (Euclidean) -- integer real vectors.
+          BLAS: nrm2
           @param v  A vector*/
       template <typename intType, std::size_t size>
       requires ((size > 0) && std::integral<intType>)
@@ -99,6 +101,7 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** 2-norm (Euclidean) -- floating point complex vectors.
+          BLAS: nrm2
           @param v  A vector*/
       template <typename realType, std::size_t size>
       requires ((size > 0) && std::floating_point<realType>)
@@ -111,6 +114,7 @@ namespace mjr {
       //@{
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** @f$\infty@f$-norm (maximum absolute value) -- real vectors.
+          BLAS: i_amax
           @param v  A vector*/
       template <typename numType, std::size_t size>
       requires ((size > 0) && std::is_arithmetic_v<numType>)
@@ -123,6 +127,7 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** @f$\infty@f$-norm (maximum absolute value) -- complex vectors.
+          BLAS: i_amax
           @param v  A vector*/
       template <typename numType, std::size_t size>
       requires ((size > 0) && std::is_arithmetic_v<numType>)
@@ -139,6 +144,7 @@ namespace mjr {
       //@{
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** The 1-norm (taxi cab, sum of absolute values) -- real vectors.
+          BLAS: asum
           @param v  A vector*/
       template <typename numType, std::size_t size>
       requires ((size > 0) && std::is_arithmetic_v<numType>)
@@ -150,6 +156,7 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** The 1-norm (taxi cab, sum of absolute values) -- complex vectors.
+          BLAS: asum
           @param v  A vector*/
       template <typename numType, std::size_t size>
       requires ((size > 0) && std::is_arithmetic_v<numType>)
@@ -165,6 +172,7 @@ namespace mjr {
       //@{
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** The dot product -- real vectors.
+          BLAS: dot
           @param v1  A vector
           @param v2  A vector */
       template <typename numType, std::size_t size>
@@ -177,6 +185,7 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** The dot product -- complex vectors.
+          BLAS: dotc
           @param v1  A vector
           @param v2  A vector */
       template <typename numType, std::size_t size>
@@ -228,6 +237,7 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** linear combination (s1*v1_s2*v2) -- real vectors.
+          BLAS: Combination of axpy & scal
           @param s1  A scalar
           @param v1  A vector
           @param s2  A scalar
