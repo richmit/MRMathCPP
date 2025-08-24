@@ -36,7 +36,7 @@
 #include "MRMathFC.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(FN_abs_min2, Comprehensive) {
+TEST(FN_abs_min2, TYP_Double) {
   EXPECT_EQ(mjr::math::odr::abs_min2( 1.0,  2.0), 1.0);
   EXPECT_EQ(mjr::math::odr::abs_min2( 3.0,  2.0), 2.0);
 
@@ -45,45 +45,158 @@ TEST(FN_abs_min2, Comprehensive) {
 
   EXPECT_EQ(mjr::math::odr::abs_min2( 1.0, -2.0), 1.0);
   EXPECT_EQ(mjr::math::odr::abs_min2(-3.0,  2.0), 2.0);
+}
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_abs_min2, TYP_Float) {
   EXPECT_EQ(mjr::math::odr::abs_min2( 1.0f, 2.0f), 1.0f);
   EXPECT_EQ(mjr::math::odr::abs_min2( 3.0f, 2.0f), 2.0f);
 
   EXPECT_EQ(mjr::math::odr::abs_min2( 1.0f,-2.0f), 1.0f);
   EXPECT_EQ(mjr::math::odr::abs_min2(-3.0f, 2.0f), 2.0f);
+}
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_abs_min2, TYP_Int) {
   EXPECT_EQ(mjr::math::odr::abs_min2( 1,   2),   1);
   EXPECT_EQ(mjr::math::odr::abs_min2( 1,  -2),   1);
+}
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_abs_min2, TYP_Long) {
   EXPECT_EQ(mjr::math::odr::abs_min2( 1L,  2L),  1L);
   EXPECT_EQ(mjr::math::odr::abs_min2( 1L, -2L),  1L);
+}
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_abs_min2, TYP_CplxDouble) {
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::odr::abs_min2( std::complex<double>(3.0, 4.0), std::complex<double>( 5.0,  6.0)), std::complex<double>(3.0, 4.0), 1.0e-5));
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::odr::abs_min2( std::complex<double>(3.0, 4.0), std::complex<double>(-5.0, -6.0)), std::complex<double>(3.0, 4.0), 1.0e-5));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(FN_abs_max2, Comprehensive) {
+TEST(FN_abs_max2, TYP_Double) {
   EXPECT_EQ(mjr::math::odr::abs_max2( 1.0,  2.0), 2.0);
   EXPECT_EQ(mjr::math::odr::abs_max2( 3.0,  2.0), 3.0);
 
   EXPECT_EQ(mjr::math::odr::abs_max2( 1.0, -2.0), -2.0);
   EXPECT_EQ(mjr::math::odr::abs_max2(-3.0,  2.0), -3.0);
+}
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_abs_max2, TYP_Float) {
   EXPECT_EQ(mjr::math::odr::abs_max2( 1.0f, 2.0f), 2.0f);
   EXPECT_EQ(mjr::math::odr::abs_max2( 3.0f, 2.0f), 3.0f);
 
   EXPECT_EQ(mjr::math::odr::abs_max2( 1.0f,-2.0f), -2.0f);
   EXPECT_EQ(mjr::math::odr::abs_max2(-3.0f, 2.0f), -3.0f);
+}
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_abs_max2, TYP_Int) {
   EXPECT_EQ(mjr::math::odr::abs_max2( 1,   2),   2);
   EXPECT_EQ(mjr::math::odr::abs_max2( 1,  -2),   -2);
+}
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_abs_max2, TYP_Long) {
   EXPECT_EQ(mjr::math::odr::abs_max2( 1L,  2L),  2L);
   EXPECT_EQ(mjr::math::odr::abs_max2( 1L, -2L),  -2L);
+}
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_abs_max2, TYP_CplxDouble) {
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::odr::abs_max2( std::complex<double>(3.0, 4.0), std::complex<double>( 5.0,  6.0)), std::complex<double>( 5.0,  6.0), 1.0e-5));
   EXPECT_TRUE(mjr::math::fc::near(mjr::math::odr::abs_max2( std::complex<double>(3.0, 4.0), std::complex<double>(-5.0, -6.0)), std::complex<double>(-5.0, -6.0), 1.0e-5));
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_sort2, TYP_Double) {
+  double vaD1, vaD2, vbD1, vbD2;
+
+  vaD1 = vbD1 = 1.0;
+  vaD2 = vbD2 = 2.0;
+  mjr::math::odr::sort2(vaD1, vaD2); EXPECT_NEAR(vaD1, vbD1, 1.0e-5); EXPECT_NEAR(vaD2, vbD2, 1.0e-5); 
+
+  vaD1 = vbD1 = 2.0;
+  vaD2 = vbD2 = 1.0;
+  mjr::math::odr::sort2(vaD1, vaD2); EXPECT_NEAR(vaD2, vbD1, 1.0e-5); EXPECT_NEAR(vaD1, vbD2, 1.0e-5); 
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_sort2, TYP_Int) {
+  int    vaI1, vaI2, vbI1, vbI2;
+
+  vaI1 = vbI1 = 1;
+  vaI2 = vbI2 = 2;
+  mjr::math::odr::sort2(vaI1, vaI2); EXPECT_EQ(vaI1, vbI1); EXPECT_EQ(vaI2, vbI2); 
+
+  vaI1 = vbI1 = 2;
+  vaI2 = vbI2 = 1;
+  mjr::math::odr::sort2(vaI1, vaI2); EXPECT_EQ(vaI2, vbI1); EXPECT_EQ(vaI1, vbI2); 
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_abs_sort2, TYP_CplxDouble) {
+  std::complex<double> vaCD1, vaCD2, vbCD1, vbCD2;
+
+  vaCD1 = vbCD1 = std::complex<double>(1.0, 2.0);
+  vaCD2 = vbCD2 = std::complex<double>(2.0, 3.0);
+  mjr::math::odr::abs_sort2(vaCD1, vaCD2); EXPECT_TRUE(mjr::math::fc::near(vaCD1, vbCD1, 1.0e-5)); EXPECT_TRUE(mjr::math::fc::near(vaCD2, vbCD2, 1.0e-5)); 
+
+  vaCD1 = vbCD1 = std::complex<double>(2.0, 3.0);
+  vaCD2 = vbCD2 = std::complex<double>(1.0, 2.0);
+  mjr::math::odr::abs_sort2(vaCD1, vaCD2); EXPECT_TRUE(mjr::math::fc::near(vaCD2, vbCD1, 1.0e-5)); EXPECT_TRUE(mjr::math::fc::near(vaCD1, vbCD2, 1.0e-5)); 
+
+  vaCD1 = vbCD1 = std::complex<double>( 1.0,  2.0);
+  vaCD2 = vbCD2 = std::complex<double>(-2.0, -3.0);
+  mjr::math::odr::abs_sort2(vaCD1, vaCD2); EXPECT_TRUE(mjr::math::fc::near(vaCD1, vbCD1, 1.0e-5)); EXPECT_TRUE(mjr::math::fc::near(vaCD2, vbCD2, 1.0e-5)); 
+
+  vaCD1 = vbCD1 = std::complex<double>(-2.0, -3.0);
+  vaCD2 = vbCD2 = std::complex<double>( 1.0,  2.0);
+  mjr::math::odr::abs_sort2(vaCD1, vaCD2); EXPECT_TRUE(mjr::math::fc::near(vaCD2, vbCD1, 1.0e-5)); EXPECT_TRUE(mjr::math::fc::near(vaCD1, vbCD2, 1.0e-5)); 
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_abs_sort2, TYP_Double) {
+  double vaD1, vaD2, vbD1, vbD2;
+
+  vaD1 = vbD1 = 1.0;
+  vaD2 = vbD2 = 2.0;
+  mjr::math::odr::abs_sort2(vaD1, vaD2); EXPECT_NEAR(vaD1, vbD1, 1.0e-5); EXPECT_NEAR(vaD2, vbD2, 1.0e-5); 
+
+  vaD1 = vbD1 = 2.0;
+  vaD2 = vbD2 = 1.0;
+  mjr::math::odr::abs_sort2(vaD1, vaD2); EXPECT_NEAR(vaD2, vbD1, 1.0e-5); EXPECT_NEAR(vaD1, vbD2, 1.0e-5); 
+
+  vaD1 = vbD1 =  1.0;
+  vaD2 = vbD2 = -2.0;
+  mjr::math::odr::abs_sort2(vaD1, vaD2); EXPECT_NEAR(vaD1, vbD1, 1.0e-5); EXPECT_NEAR(vaD2, vbD2, 1.0e-5); 
+
+  vaD1 = vbD1 = -2.0;
+  vaD2 = vbD2 =  1.0;
+  mjr::math::odr::abs_sort2(vaD1, vaD2); EXPECT_NEAR(vaD2, vbD1, 1.0e-5); EXPECT_NEAR(vaD1, vbD2, 1.0e-5); 
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_abs_sort2, TYP_Int) {
+  int    vaI1, vaI2, vbI1, vbI2;
+
+  vaI1 = vbI1 = 1;
+  vaI2 = vbI2 = 2;
+  mjr::math::odr::abs_sort2(vaI1, vaI2); EXPECT_EQ(vaI1, vbI1); EXPECT_EQ(vaI2, vbI2); 
+
+  vaI1 = vbI1 = 2;
+  vaI2 = vbI2 = 1;
+  mjr::math::odr::abs_sort2(vaI1, vaI2); EXPECT_EQ(vaI2, vbI1); EXPECT_EQ(vaI1, vbI2); 
+
+  vaI1 = vbI1 =  1;
+  vaI2 = vbI2 = -2;
+  mjr::math::odr::abs_sort2(vaI1, vaI2); EXPECT_EQ(vaI1, vbI1); EXPECT_EQ(vaI2, vbI2); 
+
+  vaI1 = vbI1 = -2;
+  vaI2 = vbI2 =  1;
+  mjr::math::odr::abs_sort2(vaI1, vaI2); EXPECT_EQ(vaI2, vbI1); EXPECT_EQ(vaI1, vbI2); 
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

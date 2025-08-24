@@ -72,6 +72,25 @@ namespace mjr {
            else
             return x1;
       }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Sort two values.
+          @param x1 First number.  Must be an integer or floating point type.
+          @param x2 Second number.  Must be the same type as x1. */
+      template <typename numType>
+      inline void sort2(numType& x1, numType& x2) {
+        if (x2 < x1)
+          std::swap(x1, x2);
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Sort two values by absolute value.
+          @param x1 First number.  Must be an integer or floating point type.
+          @param x2 Second number.  Must be the same type as x1. */
+      template <typename numType>
+      requires(std::is_signed_v<numType> || mjr::math::cplx::is_complex<numType>::value)
+      inline void abs_sort2(numType& x1, numType& x2) {
+        if (std::abs(x2) < std::abs(x1))
+          std::swap(x1, x2);
+      }
       //@}
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       /** @name Three Items */ 
