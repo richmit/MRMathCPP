@@ -73,6 +73,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
         - WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING 
         - I'm not sure this will stay in this namespace
         - WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING 
+    - New: mjr::math::odr::abs_max2 & mjr::math::odr::abs_min2
     - mjr::math::sfun:heaviside()
     - mjr::math::uply
       - mjr::math::eval() is now a template

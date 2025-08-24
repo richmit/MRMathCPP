@@ -34,12 +34,45 @@
 #ifndef MJR_INCLUDE_MRMATHODR
 
 #include <algorithm>                                                     /* STL algorithm           C++11    */
+#include <cmath>                                                         /* std:: C math.h          C++11    */
+
+#include "MRMathCPLX.hpp"
 
 namespace mjr {
   namespace math {
-    /** Real Number Order Functions (max/min).
+    /** Numeric Order Functions (max/min & abs_max/abs_min).
     */
     namespace odr {
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      /** @name Two Items */ 
+      //@{
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Value with minimum absolute value (real or complex).
+          @param x1 First number.  Must be an integer or floating point type.
+          @param x2 Second number.  Must be the same type as x1.
+          @return Value with minimum absolute value. */
+      template <typename numType>
+      requires(std::is_signed_v<numType> || mjr::math::cplx::is_complex<numType>::value)
+      inline numType abs_min2(numType x1, numType x2) {
+        if (std::abs(x1) < std::abs(x2))
+            return x1;
+           else
+            return x2;
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Value with maximum absolute value (real or complex).
+          @param x1 First number.  Must be an integer or floating point type.
+          @param x2 Second number.  Must be the same type as x1.
+          @return Value with maximum absolute value. */
+      template <typename numType>
+      requires(std::is_signed_v<numType> || mjr::math::cplx::is_complex<numType>::value)
+      inline numType abs_max2(numType x1, numType x2) {
+        if (std::abs(x1) < std::abs(x2))
+            return x2;
+           else
+            return x1;
+      }
+      //@}
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       /** @name Three Items */ 
       //@{
@@ -126,3 +159,6 @@ namespace mjr {
 
 #define MJR_INCLUDE_MRMATHODR
 #endif
+
+
+

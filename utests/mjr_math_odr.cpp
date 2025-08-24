@@ -33,6 +33,58 @@
 #include <gtest/gtest.h>
 
 #include "MRMathODR.hpp"
+#include "MRMathFC.hpp"
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_abs_min2, Comprehensive) {
+  EXPECT_EQ(mjr::math::odr::abs_min2( 1.0,  2.0), 1.0);
+  EXPECT_EQ(mjr::math::odr::abs_min2( 3.0,  2.0), 2.0);
+
+  EXPECT_EQ(mjr::math::odr::abs_min2(-1.0, -2.0), -1.0);
+  EXPECT_EQ(mjr::math::odr::abs_min2(-3.0, -2.0), -2.0);
+
+  EXPECT_EQ(mjr::math::odr::abs_min2( 1.0, -2.0), 1.0);
+  EXPECT_EQ(mjr::math::odr::abs_min2(-3.0,  2.0), 2.0);
+
+  EXPECT_EQ(mjr::math::odr::abs_min2( 1.0f, 2.0f), 1.0f);
+  EXPECT_EQ(mjr::math::odr::abs_min2( 3.0f, 2.0f), 2.0f);
+
+  EXPECT_EQ(mjr::math::odr::abs_min2( 1.0f,-2.0f), 1.0f);
+  EXPECT_EQ(mjr::math::odr::abs_min2(-3.0f, 2.0f), 2.0f);
+
+  EXPECT_EQ(mjr::math::odr::abs_min2( 1,   2),   1);
+  EXPECT_EQ(mjr::math::odr::abs_min2( 1,  -2),   1);
+
+  EXPECT_EQ(mjr::math::odr::abs_min2( 1L,  2L),  1L);
+  EXPECT_EQ(mjr::math::odr::abs_min2( 1L, -2L),  1L);
+
+  EXPECT_TRUE(mjr::math::fc::near(mjr::math::odr::abs_min2( std::complex<double>(3.0, 4.0), std::complex<double>( 5.0,  6.0)), std::complex<double>(3.0, 4.0), 1.0e-5));
+  EXPECT_TRUE(mjr::math::fc::near(mjr::math::odr::abs_min2( std::complex<double>(3.0, 4.0), std::complex<double>(-5.0, -6.0)), std::complex<double>(3.0, 4.0), 1.0e-5));
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_abs_max2, Comprehensive) {
+  EXPECT_EQ(mjr::math::odr::abs_max2( 1.0,  2.0), 2.0);
+  EXPECT_EQ(mjr::math::odr::abs_max2( 3.0,  2.0), 3.0);
+
+  EXPECT_EQ(mjr::math::odr::abs_max2( 1.0, -2.0), -2.0);
+  EXPECT_EQ(mjr::math::odr::abs_max2(-3.0,  2.0), -3.0);
+
+  EXPECT_EQ(mjr::math::odr::abs_max2( 1.0f, 2.0f), 2.0f);
+  EXPECT_EQ(mjr::math::odr::abs_max2( 3.0f, 2.0f), 3.0f);
+
+  EXPECT_EQ(mjr::math::odr::abs_max2( 1.0f,-2.0f), -2.0f);
+  EXPECT_EQ(mjr::math::odr::abs_max2(-3.0f, 2.0f), -3.0f);
+
+  EXPECT_EQ(mjr::math::odr::abs_max2( 1,   2),   2);
+  EXPECT_EQ(mjr::math::odr::abs_max2( 1,  -2),   -2);
+
+  EXPECT_EQ(mjr::math::odr::abs_max2( 1L,  2L),  2L);
+  EXPECT_EQ(mjr::math::odr::abs_max2( 1L, -2L),  -2L);
+
+  EXPECT_TRUE(mjr::math::fc::near(mjr::math::odr::abs_max2( std::complex<double>(3.0, 4.0), std::complex<double>( 5.0,  6.0)), std::complex<double>( 5.0,  6.0), 1.0e-5));
+  EXPECT_TRUE(mjr::math::fc::near(mjr::math::odr::abs_max2( std::complex<double>(3.0, 4.0), std::complex<double>(-5.0, -6.0)), std::complex<double>(-5.0, -6.0), 1.0e-5));
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST(FN_min3, Comprehensive) {
