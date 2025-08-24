@@ -51,7 +51,11 @@ namespace mjr {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Evaluate a polynomial.
           @param poly The polynomial
-          @param x    x value at which to evaluate the polynomial */
+          @param x    x value at which to evaluate the polynomial 
+          @par Reference
+            - Horner (1819); A New Method of Solving Numerical Equations of All Orders, by Continuous Approximation; Phil. Tran. of the Royal Soc. of London; 109; p308-335; zotero://select/items/0_DPR5M5DI
+            - Ostrowski (1954); On Two Problems in Abstract Algebra Connected with Horner's Rule; Studies in Math. and Mech. Presented to Richard von Mises; p40-48; zotero://select/items/0_QHLHVHCP
+            - Pan (1966); Methods of computing values of polynomials; Uspekhi Matematicheskikh Nauk 21; 1(127); p103-134; zotero://select/items/0_487DTRNF */
       template <typename numType>
       requires (std::is_arithmetic_v<numType> || mjr::math::cplx::is_complex<numType>::value)
       inline numType eval(std::vector<numType> const& poly, numType x) {
