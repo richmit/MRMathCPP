@@ -45,7 +45,7 @@ namespace mjr {
     /** Univariate real/complex polynomials.
         A polynomial is defined by it's coefficients.  In this function those coefficients are provided in a vector, and are ordered from highest degree
         to lowest:
-        @f[a_0x^n+a_1x^{n-1}+\cdots+a_{n-1}x+a_n@f]
+        @f[ a_0x^n+a_1x^{n-1}+\cdots+a_{n-1}x+a_n @f]
     */
     namespace uply {
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -66,12 +66,11 @@ namespace mjr {
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
       /** Evaluate a polynomial and its derivatives.
-         Reference:
-           - W. Pankiewicz (1968); Algorithm 337: calculation of a polynomial and its derivative values by Horner scheme; Communications of the ACM; Vol 11, Issue 9, pp 633; zotero://select/items/0_N73T5N2S      
           @param poly The polynomial
           @param x    x value at which to evaluate the polynomial 
           @param v   Polynomial value and derivative values.  Number of derivatives is determined by size of v.
-      */
+          @par Reference
+            - W. Pankiewicz (1968); Algorithm 337: calculation of a polynomial and its derivative values by Horner scheme; Communications of the ACM; Vol 11, Issue 9, pp 633; zotero://select/items/0_N73T5N2S */
       template <typename numType, std::size_t size>
       requires ((size > 0) && (std::is_arithmetic_v<numType> || mjr::math::cplx::is_complex<numType>::value))
       inline void evald(std::vector<numType> const& poly, numType x, std::array<numType, size>& v) {
