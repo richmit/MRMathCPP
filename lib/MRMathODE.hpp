@@ -80,11 +80,12 @@ namespace mjr {
       }
       // SS-END:rk1_t:
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      // SHELLO: sed -n '/SS-BEGIN:rk1_t:$/,/SS-END:rk1_t:$/p' MRMathODE.hpp | sed -E 's/(rk1|deq)\([^,]+, */\1(/g; /SS-/d; /@param t/d; s/deqwt_t/deqnt_t/'
+      // SHELLO: sed -n '/SS-BEGIN:rk1_t:$/,/SS-END:rk1_t:$/p' MRMathODE.hpp | sed -E 's/(rk1|deq)\([^,]+, */\1(/g; /SS-/d; /@param t /d; s/deqwt_t/deqnt_t/'
       /** Euler's Method.
           Reutrns delta y.
           @param y       Initial Condition
           @param deq     ODE derivative function
+          @param t_delta Step size
           @par References:
           - Euler (1768); Institutionum Calculi Integralis. Volumen Primum, Opera Omnia, Vol XI. p424
           - Hairer, Norsett & Wanner (2009). Solving Ordinary Differential Equations. I: Nonstiff Problems. p35"
@@ -124,11 +125,12 @@ namespace mjr {
       }
       // SS-END:rk4_t:
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      // SHELLO: sed -n '/SS-BEGIN:rk4_t:$/,/SS-END:rk4_t:$/p' MRMathODE.hpp | sed -E 's/(rk4|deq)\([^,]+, */\1(/g; /SS-/d; /@param t/d; s/deqwt_t/deqnt_t/'
+      // SHELLO: sed -n '/SS-BEGIN:rk4_t:$/,/SS-END:rk4_t:$/p' MRMathODE.hpp | sed -E 's/(rk4|deq)\([^,]+, */\1(/g; /SS-/d; /@param t /d; s/deqwt_t/deqnt_t/'
       /** The classic 4th order Runge-Kutta Method.
           Reutrns delta y.
           @param y       Initial Condition
           @param deq     ODE derivative function
+          @param t_delta Step size
           @par References:
            - Kutta (1901); Beitrag Zur N\"herungsweisen Integration Totaler Differentialgleichungen; Z. Math. Phys. 46; p435-53
            - Hairer, Norsett & Wanner (2009). Solving Ordinary Differential Equations. I: Nonstiff Problems. p138
