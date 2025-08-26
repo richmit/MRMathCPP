@@ -236,7 +236,7 @@ namespace mjr {
         return ret_val;
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------
-      /** linear combination (s1*v1_s2*v2) -- real vectors.
+      /** linear combination (s1*v1+s2*v2) -- real vectors.
           BLAS: Combination of axpy & scal
           @param s1  A scalar
           @param v1  A vector
@@ -248,6 +248,58 @@ namespace mjr {
         std::array<numType, size> ret_val;
         for(std::size_t i=0; i<size; ++i)
           ret_val[i] = s1 * v1[i] + s2 * v2[i];
+        return ret_val;
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** linear combination (s1*v1+s2*v2+s3*v3) -- real vectors.
+          @param s1  A scalar
+          @param v1  A vector
+          @param s2  A scalar
+          @param v2  A vector
+          @param s3  A scalar
+          @param v3  A vector */
+      template <typename numType, std::size_t size>
+      requires (size > 0)
+      inline std::array<numType, size> linear_combination(numType s1, const std::array<numType, size>& v1, 
+                                                          numType s2, const std::array<numType, size>& v2, 
+                                                          numType s3, const std::array<numType, size>& v3) {
+        std::array<numType, size> ret_val;
+        for(std::size_t i=0; i<size; ++i)
+          ret_val[i] = s1 * v1[i] + s2 * v2[i] + s3 * v3[i];
+        return ret_val;
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** linear combination (s1*v1+s2*v2+s3*v3+s4*v4) -- real vectors.
+          @param s1  A scalar
+          @param v1  A vector
+          @param s2  A scalar
+          @param v2  A vector
+          @param s3  A scalar
+          @param v3  A vector
+          @param s4  A scalar
+          @param v4  A vector */
+      template <typename numType, std::size_t size>
+      requires (size > 0)
+      inline std::array<numType, size> linear_combination(numType s1, const std::array<numType, size>& v1, 
+                                                          numType s2, const std::array<numType, size>& v2, 
+                                                          numType s3, const std::array<numType, size>& v3, 
+                                                          numType s4, const std::array<numType, size>& v4) {
+        std::array<numType, size> ret_val;
+        for(std::size_t i=0; i<size; ++i)
+          ret_val[i] = s1 * v1[i] + s2 * v2[i] + s3 * v3[i] + s4 * v4[i];
+        return ret_val;
+      }
+      //--------------------------------------------------------------------------------------------------------------------------------------------------------
+      /** Multiply vector by scalar -- real or complex vectors.
+          BLAS: scal
+          @param s  A scalar
+          @param v  A vector */
+      template <typename numType, std::size_t size>
+      requires (size > 0)
+      inline std::array<numType, size> scale(numType s, const std::array<numType, size>& v) {
+        std::array<numType, size> ret_val;
+        for(std::size_t i=0; i<size; ++i)
+          ret_val[i] = s * v[i];
         return ret_val;
       }
       //--------------------------------------------------------------------------------------------------------------------------------------------------------

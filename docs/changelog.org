@@ -54,25 +54,30 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
   - Deprecated functionality
     - N/A
   - New functionality
-    - New Header: MRMathCPP.hpp: Enumerated Signs for SDF Function Tests.
-    - Added integer version of mjr::math::ivl::wrapCO
-    - Added unit tests for integer inputs to mjr::math::ivl::wrapCO
-    - Added unit tests comparing mjr::math::ivl::wrapCO & mjr::math::ivl::wrapCC on integers.
-    - Added mjr::math::fc:not_near_zero for floating point & complex floating point types
-    - Added MRMathESGN.hpp.
-      - Provides sgn/sign replacements that work with an enum
-      - Provide fast tests for SDF functions on points
-      - Requires C++23.  W will silently disappear from the library without compiler support.
+    - MRMathODE.hpp: Runge-Kutta methods
+      - mjr::math::ode::deqnt_t, mjr::math::ode::deqwt_t - Types for autonomous & nonautonomous ODE functions
+      - mjr::math::ode::rk1 - Euler's method for both autonomous & nonautonomous
+      - mjr::math::ode::rk4 - Classic RK4 for both autonomous & nonautonomous
+    - MRMathESGN.hpp: Enumerated sgn/sign for fast tests for SDF functions on points. Requires C++23.
+      - mjr::math::esgn::zero_or_change -- Boundry intersection test
+      - mjr::math::esgn::non_zero_change -- Boundary crossing test
+      - mjr::math::esgn::count_signs -- Counting signs
+      - mjr::math::esgn::sgn & mjr::math::esgn::sgne -- Enumerated sgn/sgne replacements
+      - mjr::math::esgn::sgn_to_esgn &mjr::math::esgn::esgn_to_sgn -- Convert enum to/from int
+    - mjr::math::ivl
+      - Integer overload of mjr::math::ivl::wrapCO
+      - Unit tests for integer inputs to mjr::math::ivl::wrapCO
+      - Unit tests comparing mjr::math::ivl::wrapCO & mjr::math::ivl::wrapCC on integers.
+    - mjr::math::fc
+      - mjr::math::fc:not_near_zero for floating point & complex floating point types
+    - mjr::math::vec
+      - mjr::math::vec::linear_combination overloads for 3 and 4 vectors.
+      - mjr::math::vec::scale
     - mjr::math::cplx
-      - Added some more fractal functions: 
-        - mjr::math::cplx::iabs()
-        - mjr::math::cplx::rabs()
-        - mjr::math::cplx::rchs_if_ineg()
-      - Improved the namespace comment.
-      - Added mjr::math::cplx::is_complex type type trait
-        - WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING 
-        - I'm not sure this will stay in this namespace
-        - WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING 
+      - mjr::math::cplx::iabs()
+      - mjr::math::cplx::rabs()
+      - mjr::math::cplx::rchs_if_ineg()
+      - mjr::math::cplx::is_complex type type trait
     - mjr::math::odr
       - New: mjr::math::odr::abs_max2
       - New: mjr::math::odr::abs_min2
@@ -81,11 +86,12 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
     - mjr::math::sfun:heaviside()
     - mjr::math::uply
       - mjr::math::eval() is now a template
-      - New: mjr::math::evald() Computes the value of a polynomial and its derivatives.
+      - mjr::math::evald() Computes the value of a polynomial and its derivatives.
   - Documentation
     - Removed "examples" item from changelog.org release section template
     - Updated readmes to include CMake note.
     - Added doxygen grouping
+    - Added BLAS notes in vector functions
   - Miscellaneous
     - Cleaned up leftovers of old CMake config
     - Updated configure.sh to 2025-01-30 version

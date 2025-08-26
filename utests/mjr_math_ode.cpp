@@ -1,12 +1,10 @@
 // -*- Mode:C++; Coding:us-ascii-unix; fill-column:158 -*-
 /*******************************************************************************************************************************************************.H.S.**/
 /**
- @file      MRMathCPP.hpp
+ @file      mjr_math_ode.cpp
  @author    Mitch Richling http://www.mitchr.me/
- @brief     Very simple math stuff very carefully implemented: Everything.@EOL
- @keywords
+ @brief     Unit tests for mjr::math::ode.@EOL
  @std       C++20
- @see
  @copyright
   @parblock
   Copyright (c) 2024, Mitchell Jay Richling <http://www.mitchr.me/> All rights reserved.
@@ -27,26 +25,34 @@
   OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
   LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
   DAMAGE.
-    @endparblock
+  @endparblock
 */
 /*******************************************************************************************************************************************************.H.E.**/
+/** @cond exj */
 
-#ifndef MJR_INCLUDE_MRMATH
+#include <gtest/gtest.h>
 
-#include "MRMathBPLY.hpp"  // Bivariate polynomiales
-#include "MRMathCPLX.hpp"  // Complex Numbers
-#include "MRMathESGN.hpp"  // Enumerated Signs for SDF Function Tests
-#include "MRMathFC.hpp"    // FLoating point comparison
-#include "MRMathIVL.hpp"   // Intervals
-#include "MRMathLINM.hpp"  // Linear Mappings
-#include "MRMathODR.hpp"   // Order
-#include "MRMathSFUN.hpp"  // Special functions
-#include "MRMathSTR.hpp"   // String functions (formatting)
-#include "MRMathUPLY.hpp"  // Univariate polynomials
-#include "MRMathVEC.hpp"   // Vectors in R^N (as std::array)
-#include "MRMathODE.hpp"   // ODE IVP solvers in R^N
+#include "MRMathODE.hpp"
 
-//#include "MRMathGOM3.hpp"  // 3D Geometry
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_rk1_wt, VecLen1_double) {
+//  MJR COVERAGE NOTE <2025-08-26T11:32:18-0500> TEST: Add tests.
+}
 
-#define MJR_INCLUDE_MRMATH
-#endif
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_rk1_nt, VecLen2_double) {
+//  MJR COVERAGE NOTE <2025-08-26T11:32:18-0500> TEST: Add tests.
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_rk4_wt, VecLen3_Double) {
+//  MJR COVERAGE NOTE <2025-08-26T11:32:18-0500> TEST: Add tests.
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(FN_rk4_nt, VecLen3_Double) {
+//  MJR COVERAGE NOTE <2025-08-26T11:32:18-0500> TEST: Add tests.
+}
+
+/** @endcond */
+
