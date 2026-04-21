@@ -3,7 +3,7 @@
 /**
  @file      MRMathBPLY.hpp
  @author    Mitch Richling http://www.mitchr.me/
- @brief     Very simple math stuff very carefully implemented: Polynomials.@EOL
+ @brief     Very simple math stuff very carefully implemented: Bivariate Polynomials.@EOL
  @copyright
   @parblock
   Copyright (c) 1988-2024, Mitchell Jay Richling <https://www.mitchr.me> All rights reserved.
