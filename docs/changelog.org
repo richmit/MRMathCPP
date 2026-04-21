@@ -53,7 +53,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
   - New functionality
     - N/A
   - Documentation
-    - N/A
+    - changelog N/A typos fixed in v5.0.0.0
   - Miscellaneous
     - N/A
 
@@ -62,17 +62,12 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
 :CUSTOM_ID: v5.0.0.0
 :END:
 
-  - Fixed Bugs
-    - N/A
-  - Known Issues
-    - N/A
   - API breaking Changes
     - Added max_out>0 assertions on mjr::math::ivl::wrapCC.
     - Added upper_bound>0 assertions on mjr::math::ivl::wrapCO
     - Switched to C++23
     - mjr::math::uply::eval being a template will prevent automatic type conversions in existing code.
   - Deprecated functionality
-    - N/A
   - New functionality
     - MRMathODE.hpp: Runge-Kutta methods
       - mjr::math::ode::deqnt_t, mjr::math::ode::deqwt_t - Types for autonomous & nonautonomous ODE functions
