@@ -40,7 +40,27 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
 :CUSTOM_ID: latest
 :END:
 
-  Most likely next version number: v5.0.0.0
+  Most likely next version number: 
+
+  - Fixed Bugs
+    - N/A
+  - Known Issues
+    - N/A
+  - API breaking Changes
+    - N/A
+  - Deprecated functionality
+    - N/A
+  - New functionality
+    - N/A
+  - Documentation
+    - N/A
+  - Miscellaneous
+    - N/A
+
+* v5.0.0.0
+:PROPERTIES:
+:CUSTOM_ID: v5.0.0.0
+:END:
 
   - Fixed Bugs
     - N/A
@@ -99,7 +119,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
     - Added IncludeMRMathCPPLib.cmake
     - Changed max_out formal argument name to upper_bound on mjr::math::ivl::wrapCO.
 
-* v4.0.0.0: Changes On HEAD Since Last Release
+* v4.0.0.0
 :PROPERTIES:
 :CUSTOM_ID: v4.0.0.0
 :END:
