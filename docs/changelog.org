@@ -90,6 +90,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
   - Documentation
     - Removed "examples" item from changelog.org release section template
     - Updated readmes to include CMake note.
+    - Added quite a bit of detail to main readme.
     - Added doxygen grouping
     - Added BLAS notes in vector functions
   - Miscellaneous

@@ -6,20 +6,71 @@ This library started as a way to render common constructs like ~abs(x1-x2)<eps~ 
 Over time it grew to contain much more, but I've tried to keep the focus on simple stuff like =sgn= and =max4= that I use over and over
 again across several code bases.
 
+#+ATTR_HTML: :align center
+| Header | Contents
+|-|
+| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathBPLY.hpp][~MRMathBPLY.hpp~]] |  Polynomials
+| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathCPLX.hpp][~MRMathCPLX.hpp~]] |  Complex Numbers
+| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathESGN.hpp][~MRMathESGN.hpp~]] |  Enumerated Signs for SDF Function Tests
+| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathFC.hpp][~MRMathFC.hpp~]] |  Floating Point Comparisons
+| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathIVL.hpp][~MRMathIVL.hpp~]] |  Numeric Intervals
+| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathLINM.hpp][~MRMathLINM.hpp~]] |  One Dimensional Linear Transforms
+| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathODE.hpp][~MRMathODE.hpp~]] |  ODE IVP Solvers
+| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathODR.hpp][~MRMathODR.hpp~]] |  Numerical Order
+| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathSFUN.hpp][~MRMathSFUN.hpp~]] |  Special Functions
+| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathSTR.hpp][~MRMathSTR.hpp~]] |  Formatting & Strings
+| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathUPLY.hpp][~MRMathUPLY.hpp~]] |  Polynomials
+| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathVEC.hpp][~MRMathVEC.hpp~]] |  Real & complex vectors using std::array
+
 * Documentation
 
-   https://www.mitchr.me/SS/MRMathCPP/doc-lib/autodocs/html/index.html
+   - API Docs: https://www.mitchr.me/SS/MRMathCPP/doc-lib/autodocs/html/index.html
+   - Change log: https://richmit.github.io/MRMathCPP/changelog.html
 
 * Use
 
-If you are using an IDE, then simply add the =lib/= directory, or the =.hpp= files it contains, to your project.  If you are using
-GCC/Clang on the command line, then add the =lib/= directory to your include path with the =-I= compiler option.  To use from CMake,
-see the file [[https://github.com/richmit/MRMathCPP/blob/main/IncludeMRMathCPPLib.cmake][IncludeMRMathCPPLib.cmake]] at the root of
-the repository.
+MRMathCPP is a "/header only/" C++ library so there is nothing to build.  Simply use the headers you need.
 
-In your code you can include just the specific headers you need, or include them all with =MRMathCPP.hpp=.
+If you are using an IDE, then simply add the =.hpp= files in the =lib/= directory to your project's sources.  If you are using
+GCC/Clang on the command line, then add the =lib/= directory to your include path with the =-I= compiler option.  
+
+If you wish to use this library from a CMake project, then take a look at
+[[https://github.com/richmit/MRMathCPP/blob/main/IncludeMRMathCPPLib.cmake][IncludeMRMathCPPLib.cmake]].
+
+Note that you can include just the specific headers you need in your code, or include them all with =MRMathCPP.hpp=.
+
+* Generate Local Documentation
+
+I use the sequence of commands below to generate the project documentation.  Something similar should work if you wish to 
+produce local documentation:
+  - First make sure you have Doxygen installed.  
+  - Replace "~MSYS Makefiles~" in the sequence below with your preferred generator.  
+  - Replace "~edge~" with your browser of choice.  
+
+The result should be identical to the
+[[https://www.mitchr.me/SS/MRMathCPP/doc-lib/autodocs/html/index.html][published documentation]].  
+
+#+begin_src sh
+cmake -G "MSYS Makefiles" -B build --fresh
+cmake --build build --parallel 8 -t doc-lib
+edge build/doc-lib/autodocs/html/index.html 
+#+end_src
+
+* Unit Tests
+
+The unit tests contained in the ~utests/~ directory provide a good source of examples for many of the functions.  You can run the unit
+tests with something like this (run from the root of the repository):
+
+#+begin_src sh
+cmake -G "MSYS Makefiles" -B build --fresh
+cmake --build build --parallel 8 -t utests
+cmake --build build --parallel 8 -t test
+#+end_src
+
+Note: Replace "~MSYS Makefiles~" in the command sequence above with your preferred generator.
 
 HAVE FUN!
 
 -mitch
+
 

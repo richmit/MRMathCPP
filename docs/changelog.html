@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-08-26 Tue 00:33 -->
+<!-- 2026-04-21 Tue 15:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=1024, initial-scale=1" />
 <title>MRMathCPP Change Log</title>
@@ -229,17 +229,17 @@
 
 <tr>
 <td class="org-right"><b>Updated:</b></td>
-<td class="org-left"><i>2025-08-26 00:33:42</i></td>
+<td class="org-left"><i>2026-04-21 15:42:43</i></td>
 </tr>
 
 <tr>
 <td class="org-right"><b>Generated:</b></td>
-<td class="org-left"><i>2025-08-26 00:33:44</i></td>
+<td class="org-left"><i>2026-04-21 15:42:45</i></td>
 </tr>
 </tbody>
 </table>
 <p align="center">
-Copyright &copy; 2025 Mitch Richling. All rights reserved.
+Copyright &copy; 2026 Mitch Richling. All rights reserved.
 </p>
 
 <div id="table-of-contents" role="doc-toc">
@@ -284,37 +284,41 @@ Most likely next version number: v5.0.0.0
 </ul></li>
 <li>New functionality
 <ul class="org-ul">
-<li>New Header: MRMathCPP.hpp: Enumerated Signs for SDF Function Tests.</li>
-<li>Added integer version of mjr::math::ivl::wrapCO</li>
-<li>Added unit tests for integer inputs to mjr::math::ivl::wrapCO</li>
-<li>Added unit tests comparing mjr::math::ivl::wrapCO &amp; mjr::math::ivl::wrapCC on integers.</li>
-<li>Added mjr::math::fc:not_near_zero for floating point &amp; complex floating point types</li>
-<li>Added MRMathESGN.hpp.
+<li>MRMathODE.hpp: Runge-Kutta methods
 <ul class="org-ul">
-<li>Provides sgn/sign replacements that work with an enum</li>
-<li>Provide fast tests for SDF functions on points</li>
-<li>Requires C++23.  W will silently disappear from the library without compiler support.</li>
+<li>mjr::math::ode::deqnt_t, mjr::math::ode::deqwt_t - Types for autonomous &amp; nonautonomous ODE functions</li>
+<li>mjr::math::ode::rk1 - Euler's method for both autonomous &amp; nonautonomous</li>
+<li>mjr::math::ode::rk4 - Classic RK4 for both autonomous &amp; nonautonomous</li>
+</ul></li>
+<li>MRMathESGN.hpp: Enumerated sgn/sign for fast tests for SDF functions on points. Requires C++23.
+<ul class="org-ul">
+<li>mjr::math::esgn::zero_or_change &#x2013; Boundry intersection test</li>
+<li>mjr::math::esgn::non_zero_change &#x2013; Boundary crossing test</li>
+<li>mjr::math::esgn::count_signs &#x2013; Counting signs</li>
+<li>mjr::math::esgn::sgn &amp; mjr::math::esgn::sgne &#x2013; Enumerated sgn/sgne replacements</li>
+<li>mjr::math::esgn::sgn_to_esgn &amp;mjr::math::esgn::esgn_to_sgn &#x2013; Convert enum to/from int</li>
+</ul></li>
+<li>mjr::math::ivl
+<ul class="org-ul">
+<li>Integer overload of mjr::math::ivl::wrapCO</li>
+<li>Unit tests for integer inputs to mjr::math::ivl::wrapCO</li>
+<li>Unit tests comparing mjr::math::ivl::wrapCO &amp; mjr::math::ivl::wrapCC on integers.</li>
+</ul></li>
+<li>mjr::math::fc
+<ul class="org-ul">
+<li>mjr::math::fc:not_near_zero for floating point &amp; complex floating point types</li>
 </ul></li>
 <li>mjr::math::vec
 <ul class="org-ul">
-<li>Added mjr::math::vec::linear_combination overloads for 3 and 4 vectors.</li>
-<li>Added mjr::math::vec::scale</li>
+<li>mjr::math::vec::linear_combination overloads for 3 and 4 vectors.</li>
+<li>mjr::math::vec::scale</li>
 </ul></li>
 <li>mjr::math::cplx
-<ul class="org-ul">
-<li>Added some more fractal functions: 
 <ul class="org-ul">
 <li>mjr::math::cplx::iabs()</li>
 <li>mjr::math::cplx::rabs()</li>
 <li>mjr::math::cplx::rchs_if_ineg()</li>
-</ul></li>
-<li>Improved the namespace comment.</li>
-<li>Added mjr::math::cplx::is_complex type type trait
-<ul class="org-ul">
-<li>WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING</li>
-<li>I'm not sure this will stay in this namespace</li>
-<li>WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING</li>
-</ul></li>
+<li>mjr::math::cplx::is_complex type type trait</li>
 </ul></li>
 <li>mjr::math::odr
 <ul class="org-ul">
@@ -327,13 +331,14 @@ Most likely next version number: v5.0.0.0
 <li>mjr::math::uply
 <ul class="org-ul">
 <li>mjr::math::eval() is now a template</li>
-<li>New: mjr::math::evald() Computes the value of a polynomial and its derivatives.</li>
+<li>mjr::math::evald() Computes the value of a polynomial and its derivatives.</li>
 </ul></li>
 </ul></li>
 <li>Documentation
 <ul class="org-ul">
 <li>Removed "examples" item from changelog.org release section template</li>
 <li>Updated readmes to include CMake note.</li>
+<li>Added quite a bit of detail to main readme.</li>
 <li>Added doxygen grouping</li>
 <li>Added BLAS notes in vector functions</li>
 </ul></li>
