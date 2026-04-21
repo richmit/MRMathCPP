@@ -6,21 +6,18 @@ This library started as a way to render common constructs like ~abs(x1-x2)<eps~ 
 Over time it grew to contain much more, but I've tried to keep the focus on simple stuff like =sgn= and =max4= that I use over and over
 again across several code bases.
 
-#+ATTR_HTML: :align center
-| Header | Contents
-|-|
-| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathBPLY.hpp][~MRMathBPLY.hpp~]] |  Polynomials
-| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathCPLX.hpp][~MRMathCPLX.hpp~]] |  Complex Numbers
-| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathESGN.hpp][~MRMathESGN.hpp~]] |  Enumerated Signs for SDF Function Tests
-| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathFC.hpp][~MRMathFC.hpp~]] |  Floating Point Comparisons
-| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathIVL.hpp][~MRMathIVL.hpp~]] |  Numeric Intervals
-| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathLINM.hpp][~MRMathLINM.hpp~]] |  One Dimensional Linear Transforms
-| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathODE.hpp][~MRMathODE.hpp~]] |  ODE IVP Solvers
-| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathODR.hpp][~MRMathODR.hpp~]] |  Numerical Order
-| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathSFUN.hpp][~MRMathSFUN.hpp~]] |  Special Functions
-| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathSTR.hpp][~MRMathSTR.hpp~]] |  Formatting & Strings
-| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathUPLY.hpp][~MRMathUPLY.hpp~]] |  Polynomials
-| [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathVEC.hpp][~MRMathVEC.hpp~]] |  Real & complex vectors using std::array
+ - [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathBPLY.hpp][=MRMathBPLY.hpp=]]:  Polynomials
+ - [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathCPLX.hpp][=MRMathCPLX.hpp=]]:  Complex Numbers
+ - [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathESGN.hpp][=MRMathESGN.hpp=]]:  Enumerated Signs for SDF Function Tests
+ - [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathFC.hpp][=MRMathFC.hpp=]]:  Floating Point Comparisons
+ - [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathIVL.hpp][=MRMathIVL.hpp=]]:  Numeric Intervals
+ - [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathLINM.hpp][=MRMathLINM.hpp=]]:  One Dimensional Linear Transforms
+ - [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathODE.hpp][=MRMathODE.hpp=]]:  ODE IVP Solvers
+ - [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathODR.hpp][=MRMathODR.hpp=]]:  Numerical Order
+ - [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathSFUN.hpp][=MRMathSFUN.hpp=]]:  Special Functions
+ - [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathSTR.hpp][=MRMathSTR.hpp=]]:  Formatting & Strings
+ - [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathUPLY.hpp][=MRMathUPLY.hpp=]]:  Polynomials
+ - [[https://github.com/richmit/MRMathCPP/blob/main/lib/MRMathVEC.hpp][=MRMathVEC.hpp=]]:  Real & complex vectors using std::array
 
 * Documentation
 
