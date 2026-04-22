@@ -40,7 +40,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
 :CUSTOM_ID: latest
 :END:
 
-  Most likely next version number: 
+  Most likely next version number: v5.0.0.1
 
   - Fixed Bugs
     - N/A
