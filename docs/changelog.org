@@ -54,6 +54,7 @@ Copyright \copy {{{time(%Y)}}} Mitch Richling. All rights reserved.
     - N/A
   - Documentation
     - changelog N/A typos fixed in v5.0.0.0
+    - Added examples note to main readme
   - Miscellaneous
     - N/A
 

@@ -55,8 +55,8 @@ edge build/doc-lib/autodocs/html/index.html
 
 * Unit Tests
 
-The unit tests contained in the ~utests/~ directory provide a good source of examples for many of the functions.  You can run the unit
-tests with something like this (run from the root of the repository):
+You can run the unit tests with something like this (run from the root
+of the repository):
 
 #+begin_src sh
 cmake -G "MSYS Makefiles" -B build --fresh
@@ -65,6 +65,14 @@ cmake --build build --parallel 8 -t test
 #+end_src
 
 Note: Replace "~MSYS Makefiles~" in the command sequence above with your preferred generator.
+
+* Examples
+
+For examples of library use:
+
+  - The library itself provides a good source of examples. For example =MRMathODE.hpp= makes heavy use of =MRMathVEC.hpp=.
+  - The unit tests found in the =utests/= directory.
+  - The [[https://github.com/richmit/mraster][MRaster]] and [[https://github.com/richmit/MRPTree][MRPTree]] projects.
 
 HAVE FUN!
 
