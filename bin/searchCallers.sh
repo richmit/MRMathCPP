@@ -33,7 +33,7 @@
 #########################################################################################################################################################.H.E.##
 
 
-grep "$1" ~/world/my_prog/MRPTree/*/*.?pp ~/world/my_prog/FuncViz/*/*.?pp ~/world/my_prog/mraster/*/*.?pp
+grep "$1" ~/world/my_prog/MRPTree/*/*.?pp ~/world/my_prog/mraster/*/*.?pp
 
 
 # Find all callers, and count incidence numbers by project
